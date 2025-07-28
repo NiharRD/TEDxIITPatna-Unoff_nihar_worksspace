@@ -1,4 +1,5 @@
 <template>
+  <NavLinks></NavLinks>
   <div class="page-wrapper">
     <header class="page-header">
       <h1 class="page-title">
@@ -34,21 +35,44 @@
         </div>
       </div>
       
-      <div class="image-container">
-        <img src="../assets/our_journey_images/Image-1.svg" class="event-image">
-        <img src="../assets/our_journey_images/Image-2.svg" class="event-image">
-        <img src="../assets/our_journey_images/Image-3.svg" class="event-image">
-        <img src="../assets/our_journey_images/Image-4.svg" class="event-image">
-        <img src="../assets/our_journey_images/Image-5.svg" class="event-image">
-        <img src="../assets/our_journey_images/Image-6.svg" class="event-image">
+      <div class="image-event-container">
+        <EventComponent 
+          v-for="(item, index) in event_ref" 
+          :key="index" 
+          :imageUrl="item.imageURL" 
+          :imageFooter="item.imageFooter" 
+          :eventHeading="item.title" 
+          :eventDescription="item.description"
+        ></EventComponent>
       </div>
     </div>
-    <Footer></Footer>
   </div>
+  <Footer></Footer>
 </template>
 
 <script setup>
+
 import Footer from '@/components/Footer.vue';
+import { ref } from 'vue';
+import EventComponent from '@/components/EventComponent.vue';
+import image1 from '@/assets/our_journey_images/image-1.png';
+import image2 from '@/assets/our_journey_images/image-2.png';
+import image3 from '@/assets/our_journey_images/image-3.png';
+import image4 from '@/assets/our_journey_images/image-4.png';
+import image5 from '@/assets/our_journey_images/image-5.png';
+import image6 from '@/assets/our_journey_images/image-6.png';
+import NavLinks from '@/components/NavLinks.vue';
+
+const event_details = [
+  { title:"VEILED VERACITY", description:`"Veiled Veracity" reminds us that even in confusion, hope leads us to clarity. It urges us to confront illusions and seek truth with courage. "Veiled" hints at hidden truths, while "Veracity" emphasizes honesty in our search for meaning.`,imageFooter:"TEDxIITPatna ‘24", imageURL:image1 },
+  { title:"PRISMS OF PERCEPTION", description:`Prisms of Perception" explores how our view of the world, like light through a prism, is shaped by various factors. It shows that by shifting perspective, we reveal new ideas and solutions, fostering innovation and understanding.`,imageFooter:"TEDxIITPatna ‘23", imageURL:image2 },
+  { title:"INFINITE AFFINITIES", description:`At TEDxIITPatna, we believe dreams become reality together. Infinite Affinities celebrates unity, shared effort, and the humanity that connects us. Each of us has a role—to inspire a brighter future.`, imageFooter:"TEDxIITPatna ‘22", imageURL:image3 },
+  { title:"ROAR", description:`The 3rd Edition of TEDxIIT Patna, Roar – The Acoustic of Strength, celebrated resilience and inner power. When we overcome fear and take charge of our thoughts, we unlock the strength to face any challenge. Unleash your inner roar and join us on the path to a stronger self.`, imageFooter:"TEDxIITPatna ‘21", imageURL:image4},
+  { title:"METAMORPHOSIS", description:`The 2nd Edition of TEDxIITPatna, Metamorphosis, embraced change as a constant force. It highlighted how transformation brings growth and how adapting is key. Experts explored its impact on technology, entertainment, and societal values.`, imageFooter:"TEDxIITPatna ‘19", imageURL:image5},
+  { title:"SHEDDING OFF FEATHERS", description:`TEDxIITPatna believes that building anything new is possible when we let go of the old. Just as birds shed their feathers, allowing the new ones to embrace, taking them afresh to infinite skies, bringing out change is an inevitable part of one's life to keep walking the course of life.`, imageFooter:"TEDxIITPatna ‘16", imageURL:image6},
+]
+const event_ref = ref(event_details)
+
 </script>
 
 <style>
@@ -129,7 +153,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(5px);
+  filter: blur(2px);
   z-index: -1; 
 }
 
@@ -152,9 +176,10 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  width: 150px;
+  justify-content: start;
+  align-items: start;
+  margin-left: 3rem;
 }
 
 .red-line {
@@ -187,4 +212,15 @@ body {
   margin-bottom: 2rem;
   margin-right: 10rem;
 }
+
+.image-event-container{
+  display: flex;
+  flex-direction: column;
+  margin-right: 8rem;
+  display: flex;
+  flex-direction: column;
+  perspective: 1000px;
+}
+
+
 </style>

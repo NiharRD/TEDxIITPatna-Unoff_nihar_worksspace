@@ -2,7 +2,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Molend">
   <div class="theme-bg">
-
     <div class="photo">
       <img src="@/assets/images/home_theme_reveal.jpg" />
     </div>
@@ -33,6 +32,7 @@
 import Nav from '@/components/Nav.vue'
 import HomeNav from '@/components/Home.Nav.vue'
 import Footer from '@/components/Footer.vue'
+import NavLinks from '@/components/NavLinks.vue'
 
 export default {
   name: 'HomeView',

@@ -72,6 +72,7 @@ img {
 }
 
 .description-container {
+  width: auto;
   color: white;
   margin-left: 5rem;
 }
@@ -122,5 +123,53 @@ img {
   cursor: pointer;
   transform: translateZ(25px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+@media(max-width:1024px){
+  .event-box{
+    width: 700px;
+    height: 400px;
+  }
+  .image-container{
+    width: 200px;
+  }
+  .description-container p{
+    font-size: 16px;
+    width: auto;
+  }
+  .event-footer-container{
+    font-size: 10px;
+    width: 200px;
+    height: 46px;
+  }
+  .description-container h2{
+    font-size: 30px;
+    width: auto; 
+  }
+}
+@media(max-width:768px){
+  .event-box{
+    width: 500px;
+    height: 300px;
+    padding: 3rem;
+  }
+  .image-container{
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+  }
+  .description-container p{
+    font-size: 12px;
+    width: auto;
+  }
+  .event-footer-container{
+    font-size: 8px;
+    width: 150px;
+    height: 35px;
+  }
+  .description-container h2{
+    font-size: 18px;
+    width: auto; 
+  }
+
 }
 </style>

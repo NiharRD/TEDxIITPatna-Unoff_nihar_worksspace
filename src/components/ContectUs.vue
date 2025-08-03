@@ -27,7 +27,7 @@
             <div class="contact-textarea-group">
                  <textarea name="message" class="contact-custom-textarea" placeholder="Leave your message here..." v-model="contactForm.suggestion"></textarea>
             </div>
-            <button type="submit" class="contact-submit-button">Submit</button>
+            <button type="submit" class="button-container">Submit</button>
         </form>
       </div>
     </div>
@@ -333,8 +333,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 175px;
-  padding: 1rem;
+  width: 150px;
+  height: 40px;
+  padding: 0.5rem;
   border-radius: 10px;
   margin-top: 2rem;
   cursor: pointer;
@@ -382,7 +383,8 @@ body {
 }
 .contact-custom-input:focus {
     outline: none;
-    border-color: red;
+    border-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5);
 }
 .contact-custom-input::placeholder {
     color: rgba(255, 255, 255, 0.7);
@@ -408,24 +410,13 @@ body {
 }
 .contact-custom-textarea:focus {
     outline: none;
-    border-color: red;
+    border-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5);
 }
 .contact-custom-textarea::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
-.contact-submit-button {
-    color: white;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    background-color: rgba(137, 17, 17, 1);
-    cursor: pointer;
-    width: 150px;
-    height: 40px;
-    border-radius: 8px;
-    border: none;
-    margin-top: 0.5rem;
-}
+
 
 .modal-overlay {
   position: fixed;

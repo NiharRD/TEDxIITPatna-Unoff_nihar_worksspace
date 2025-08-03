@@ -674,9 +674,9 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
-/* ::-webkit-scrollbar-track {
-  background: #1c17;
-} */
+::-webkit-scrollbar-track {
+  background: #413030;
+}
 ::-webkit-scrollbar-thumb {
   background: #ef4444;
   border-radius: 10px;

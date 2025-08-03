@@ -27,7 +27,7 @@
             <div class="contact-textarea-group">
                  <textarea name="message" class="contact-custom-textarea" placeholder="Leave your message here..." v-model="contactForm.suggestion"></textarea>
             </div>
-            <button type="submit" class="button-container">Submit</button>
+            <button type="submit" class="contact-submit-button">Submit</button>
         </form>
       </div>
     </div>
@@ -53,15 +53,18 @@
               </legend>
               <div class="input-group">
                 <label for="partner-name" class="form-label">Name of Organization / Individual</label>
-                <input v-model="partnerForm.name" type="text" id="partner-name" class="form-input" placeholder="Enter your name">
+                <input v-model="partnerForm.name" type="text" id="partner-name" class="form-input" :class="{'input-error': partnerFormErrors.name}" placeholder="Enter your name">
+                <div v-if="partnerFormErrors.name" class="error-message">{{ partnerFormErrors.name }}</div>
               </div>
               <div class="input-group">
                 <label for="partner-portfolio" class="form-label">Website / Portfolio / Social Handle</label>
-                <input v-model="partnerForm.portfolio" type="text" id="partner-portfolio" class="form-input" placeholder="https://yourwebsite.com">
+                <input v-model="partnerForm.portfolio" type="text" id="partner-portfolio" class="form-input" :class="{'input-error': partnerFormErrors.portfolio}" placeholder="https://yourwebsite.com">
+                 <div v-if="partnerFormErrors.portfolio" class="error-message">{{ partnerFormErrors.portfolio }}</div>
               </div>
               <div class="input-group">
                 <label for="partner-industry" class="form-label">Industry / Area of Work</label>
-                <input v-model="partnerForm.industry" type="text" id="partner-industry" class="form-input" placeholder="e.g., Media, Education, Tech">
+                <input v-model="partnerForm.industry" type="text" id="partner-industry" class="form-input" :class="{'input-error': partnerFormErrors.industry}" placeholder="e.g., Media, Education, Tech">
+                 <div v-if="partnerFormErrors.industry" class="error-message">{{ partnerFormErrors.industry }}</div>
               </div>
             </fieldset>
             <fieldset class="form-section">
@@ -70,11 +73,13 @@
               </legend>
               <div class="input-group">
                 <label for="partner-email" class="form-label">Email Address</label>
-                <input v-model="partnerForm.email" type="email" id="partner-email" class="form-input" placeholder="you@example.com" required>
+                <input v-model="partnerForm.email" type="email" id="partner-email" class="form-input" :class="{'input-error': partnerFormErrors.email}" placeholder="you@example.com">
+                 <div v-if="partnerFormErrors.email" class="error-message">{{ partnerFormErrors.email }}</div>
               </div>
               <div class="input-group">
                 <label for="partner-phone" class="form-label">Phone Number</label>
-                <input v-model="partnerForm.phone" type="tel" id="partner-phone" class="form-input" placeholder="Enter your phone number">
+                <input v-model="partnerForm.phone" type="tel" id="partner-phone" class="form-input" :class="{'input-error': partnerFormErrors.phone}" placeholder="Enter your phone number">
+                 <div v-if="partnerFormErrors.phone" class="error-message">{{ partnerFormErrors.phone }}</div>
               </div>
             </fieldset>
             <fieldset class="form-section">
@@ -83,11 +88,13 @@
               </legend>
               <div class="input-group">
                 <label for="partner-type" class="form-label">Type of Partnership</label>
-                <input v-model="partnerForm.partnershipType" type="text" id="partner-type" class="form-input" placeholder="Sponsorship, In-Kind Support, etc.">
+                <input v-model="partnerForm.partnershipType" type="text" id="partner-type" class="form-input" :class="{'input-error': partnerFormErrors.partnershipType}" placeholder="Sponsorship, In-Kind Support, etc.">
+                 <div v-if="partnerFormErrors.partnershipType" class="error-message">{{ partnerFormErrors.partnershipType }}</div>
               </div>
               <div class="input-group">
                 <label for="partner-proposal" class="form-label">Brief Description of Your Proposal</label>
-                <textarea v-model="partnerForm.proposal" id="partner-proposal" rows="5" class="form-input form-textarea" placeholder="Tell us how you'd like to contribute..."></textarea>
+                <textarea v-model="partnerForm.proposal" id="partner-proposal" rows="5" class="form-input form-textarea" :class="{'input-error': partnerFormErrors.proposal}" placeholder="Tell us how you'd like to contribute..."></textarea>
+                 <div v-if="partnerFormErrors.proposal" class="error-message">{{ partnerFormErrors.proposal }}</div>
               </div>
             </fieldset>
             <div class="submit-container">
@@ -131,6 +138,7 @@ const partnerForm = ref({
   partnershipType: '',
   proposal: ''
 });
+const partnerFormErrors = ref({});
 
 const contactForm = ref({
     name: '',
@@ -147,6 +155,7 @@ const openPartnerForm = () => {
 
 const closePartnerForm = () => {
   isPartnerFormVisible.value = false;
+  partnerFormErrors.value = {}; 
 };
 
 watch(isPartnerFormVisible, (newValue) => {
@@ -157,11 +166,31 @@ watch(isPartnerFormVisible, (newValue) => {
   }
 });
 
+const validatePartnerForm = () => {
+    const errors = {};
+    if (!partnerForm.value.name) errors.name = "Name is required.";
+    if (!partnerForm.value.portfolio) errors.portfolio = "Portfolio is required.";
+    if (!partnerForm.value.industry) errors.industry = "Industry is required.";
+    if (!partnerForm.value.email) {
+        errors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(partnerForm.value.email)) {
+        errors.email = "Please enter a valid email address.";
+    }
+    if (!partnerForm.value.phone) errors.phone = "Phone number is required.";
+    if (!partnerForm.value.partnershipType) errors.partnershipType = "Type of partnership is required.";
+    if (!partnerForm.value.proposal) errors.proposal = "Proposal description is required.";
+    
+    partnerFormErrors.value = errors;
+    return Object.keys(errors).length === 0;
+};
+
 const handlePartnerSubmit = () => {
-  console.log('Partner Form Submitted:', partnerForm.value);
-  alert('Thank you for your partnership proposal!');
-  closePartnerForm();
-  partnerForm.value = { name: '', portfolio: '', industry: '', email: '', phone: '', partnershipType: '', proposal: '' };
+  if (validatePartnerForm()) {
+    console.log('Partner Form Submitted:', partnerForm.value);
+    alert('Thank you for your partnership proposal!');
+    closePartnerForm();
+    partnerForm.value = { name: '', portfolio: '', industry: '', email: '', phone: '', partnershipType: '', proposal: '' };
+  }
 };
 
 const handleContactSubmit = () => {
@@ -305,7 +334,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 175px;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 10px;
   margin-top: 2rem;
   cursor: pointer;
@@ -468,7 +497,7 @@ body {
 .form-container-modal {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .form-section {
@@ -520,6 +549,14 @@ body {
 .form-textarea {
   resize: vertical;
   min-height: 80px;
+}
+.input-error {
+    border-color: red;
+}
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }
 
 .submit-container {

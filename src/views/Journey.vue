@@ -145,7 +145,7 @@ body {
 
 @media (min-width: 1024px) {
   .content-container {
-    padding-left: 2rem;
+    padding-left:   9rem;
     padding-right: 2rem;
   }
 }
@@ -331,7 +331,7 @@ body {
     margin-top: 10rem;
   }
 }
-@media(max-width:425px){
+@media(max-width:430px){
   .image-event-container-phone-right{
     margin-top: 0rem;
   }

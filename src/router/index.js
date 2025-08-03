@@ -139,6 +139,22 @@ const routes = [
     meta:{
       title: 'Our-Journey'
     }
+  },
+  {
+    path:'/funfair',
+    name:'funfair',
+    component: ()=>import('../views/Funfairpage.vue'),
+    meta:{
+      title:'Fun Fair'
+    }
+  },
+  {
+    path:'/contact-us',
+    name:'contact us',
+    component:()=>import('../views/ContactUsPage.vue'),
+    meta:{
+      title:'Contact Us'
+    }
   }
   // *** Error404 path. This needs to be created.
   // {

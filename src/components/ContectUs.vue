@@ -1,335 +1,687 @@
 <template>
-    <div class="main-container">
-        <div class="video-container">
-            <img src="https://placehold.co/1200x675/000000/FFF?text=TEDx+Video" alt="tedx-video" class="video">
+  <div class="contact-page-wrapper" :class="{ 'modal-open-background': isPartnerFormVisible }">
+    <div class="heading-container">
+        <p>Any questions or remarks? Just leave us a message!</p>
+    </div>
+    <div class="form-other-container">
+      <div class="partner-contactus-form">
+        <div class="partner-container">
+          <div class="description-1">
+            Have an idea to collaborate or support our next edition?
+          </div>
+          <div class="description-2">
+            <span class="main-word">TEDxIITPatna</span> thrives on meaningful partnerships — let’s create something impactful together.
+          </div>
+          <button @click="openPartnerForm" class="button-container">Partner with Us</button>
         </div>
-        <div class="form-other-container">
-            <div class="heading-container">
-                <p>Any questions or remarks? Just leave us a message!</p>
+        <div class="line-container"></div>
+        <form class="contact-form-container" @submit.prevent="handleContactSubmit">
+            <div class="contact-input-group">
+                <label for="contact-name" class="contact-label">Name</label>
+                <input type="text" id="contact-name" placeholder="Enter your name" class="contact-custom-input" v-model="contactForm.name">
             </div>
-            <div class="partner-contactus-form">
-                <div class="partner-container">
-                    <div class="description-1">
-                        Have an idea to collaborate or support our next edition?
-                    </div>
-                    <div class="description-2">
-                        <span class="main-word">TEDxIITPatna</span> thrives on meaningful partnerships — let’s create something impactful together.
-                    </div>
-                    <div class="button-container">Partner with Us</div>
-                </div>
-                <div class="line-container"></div>
+            <div class="contact-input-group">
+                <label for="contact-email" class="contact-label">Email</label>
+                <input type="email" id="contact-email" placeholder="Enter your e-mail address" class="contact-custom-input" v-model="contactForm.email">
+            </div>
+            <div class="contact-textarea-group">
+                 <textarea name="message" class="contact-custom-textarea" placeholder="Leave your message here..." v-model="contactForm.suggestion"></textarea>
+            </div>
+            <button type="submit" class="button-container">Submit</button>
+        </form>
+      </div>
+    </div>
 
-                <form class="form-container" @submit.prevent="handleSubmit">
-                    <div class="common-container">
-                        <label for="name" class="common-label">Name</label>
-                        <input type="text" name="name" placeholder="Enter your name" class="custom" v-model="name">
-                    </div>
-                    <div class="common-container">
-                        <label for="email" class="common-label">Email</label>
-                        <input type="email" name="email" placeholder="Enter your e-mail address" class="custom" v-model="email">
-                    </div>
-                    <div class="text-area">
-                         <textarea name="message" class="custom-textarea" placeholder="Leave your message here..." v-model="suggestion"></textarea>
-                    </div>
-                    <button type="submit">Submit</button>
-                    
-                    <AlertBox 
-                        v-if="opendialog" 
-                        :keyword="submission.keyword" 
-                        :description="submission.description" 
-                        :buttonText="submission.error ? 'Go Back' : 'Back to Home'"
-                        @close="opendialog = false"
-                    />
-                </form>
+    <div v-if="isPartnerFormVisible" class="modal-overlay">
+      <div class="form-card">
+        <button @click="closePartnerForm" class="close-button" aria-label="Close form">
+          <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="form-content">
+          <div class="header">
+            <h1 class="header-title font-garamond">Partner with TEDx</h1>
+            <p class="header-description">
+              We're excited to collaborate with organizations and individuals who align with the TEDx spirit.
+            </p>
+          </div>
+          <form @submit.prevent="handlePartnerSubmit" class="form-container-modal">
+            <fieldset class="form-section">
+              <legend class="section-title font-garamond">
+                Organization / Individual Info
+              </legend>
+              <div class="input-group">
+                <label for="partner-name" class="form-label">Name of Organization / Individual</label>
+                <input v-model="partnerForm.name" type="text" id="partner-name" class="form-input" placeholder="Enter your name">
+              </div>
+              <div class="input-group">
+                <label for="partner-portfolio" class="form-label">Website / Portfolio / Social Handle</label>
+                <input v-model="partnerForm.portfolio" type="text" id="partner-portfolio" class="form-input" placeholder="https://yourwebsite.com">
+              </div>
+              <div class="input-group">
+                <label for="partner-industry" class="form-label">Industry / Area of Work</label>
+                <input v-model="partnerForm.industry" type="text" id="partner-industry" class="form-input" placeholder="e.g., Media, Education, Tech">
+              </div>
+            </fieldset>
+            <fieldset class="form-section">
+              <legend class="section-title font-garamond">
+                Contact Details
+              </legend>
+              <div class="input-group">
+                <label for="partner-email" class="form-label">Email Address</label>
+                <input v-model="partnerForm.email" type="email" id="partner-email" class="form-input" placeholder="you@example.com" required>
+              </div>
+              <div class="input-group">
+                <label for="partner-phone" class="form-label">Phone Number</label>
+                <input v-model="partnerForm.phone" type="tel" id="partner-phone" class="form-input" placeholder="Enter your phone number">
+              </div>
+            </fieldset>
+            <fieldset class="form-section">
+              <legend class="section-title font-garamond">
+                Nature of Partnership
+              </legend>
+              <div class="input-group">
+                <label for="partner-type" class="form-label">Type of Partnership</label>
+                <input v-model="partnerForm.partnershipType" type="text" id="partner-type" class="form-input" placeholder="Sponsorship, In-Kind Support, etc.">
+              </div>
+              <div class="input-group">
+                <label for="partner-proposal" class="form-label">Brief Description of Your Proposal</label>
+                <textarea v-model="partnerForm.proposal" id="partner-proposal" rows="5" class="form-input form-textarea" placeholder="Tell us how you'd like to contribute..."></textarea>
+              </div>
+            </fieldset>
+            <div class="submit-container">
+              <button type="submit" class="submit-button">
+                Submit Proposal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="opendialog" class="alert-box-overlay">
+        <div class="alert-box-main-container">
+            <div class="alert-box-description-warning">
+                <div class="alert-box-description">
+                    Submission {{ submission.keyword }}
+                </div>
+                <div class="alert-box-warning">
+                    {{ submission.description }}
+                </div>
+            </div>
+            <div class="alert-box-button" @click="opendialog = false">
+                {{ submission.error ? 'Go Back' : 'Back to Home' }}
             </div>
         </div>
-    </div>    
+    </div>
+  </div>
 </template>
 
 <script setup>
-import AlertBox from './AlertBox.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
-const name = ref('');
-const email = ref('');
-const suggestion = ref('');
+const isPartnerFormVisible = ref(false);
+const partnerForm = ref({
+  name: '',
+  portfolio: '',
+  industry: '',
+  email: '',
+  phone: '',
+  partnershipType: '',
+  proposal: ''
+});
 
-const submission = ref({ error: false, description: "", keyword: "" });
+const contactForm = ref({
+    name: '',
+    email: '',
+    suggestion: ''
+});
+
 const opendialog = ref(false);
+const submission = ref({ error: false, description: "", keyword: "" });
 
-const handleSubmit = () => {
-    if (name.value.trim() === "") {
+const openPartnerForm = () => {
+  isPartnerFormVisible.value = true;
+};
+
+const closePartnerForm = () => {
+  isPartnerFormVisible.value = false;
+};
+
+watch(isPartnerFormVisible, (newValue) => {
+  if (newValue) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+});
+
+const handlePartnerSubmit = () => {
+  console.log('Partner Form Submitted:', partnerForm.value);
+  alert('Thank you for your partnership proposal!');
+  closePartnerForm();
+  partnerForm.value = { name: '', portfolio: '', industry: '', email: '', phone: '', partnershipType: '', proposal: '' };
+};
+
+const handleContactSubmit = () => {
+    if (contactForm.value.name.trim() === "") {
         submission.value = { error: true, description: "Please write your name!", keyword: "Error" };
         opendialog.value = true;
         return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email.value.trim() === "") {
+    if (contactForm.value.email.trim() === "") {
         submission.value = { error: true, description: "Please write your email!", keyword: "Error" };
         opendialog.value = true;
         return;
-    } else if (!emailRegex.test(email.value)) {
+    } else if (!emailRegex.test(contactForm.value.email)) {
         submission.value = { error: true, description: "Please enter a valid email address.", keyword: "Error" };
         opendialog.value = true;
         return;
     }
-    const data = { name: name.value, email: email.value, suggestion: suggestion.value };
-    console.log("Form data submitted:", data);
+    console.log("Contact Form Submitted:", contactForm.value);
     submission.value = {
         error: false,
         keyword: "Successful",
         description: "We’ve received your query. Our team will be in touch shortly."
     };
     opendialog.value = true;
-    name.value = '';
-    email.value = '';
-    suggestion.value = '';
+    contactForm.value = { name: '', email: '', suggestion: '' };
 };
+
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-    
-    .video-container{
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        max-height: 80vh;
-        background-color: #000;
-    }
-    .video{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    .form-other-container{
-        background-image: linear-gradient(to top, #4c0e0e, #000000 75%);
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 3rem; 
-    }
-    .heading-container{
-        font-family: 'Outfit';
-        max-width: 50rem;
-        text-align: center;
-        color: white;
-        letter-spacing: 1%;
-        font-size: 4rem;
-        padding: 2rem;
-    }
-    .partner-contactus-form{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-    }
-    .line-container {
-        width: 2px;
-        align-self: stretch;
-        background-image: linear-gradient(
-            to bottom, 
-            rgba(255, 255, 255, 0.8),
-            rgba(128, 128, 128, 0.3)
-        );
-        border-radius: 2px;
-    }
-    .partner-container{
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 4rem;
-    }
-    .description-1{
-        font-family: 'EB_Garamond';
-        color: white;
-        text-align: center;
-        font-size: 2rem;
-    }
-    .description-2{
-        font-family: 'EB_Garamond';
-        color: white;
-        text-align: center;
-        font-size: 2rem;
-    }
-    .main-word{
-        color: red;
-        font-family: 'EB_Garamond';
-    }
-    .button-container{
-        background-color: rgba(137, 17, 17, 1);
-        color: white;
-        font-weight: 500;
-        line-height: 100%;
-        letter-spacing: 2%;
-        font: 'Outfit';
-        font-size: 16px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 175px;
-        padding: 1rem;
-        text-align: center;
-        font-style: Medium;
-        border-radius: 10px;
-        margin-top: 3rem;
-        cursor: pointer;
-    }
-    .form-container{
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        position: relative; 
-    }
-    .common-container{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        height: 50px;
-    }
-    .common-label{
-        font-family: 'Outfit';
-        font-weight: 500;
-        font-size: 25px;
-        line-height: 100%;
-        letter-spacing: 2%;
-        text-align: center;
-        color: white;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-    }
-    .custom{
-        border: none;
-        outline: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        font-family: 'Outfit';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 100%;
-        letter-spacing: 2%;
-        text-align: center;
-        background-color: rgba(134, 133, 133, 0.7);
-        color: white;
-        height: 80%;
-        width: 100%;
-        max-width: 300px;
-        border-radius: 5px;
-    }
-    .custom:focus{
-        outline: none;
-        box-shadow: none;
-        border: none;
-    }
-    .custom::placeholder{
-        color: white;
-        font-family: 'Outfit';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 100%;
-        letter-spacing: 2%;
-        text-align: center;
-    }
-    .text-area{
-        width: 100%;
-        max-width: 402px;
-        height: 200px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-    .custom-textarea{
-        border: none;
-        outline: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(134, 133, 133, 0.85);
-        color: white;
-        font-family: 'Outfit';
-        font-size: 16px;
-        line-height: 100%;
-        letter-spacing: 2%;
-        text-align: left;
-        font-weight: 400;
-        border-radius: 5px;
-        padding: 1rem;
-        resize: none;
-    }
-    .custom-textarea::placeholder{
-        font-family: 'Outfit';
-        color: white;
-        font-size: 16px;
-        line-height: 100%;
-        letter-spacing: 2%;
-        text-align: left;
-        font-weight: 400;
-    }
-    button{
-        color: rgba(255, 255, 255, 1);
-        font-family: 'Outfit';
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 100%;
-        letter-spacing: 2%;
-        text-align: center;
-        padding: 1rem;
-        background-color: rgba(137, 17, 17, 1);
-        box-shadow: none;
-        cursor: pointer;
-        width: 150px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 8px;
-        outline: none;
-        border: none;
-        margin-top: 0.5rem;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:wght@500;700&family=Outfit:wght@100..900&display=swap');
 
-    @media (max-width: 768px) {
-        .heading-container {
-            font-size: 1.5rem;
-            padding: 2rem 1rem;
-        }
-        .partner-contactus-form {
-            flex-direction: column;
-            gap: 3rem;
-            width: 100%;
-        }
-        .form-container {
-            order: 1;
-            width: 90%;
-            max-width: 500px;
-        }
-        .line-container {
-            display: none;
-        }
-        .partner-container {
-            order: 2;
-            width: 90%;
-            max-width: 500px;
-            padding: 1rem;
-        }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-garamond {
+  font-family: 'EB Garamond', serif;
+}
+
+.contact-page-wrapper {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+
+.form-other-container {
+  background-image: linear-gradient(to top, #4c0e0e, #000000 75%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  flex-grow: 1;
+  box-sizing: border-box;
+  transition: filter 0.3s ease-in-out;
+}
+
+.modal-open-background .form-other-container,
+.modal-open-background .heading-container {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.heading-container {
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  color: white;
+  background-color: #000;
+  padding: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.heading-container p {
+    margin: 0;
+}
+
+.partner-contactus-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.line-container {
+  width: 2px;
+  align-self: stretch;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(128, 128, 128, 0.3));
+  border-radius: 2px;
+}
+
+.partner-container {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.description-1,
+.description-2 {
+  font-family: 'EB Garamond', serif;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.main-word {
+  color: red;
+  font-family: 'EB Garamond', serif;
+}
+
+.button-container {
+  background-color: rgba(137, 17, 17, 1);
+  color: white;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+.button-container:hover {
+    background-color: #b91c1c;
+}
+
+.contact-form-container {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.contact-input-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.contact-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: white;
+    flex-shrink: 0;
+}
+.contact-custom-input {
+    background-color: rgba(134, 133, 133, 0.7);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+.contact-custom-input:focus {
+    outline: none;
+    border-color: red;
+}
+.contact-custom-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.contact-textarea-group {
+    width: 100%;
+    max-width: 402px;
+    height: 150px;
+}
+.contact-custom-textarea {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(134, 133, 133, 0.85);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 1rem;
+    resize: none;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+.contact-custom-textarea:focus {
+    outline: none;
+    border-color: red;
+}
+.contact-custom-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.contact-submit-button {
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: rgba(137, 17, 17, 1);
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.form-card {
+  position: relative;
+  width: 100%;
+  max-width: 56rem;
+  background-color: rgba(28, 25, 23, 0.95);
+  border: 1px solid #44403c;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(127, 29, 29, 0.25);
+}
+
+.form-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #a8a29e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+.close-button:hover {
+  color: #fff;
+}
+.close-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.header-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 0.5rem;
+}
+.header-description {
+  color: #d6d3d1;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-container-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-section {
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid #ef4444;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #d6d3d1;
+  margin-bottom: 0.25rem;
+}
+
+.form-input {
+  width: 100%;
+  background-color: #292524;
+  border: 1px solid #44403c;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  color: #fff;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  box-sizing: border-box;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5);
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
+
+.submit-button {
+  background-color: #dc2626;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(127, 29, 29, 0.3), 0 4px 6px -2px rgba(127, 29, 29, 0.15);
+  cursor: pointer;
+  transform: scale(1);
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.submit-button:hover {
+  background-color: #b91c1c;
+  transform: scale(1.05);
+}
+
+.alert-box-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.alert-box-main-container {
+    width: 90%;
+    max-width: 500px;
+    border: 1.5px solid rgba(255, 255, 255, 1);
+    background-color: rgba(30, 5, 5, 0.97);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 10px;
+    z-index: 2001;
+}
+
+.alert-box-description-warning {
+    font-family: 'EB Garamond', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: 2%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.alert-box-description {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.alert-box-button {
+    max-width: 150px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 2%;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(137, 17, 17, 1);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.alert-box-button:hover {
+    background-color: #A61414;
+}
+
+@media (min-width: 2500px) {
+    .heading-container {
+        font-size: 4rem;
     }
+    .description-1, .description-2 {
+        font-size: 3rem;
+    }
+    .contact-label {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 992px) {
+  .partner-contactus-form {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .partner-container, .contact-form-container {
+    width: 90%;
+    max-width: 500px;
+    padding: 1rem;
+  }
+  .line-container {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading-container {
+    font-size: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+  .contact-page-wrapper {
+      padding-top: 80px;
+  }
+  .contact-input-group {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
+  .contact-label {
+      font-size: 20px;
+  }
+  .description-1,
+  .description-2 {
+    font-size: 1.5rem;
+  }
+  .form-content {
+    padding: 1.5rem;
+  }
+  .header-title {
+    font-size: 1.75rem;
+  }
+  .section-title {
+    font-size: 1.25rem;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+/* ::-webkit-scrollbar-track {
+  background: #1c17;
+} */
+::-webkit-scrollbar-thumb {
+  background: #ef4444;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
 </style>

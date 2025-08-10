@@ -39,7 +39,7 @@ defineProps({
 
     .image-container {
         position: absolute;
-        top: -20px; /* Pushes the image up to overlap the top border */
+        top: 0; /* Changed from -20px to 0 to keep image within borders */
         left: 0;
         width: 100%;
         height: 100%;
@@ -51,7 +51,8 @@ defineProps({
     .image-container img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* 'contain' fits the entire image; 'cover' would fill the space */
+        object-fit: cover;
+        object-position: center;
     }
 
     .year-container {
@@ -87,5 +88,78 @@ defineProps({
     .image-title-container img {
         width: 100%; /* Make the image fill its container */
         display: block; /* Removes any extra space below the image */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 480px) {
+        .event-container-individual {
+            width: 140px;
+            height: 180px;
+            margin: 1.5rem;
+        }
+        
+        .year-container {
+            font-size: 16px;
+            padding: 2px 10px;
+        }
+        
+        .explore-container {
+            font-size: 11px;
+            bottom: 12px;
+            right: 12px;
+        }
+        
+        .image-container img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    @media (max-width: 430px) {
+        .event-container-individual {
+            width: 130px;
+            height: 170px;
+            margin: 1.25rem;
+        }
+        
+        .year-container {
+            font-size: 15px;
+            padding: 2px 8px;
+        }
+        
+        .explore-container {
+            font-size: 10px;
+            bottom: 10px;
+            right: 10px;
+        }
+        
+        .image-container img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .event-container-individual {
+            width: 120px;
+            height: 160px;
+            margin: 1rem;
+        }
+        
+        .year-container {
+            font-size: 14px;
+            padding: 1px 6px;
+        }
+        
+        .explore-container {
+            font-size: 9px;
+            bottom: 8px;
+            right: 8px;
+        }
+        
+        .image-container img {
+            object-fit: cover;
+            object-position: center;
+        }
     }
 </style>

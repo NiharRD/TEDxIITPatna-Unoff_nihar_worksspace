@@ -43,12 +43,30 @@ import image from '../assets/Funfair_images/fun_fair.svg'
 </script>
 
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
     .main-image-header-container{
         width: 100%;
+        margin-top: 0;
+        padding-top: 0;
+        height: 70vh; /* Reduced height for better proportion */
+        position: relative;
+        overflow: hidden;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .main-image-header-container img{
-        width: 100%;
-        height: 100%;
+        width: auto; /* Let image maintain its natural width */
+        height: auto; /* Let image maintain its natural height */
+        max-width: 100%; /* Don't exceed container width */
+        max-height: 100%; /* Don't exceed container height */
+        object-fit: contain; /* Show full image without cropping */
+        object-position: center; /* Center the image */
     }
     .main-container{
         background-color: black;
@@ -123,6 +141,62 @@ import image from '../assets/Funfair_images/fun_fair.svg'
     .collage-block {
         border: 1px solid black;
         border-radius: 4px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .collage-block::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        transition: all 0.4s ease;
+        z-index: 1;
+    }
+    
+    .collage-block:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+    }
+    
+    .collage-block:hover::before {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+    
+    /* Animation delays for staggered effect */
+    .collage-block:nth-child(1) { animation-delay: 0s; }
+    .collage-block:nth-child(2) { animation-delay: 0.1s; }
+    .collage-block:nth-child(3) { animation-delay: 0.2s; }
+    .collage-block:nth-child(4) { animation-delay: 0.3s; }
+    .collage-block:nth-child(5) { animation-delay: 0.4s; }
+    .collage-block:nth-child(6) { animation-delay: 0.5s; }
+    .collage-block:nth-child(7) { animation-delay: 0.6s; }
+    .collage-block:nth-child(8) { animation-delay: 0.7s; }
+    .collage-block:nth-child(9) { animation-delay: 0.8s; }
+    
+    /* Floating animation for mosaic effect */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-5px) rotate(1deg); }
+        50% { transform: translateY(-10px) rotate(0deg); }
+        75% { transform: translateY(-5px) rotate(-1deg); }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+    
+    @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
     }
     
     /* Left Column */
@@ -130,18 +204,21 @@ import image from '../assets/Funfair_images/fun_fair.svg'
         grid-row: 1 / 4;
         grid-column: 1;
         background-color: #FF00FF; /* Magenta */
+        animation: float 6s ease-in-out infinite;
     }
     
     .bottom-left {
         grid-row: 4 / 5;
         grid-column: 1;
         background-color: #FF00FF; /* Magenta */
+        animation: pulse 4s ease-in-out infinite;
     }
     
     .bottom-left-wide {
         grid-row: 5 / 7;
         grid-column: 1;
         background-color: #FF0000; /* Red */
+        animation: float 8s ease-in-out infinite reverse;
     }
     
     /* Middle Column */
@@ -149,24 +226,28 @@ import image from '../assets/Funfair_images/fun_fair.svg'
         grid-row: 1 / 4;
         grid-column: 2;
         background-color: #FF00FF; /* Magenta */
+        animation: float 7s ease-in-out infinite;
     }
     
     .middle-bottom {
         grid-row: 4 / 5;
         grid-column: 2;
         background-color: #FF0000; /* Red */
+        animation: pulse 5s ease-in-out infinite;
     }
     
     .top-yellow {
         grid-row: 5 / 6;
         grid-column: 2;
         background-color: #FFFF00; /* Yellow */
+        animation: float 6.5s ease-in-out infinite reverse;
     }
     
     .bottom-yellow {
         grid-row: 6 / 7;
         grid-column: 2;
         background-color: #FFFF00; /* Yellow */
+        animation: pulse 4.5s ease-in-out infinite;
     }
     
     /* Right Column */
@@ -174,24 +255,51 @@ import image from '../assets/Funfair_images/fun_fair.svg'
         grid-row: 1 / 3;
         grid-column: 3;
         background-color: #FF0000; /* Red */
+        animation: float 7.5s ease-in-out infinite;
     }
     
     .middle-right {
         grid-row: 3 / 4;
         grid-column: 3;
         background-color: #FF0000; /* Red */
+        animation: pulse 3.5s ease-in-out infinite;
     }
     
     .bottom-right-tall {
         grid-row: 4 / 7;
         grid-column: 3;
         background-color: #FF0000; /* Red */
+        animation: float 9s ease-in-out infinite reverse;
+    }
+    
+    /* Enhanced hover effects with color transitions */
+    .collage-block.magenta:hover {
+        background: linear-gradient(45deg, #FF00FF, #FF66FF, #FF00FF);
+        background-size: 200% 200%;
+        animation: shimmer 2s ease infinite;
+    }
+    
+    .collage-block.red:hover {
+        background: linear-gradient(45deg, #FF0000, #FF4444, #FF0000);
+        background-size: 200% 200%;
+        animation: shimmer 2s ease infinite;
+    }
+    
+    .collage-block.yellow:hover {
+        background: linear-gradient(45deg, #FFFF00, #FFFF66, #FFFF00);
+        background-size: 200% 200%;
+        animation: shimmer 2s ease infinite;
     }
     
     /* Responsive Styles */
     
     /* Tablet Styles */
     @media (max-width: 1024px) {
+        .main-image-header-container {
+            margin-top: 0;
+            height: 60vh; /* Adjusted for tablets */
+        }
+        
         .description-container {
             font-size: 24px;
             max-width: 900px;
@@ -215,6 +323,11 @@ import image from '../assets/Funfair_images/fun_fair.svg'
     
     /* Mobile Styles */
     @media (max-width: 768px) {
+        .main-image-header-container {
+            margin-top: 0;
+            height: 45vh; /* Adjusted for mobile */
+        }
+        
         .main-container {
             gap: 2rem;
             padding: 0 1rem;
@@ -293,6 +406,11 @@ import image from '../assets/Funfair_images/fun_fair.svg'
     
     /* Small Mobile Styles */
     @media (max-width: 480px) {
+        .main-image-header-container {
+            margin-top: 0;
+            height: 35vh; /* Adjusted for small mobile */
+        }
+        
         .description-container {
             font-size: 18px;
             margin: 1rem 0;

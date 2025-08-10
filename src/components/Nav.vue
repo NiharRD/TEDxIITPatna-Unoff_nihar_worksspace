@@ -143,15 +143,15 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 1);
-    transition: background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 1); /* Opaque at start */
+    transition: all 0.3s ease;
 }
 
 .nav-scrolled {
-  background-color: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.85); /* Transparent when scrolled */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .nav-logo-container {

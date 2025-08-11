@@ -49,7 +49,8 @@ img {
 
 .image-container {
   width: 356px;
-  height: 268px;
+  height: 100%;
+  object-fit: fill;
 }
 
 .image-footer-container {
@@ -60,6 +61,7 @@ img {
 }
 
 .event-footer-container {
+  position: absolute;
   background-color: white;
   text-align: center;
   display: flex;
@@ -69,6 +71,7 @@ img {
   height: 76px;
   font-family: 'IM FELL French Canon';
   font-size: 20px;
+  bottom: 4rem;
 }
 
 .description-container {
@@ -105,12 +108,14 @@ img {
   height: 512px;
   box-sizing: border-box;
   border-radius: 50px;
-  border: 1px solid white;
+  border: 4px solid transparent;
+  background: linear-gradient(#000, #000) padding-box, linear-gradient(270deg, gray, black, gray) border-box;
+  background-size: 300% 300%;
+  background-position: right center;
   opacity: 0;
   filter: blur(4px);
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, filter 0.6s ease-out,
-    transform 0.4s ease, box-shadow 0.4s ease;
+  transition: opacity 0.6s ease-out, filter 0.6s ease-out, transform 0.4s ease, box-shadow 0.4s ease, background 0.8s ease, background-position 0.8s ease;
 }
 
 .event-box.is-visible {
@@ -123,7 +128,11 @@ img {
   cursor: pointer;
   transform: translateZ(25px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(#000, #000) padding-box, linear-gradient(270deg, rgba(88, 6, 6, 0.962), black, gray, rgb(75, 27, 27)) border-box;
+  background-size: 300% 300%;
+  background-position: left center;
 }
+
 @media(max-width:1024px){
   .event-box{
     width: 700px;
@@ -131,6 +140,8 @@ img {
   }
   .image-container{
     width: 200px;
+    height: 100%;
+    object-fit: fill;
   }
   .description-container p{
     font-size: 16px;
@@ -140,6 +151,7 @@ img {
     font-size: 10px;
     width: 200px;
     height: 46px;
+    bottom: 3rem;
   }
   .description-container h2{
     font-size: 30px;
@@ -154,8 +166,8 @@ img {
   }
   .image-container{
     width: 150px;
-    height: 100px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: fill;
   }
   .description-container p{
     font-size: 12px;
@@ -170,6 +182,5 @@ img {
     font-size: 18px;
     width: auto; 
   }
-
 }
 </style>

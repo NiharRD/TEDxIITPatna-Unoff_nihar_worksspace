@@ -246,7 +246,7 @@ body {
 .events-dropdown {
     position: absolute;
     top: calc(100% + 2px);
-    left: 50%;
+    left: 70%;
     transform: translateX(-50%);
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.98));
     backdrop-filter: blur(15px);

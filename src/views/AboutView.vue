@@ -1,4 +1,5 @@
 <template>
+  <Nav />
   <div class="about-container">
     <div class="before">
     <section class="about-header">

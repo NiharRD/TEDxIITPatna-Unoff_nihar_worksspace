@@ -1,4 +1,5 @@
 <template>
+  <!-- <Nav /> -->
   <div class="theme-bg">
     <!-- Desktop image -->
     <div class="photo">
@@ -70,11 +71,13 @@
 </template>
 
 <script>
+// import Nav from '@/components/Nav.vue'
 import Footer from '@/components/Footer.vue'
 import SpeakerModal from '@/components/SpeakerModal.vue'
 
 export default {
   components: {
+    // Nav,
     Footer,
     SpeakerModal,
   },

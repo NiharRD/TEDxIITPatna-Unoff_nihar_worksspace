@@ -1,4 +1,5 @@
 <template>
+  <Nav />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Molend">
   <div class="theme-bg">

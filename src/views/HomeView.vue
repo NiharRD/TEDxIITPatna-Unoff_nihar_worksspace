@@ -2,8 +2,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Molend">
   <div class="theme-bg">
+
     <div class="photo">
       <img src="@/assets/images/home_theme_reveal.jpg" />
+    </div>
+
+    <div class="photo-mobile">
+      <img src="@/assets/images/home_theme_reveal_mobile.png" />
     </div>
 
     <section class="speaker-application">
@@ -11,9 +16,70 @@
       <a href="mailto:tedxiitpatna@gmail.com" class="link">Contact Us</a>
     </section>
 
-    <div class="photo">
-      <img src="@/assets/images/sponsors.jpg" />
-      <img src="@/assets/images/previous_partners.jpg" />
+    <div class="sponsor">
+      <h1 class="section-heading">OUR SPONSORS</h1>
+      <div class="images">
+        <img src="@/assets/images/sponsor_1.png" />
+        <img src="@/assets/images/sponsor_2.png" />
+      </div>
+    </div>
+
+    <div class="partner">
+      <h1 class="section-heading">OUR PREVIOUS PARTNERS</h1>
+
+      <!-- Row 1: 9 Images, Show 4 at a time -->
+      <div class="scroll-row">
+        <div class="scroll-track">
+          <img src="@/assets/images/partner_1.png" />
+          <img src="@/assets/images/partner_2.png" />
+          <img src="@/assets/images/partner_3.png" />
+          <img src="@/assets/images/partner_4.png" />
+          <img src="@/assets/images/partner_5.png" />
+          <img src="@/assets/images/partner_6.png" />
+          <img src="@/assets/images/partner_7.jpg" />
+          <img src="@/assets/images/partner_8.png" />
+          <img src="@/assets/images/partner_9.png" />
+
+          <!-- Duplicate for infinite scroll -->
+          <img src="@/assets/images/partner_1.png" />
+          <img src="@/assets/images/partner_2.png" />
+          <img src="@/assets/images/partner_3.png" />
+          <img src="@/assets/images/partner_4.png" />
+          <img src="@/assets/images/partner_5.png" />
+          <img src="@/assets/images/partner_6.png" />
+          <img src="@/assets/images/partner_7.jpg" />
+          <img src="@/assets/images/partner_8.png" />
+          <img src="@/assets/images/partner_9.png" />
+        </div>
+      </div>
+
+      <!-- Row 2: 9 Images, Show 3 at a time -->
+      <div class="scroll-row">
+        <div class="scroll-track">
+          <img src="@/assets/images/partner_10.png" />
+          <img src="@/assets/images/partner_11.png" />
+          <img src="@/assets/images/partner_12.png" />
+          <img src="@/assets/images/partner_13.png" />
+          <img src="@/assets/images/partner_14.jpg" />
+          <img src="@/assets/images/partner_15.png" />
+          <img src="@/assets/images/partner_16.png" />
+          <img src="@/assets/images/partner_17.png" />
+          <img src="@/assets/images/partner_18.png" />
+          <img src="@/assets/images/partner_19.png" />
+
+          <!-- Duplicate for infinite scroll -->
+          <img src="@/assets/images/partner_10.png" />
+          <img src="@/assets/images/partner_11.png" />
+          <img src="@/assets/images/partner_12.png" />
+          <img src="@/assets/images/partner_13.png" />
+          <img src="@/assets/images/partner_14.jpg" />
+          <img src="@/assets/images/partner_15.png" />
+          <img src="@/assets/images/partner_16.png" />
+          <img src="@/assets/images/partner_17.png" />
+          <img src="@/assets/images/partner_18.png" />
+          <img src="@/assets/images/partner_19.png" />
+        </div>
+      </div>
     </div>
 
     <Footer/>
@@ -32,7 +98,6 @@
 import Nav from '@/components/Nav.vue'
 import HomeNav from '@/components/Home.Nav.vue'
 import Footer from '@/components/Footer.vue'
-import NavLinks from '@/components/NavLinks.vue'
 
 export default {
   name: 'HomeView',

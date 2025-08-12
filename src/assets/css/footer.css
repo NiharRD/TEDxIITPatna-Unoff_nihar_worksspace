@@ -22,7 +22,7 @@
 .footer-left .footer-links {
   padding-left: 3rem;
   padding-top: 2.5rem;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   gap: 0.6rem;
   font-size: 0.7rem;
@@ -129,6 +129,70 @@
   font-size: 1.2rem;
 }
 
+.footer-links-mobile {
+  list-style: none;
+  padding: 0;
+  /* margin-top: 1rem; */
+  margin: 0;
+}
+
+.footer-links-mobile li {
+  margin: 0.5rem 0;
+}
+
+.footer-links-mobile a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-links-mobile a:hover {
+  color: red;
+}
+
+.footer-center-mobile {
+  text-align: center;
+}
+
+.footer-center-mobile h2 {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.social-icons-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-icons-mobile img {
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  background-color: white;
+  border-radius: 5px; /* square with rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+.social-icons-mobile img:hover {
+  background-color: red;
+}
+
+.email-link-mobile {
+  display: block;
+  color: red;
+  text-decoration: underline;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.contact-us-mobile {
+  margin-top: 1rem;
+  color: red;
+  /* font-size: 1.2rem; */
+}
+
 .footer-right {
   display: flex;
   flex-direction: column;
@@ -165,18 +229,59 @@
   margin-top: 0.5rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
+.footer-right-mobile {
+  text-align: center;
+}
 
-  .footer-section {
-    align-items: center;
-  }
+.footer-links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
 
-  .footer-left-square {
+.footer-links-container a {
+  text-decoration: underline;
+  color: #ccc;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.footer-right-mobile h2 {
+  color: red;
+}
+
+.first {
+    font-size: 0.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.second {
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.5rem;
+}
+
+/* ================= LAPTOP RESPONSIVENESS ================= */
+@media (min-width: 768px) {
+
+  .footer-section-mobile {
     display: none;
   }
+
+  .footer-links-mobile {
+    display: none;
+  }
+
+  .footer-left .footer-links {
+    display: flex;
+  }
+
+  .footer-bottom-mobile {
+    display: none;
+  }
+
 }

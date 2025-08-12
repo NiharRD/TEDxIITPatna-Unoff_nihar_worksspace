@@ -33,6 +33,89 @@
   display: block;
 }
 
+.photo-mobile {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.photo-mobile img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .speaker-application .link:hover {
   background-color: white;
+}
+
+.sponsor {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.sponsor img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sponsor .images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sponsor .images img:first-child {
+  width: 55%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.sponsor .images img:last-child {
+  width: 45%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.partner {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.scroll-row {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.scroll-track {
+  display: inline-flex;
+  animation: scroll-left 60s linear infinite;
+}
+
+.scroll-track img {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0 15px;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= LAPTOP RESPONSIVENESS ================= */
+@media (min-width: 768px) {
+  .photo-mobile {
+    display: none;
+  }
 }

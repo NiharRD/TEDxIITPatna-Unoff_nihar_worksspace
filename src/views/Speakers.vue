@@ -1,617 +1,219 @@
-<template style="background-color:black;">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Molend">
-  <div class="graphic" style="background-color:black">
-    <!-- <img src="@/assets/images/newlogo.png" style="height:70px;margin-top:4vh;margin-left:4vh;"> -->
-    <Nav :open_button_color="this.showWebView ? 'white' : 'white'" open_button_style="text" />
-    <BackButton />
+<template>
+  <div class="theme-bg">
+    <!-- Desktop image -->
+    <div class="photo">
+      <img src="@/assets/images/speakers.png" />
+      <h1 class="text">SPEAKERS</h1>
+    </div>
+
+    <!-- Mobile image -->
+    <div class="photo-mobile">
+      <img src="@/assets/images/speakers_mobile.png" />
+      <h1 class="text">SPEAKERS</h1>
+    </div>
+
+    <!-- Desktop only year bar -->
+    <div class="year-bar" ref="yearBar" :class="{ 'sticky': isSticky }">
+      <div class="year" v-for="year in [2024, 2023, 2022, 2021, 2019]" :key="year" @click="scrollToYear(year)">{{ year }}</div>
+    </div>
+
+    <!-- Speaker sections -->
+    <div class="speakers-container">
+      <div class="speakers-section" v-for="(yearGroup, i) in allYears" :key="i" :ref="`year-${yearGroup.year}`">
+        <!-- Desktop: non-clickable year label, Mobile: clickable with dropdown -->
+        <div class="year-label" :class="{ 'clickable': isMobile }" @click="isMobile ? toggleYear(yearGroup.year) : null">
+          <span v-if="isMobile">
+            {{ expandedYears.includes(yearGroup.year) ? '▴' : '▾' }}
+            {{ yearGroup.year }}
+          </span>
+          <span v-else>
+            {{ yearGroup.year }}
+          </span>
+        </div>
+
+        <!-- Desktop: always show, Mobile: show based on expanded state -->
+        <div
+          class="speakers-bar"
+          v-show="!isMobile || expandedYears.includes(yearGroup.year)"
+        >
+          <div
+            class="speaker"
+            v-for="(speaker, index) in yearGroup.speakers"
+            :key="`${yearGroup.year}-${index}`"
+          >
+            <img :src="speaker.image" :alt="speaker.name" />
+            <div class="speaker-overlay">
+              <div class="speaker-info">
+                <h3>{{ speaker.name }}</h3>
+                <button
+                  v-if="speaker.showMoreButton"
+                  class="know-more-btn"
+                  @click="selectedSpeaker = speaker"
+                >
+                  Know more
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <SpeakerModal
+      v-if="selectedSpeaker"
+      :speaker="selectedSpeaker"
+      @close="selectedSpeaker = null"
+    />
+
+    <Footer />
   </div>
-
-  <!-- <Nav :open_button_color="this.showWebView ? 'white' : 'black'" open_button_style="text" />
-  <BackButton /> -->
-  <!-- web+mobile view of the contents -->
-  <div class="wrap">
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/nehaag1.png">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue; wi">
-            Neha Agarwal, founder of the esteemed "Mathematically Inclined," is a passionate mathematics maven. Holding
-            degrees from the prestigious
-            University of Delhi, Neha's YouTube channel boasts an enviable 1.5 million
-            subscribers and 150 million views, showcasing her proficiency in math tutorials, problem-solving,
-            and study guidance. With a remarkable average watch time and engagement rate,
-            her channel has consistently ranked among India's top educational platforms.
-            Her content has also been recognized internationally, earning prestigious awards for innovative education.
-            Notably, she has received the coveted "Best ZONAL Teacher Award" from the International Mathematics
-            Olympiad.
-            Featured among YouTube's "Best Education Channels," Neha's tireless endeavors have ignited a profound
-            passion
-            for mathematics in countless scholars and enthusiasts.
-          </div>
-          <div style="width:100% ; display:flex ; justify-content:center">
-            <div class="talk_butto">
-              <div class="but">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container" v-else>
-      <img class="imge" src="@/assets/images/speaker/nehaag1.png">
-      <div class="info">
-        Neha Agarwal, founder of the esteemed "Mathematically Inclined," is a passionate mathematics maven. Holding
-        degrees from the prestigious
-        University of Delhi, Neha's YouTube channel boasts an enviable 1.5 million
-        subscribers and 150 million views, showcasing her proficiency in math tutorials, problem-solving,
-        and study guidance. With a remarkable average watch time and engagement rate,
-        her channel has consistently ranked among India's top educational platforms.
-        Her content has also been recognized internationally, earning prestigious awards for innovative education.
-        Notably, she has received the coveted "Best ZONAL Teacher Award" from the International Mathematics Olympiad.
-        Featured among YouTube's "Best Education Channels," Neha's tireless endeavors have ignited a profound passion
-        for
-        mathematics in countless scholars and enthusiasts.
-
-      </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center;">Book Tickets </a>
-
-        </div>
-      </div>
-
-    </div>
-
-
-
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/satyanshu.png" style="margin-bottom: -4rem;">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue;">
-            Satyanshu is a National Award-winning filmmaker,
-            writer and professor of cinema. His debut feature film,
-            Chintu Ka Birthday, released in 2020 on ZEE5 to widely
-
-            positive reception by critics and audiences alike.
-
-            He started his professional journey by writing poems for Vikramaditya Motwane's Udaan,
-            produced by Anurag Kashyap. Satyanshu has also written lyrics for Amit V. Masurkar's Sulemani Keeda and
-            Vinod
-            Chopra Films'
-            Ferrari Ki Sawaari. His directorial debut was a Kashmiri short film Tamaash, which won several awards at
-            different film festivals,
-            including a National Award. In addition to writing and directing, Satyanshu has conducted screenwriting
-            courses at Anupam Kher's 'Actor Prepares' as well as workshops across India.
-            Satyanshu has designed and mentored both seasons of AIB's 'First Draft' screenwriter residency programme.
-            During the COVID-19 pandemic, he launched a fundraising initiative by conducting online lectures on cinema.
-            Satyanshu has also been a creative consultant with Sony LIV across several projects. He is currently working
-            on the recently announced third season of AIB's 'First Draft' programme. Most recently, Satyanshu
-            co-directed
-            the Sony LIV series Jehanabad - Of Love & War, which was well received by both critics and audiences alike.
-            He
-            is also developing a series for Vikramaditya Motwane, and is simultaneously developing his original series
-            and
-            feature ideas.
-            He is also consulting on several projects across formats.
-          </div>
-          <div class="flexbutton">
-            <div style="     background-color: #B50000; color: white;width: 130px;
-    height: 42px;
-    padding: 0% 0px 0px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-              <div style="width:170px; padding:5% ; display:flex ;align-items:center;">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container" v-else>
-      <img class="imge" src="@/assets/images/speaker/satyanshu.png" style="height: 280px; width:280px ;">
-      <div class="info">
-        Satyanshu is a National Award-winning filmmaker,
-        writer and professor of cinema. His debut feature film,
-        Chintu Ka Birthday, released in 2020 on ZEE5 to widely
-
-        positive reception by critics and audiences alike.
-
-        He started his professional journey by writing poems for Vikramaditya Motwane's Udaan,
-        produced by Anurag Kashyap. Satyanshu has also written lyrics for Amit V. Masurkar's Sulemani Keeda and Vinod
-        Chopra Films'
-        Ferrari Ki Sawaari. His directorial debut was a Kashmiri short film Tamaash, which won several awards at
-        different
-        film festivals,
-        including a National Award. In addition to writing and directing, Satyanshu has conducted screenwriting courses
-        at
-        Anupam Kher's 'Actor Prepares' as well as workshops across India.
-        Satyanshu has designed and mentored both seasons of AIB's 'First Draft' screenwriter residency programme. During
-        the COVID-19 pandemic, he launched a fundraising initiative by conducting online lectures on cinema. Satyanshu
-        has
-        also been a creative consultant with Sony LIV across several projects. He is currently working on the recently
-        announced third season of AIB's 'First Draft' programme. Most recently, Satyanshu co-directed the Sony LIV
-        series
-        Jehanabad - Of Love & War, which was well received by both critics and audiences alike. He is also developing a
-        series for Vikramaditya Motwane, and is simultaneously developing his original series and feature ideas.
-        He is also consulting on several projects across formats.
-      </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center;">Book Tickets </a>
-
-        </div>
-      </div>
-    </div>
-
-
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/pankajh.png"
-            style="height: 380px; width: 1200px;margin-bottom: -1rem;">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue;">
-            Pankaj Jha, a versatile artist with a career spanning over two decades,
-
-            has captivated audiences across film, theater, and literature.
-            As an alumnus of the National School of Drama, Pankaj's nuanced performances
-            in acclaimed films like "Monsoon Wedding," "Black Friday," and "Gulaal" have
-            earned him widespread recognition. Beyond acting, his artistic talents extend
-            to painting and poetry, showcased in six solo exhibitions and poignant
-            literary works. Pankaj's recent portrayal in "Panchayat 2" as Vidhayak Ji has
-            further cemented his reputation as a talented and versatile artist.
-          </div>
-          <div class="flexbutton">
-            <div style="     background-color: #B50000; color: white;width: 130px;
-    height: 42px;
-    padding: 0% 0px 0px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-              <div style="width:170px; padding:5% ; display:flex ;align-items:center;">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container" v-else>
-      <img class="imge" src="@/assets/images/speaker/pankajh.png" style="height: 280px; width:390px ;">
-      <div class="info">
-        Satyanshu is a National Award-winning filmmaker,
-        writer and professor of cinema. His debut feature film,
-        Chintu Ka Birthday, released in 2020 on ZEE5 to widely
-
-        positive reception by critics and audiences alike.
-
-        He started his professional journey by writing poems for Vikramaditya Motwane's Udaan,
-        produced by Anurag Kashyap. Satyanshu has also written lyrics for Amit V. Masurkar's Sulemani Keeda and Vinod
-        Chopra Films'
-        Ferrari Ki Sawaari. His directorial debut was a Kashmiri short film Tamaash, which won several awards at
-        different
-        film festivals,
-        including a National Award. In addition to writing and directing, Satyanshu has conducted screenwriting courses
-        at
-        Anupam Kher's 'Actor Prepares' as well as workshops across India.
-        Satyanshu has designed and mentored both seasons of AIB's 'First
-        Draft' screenwriter residency programme. During the COVID-19 pandemic, he launched a fundraising initiative by
-        conducting online lectures on cinema. Satyanshu has also been a creative consultant with Sony LIV across several
-        projects. He is currently working on the recently announced third season of AIB's 'First Draft' programme. Most
-        recently, Satyanshu co-directed the Sony LIV series Jehanabad - Of Love & War, which was well received by both
-        critics and audiences alike. He is also developing a series for Vikramaditya Motwane, and is simultaneously
-        developing his original series and feature ideas.
-        He is also consulting on several projects across formats.
-      </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center; flex-direction: row;">Book Tickets</a>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/arsh.png" style=" margin-bottom: -3rem; margin-left: 3rem">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue;">
-            Arsh Goyal is a visionary tech leader and educator.
-            Currently a Senior Software Engineer at Samsung India and a former Data
-            Scientist at ISRO, Arsh seamlessly blends his technical expertise with a
-            deep passion for teaching. Through platforms like CodeChef and Unacademy,
-            he continues to share his insights, nurturing the next generation of innovators and problem-solvers.
-            With over 100K subscribers on his YouTube channel and a strong social media presence, Arsh inspires and
-            empowers learners to unlock their full potential in the tech world
-          </div>
-          <div class="flexbutton">
-            <div style="     background-color: #B50000; color: white;width: 130px;
-    height: 42px;
-    padding: 0% 0px 0px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-              <div style="width:170px; padding:5% ; display:flex ;align-items:center;">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container" v-else>
-      <img class="imge" src="@/assets/images/speaker/arsh.png" style="  height: 250px;width: 240px;">
-      <div class="info">
-        Arsh Goyal is a visionary tech leader and educator. Currently a Senior Software Engineer at Samsung India and a
-        former Data Scientist at ISRO, Arsh seamlessly blends his technical expertise with a deep passion for teaching.
-        Through platforms like CodeChef and Unacademy, he continues to share his insights, nurturing the next generation
-        of innovators and problem-solvers. With over 100K subscribers on his YouTube channel and a strong social media
-        presence, Arsh inspires and empowers learners to unlock their full potential in the tech world
-      </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center;">Book Tickets </a>
-
-        </div>
-      </div>
-
-    </div>
-
-
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/prinyanka.png" style=" margin-bottom: -4rem; margin-left: 3rem">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue;">
-            Priyanka Tripathi is an Associate Professor of English and former HOD of Humanities and Social Sciences at
-            IIT
-            Patna.She is also the Co-Executive Editor of the Journal of International Women’s Studies (published by
-            Bridgewater State University). She has been awarded the prestigious Charles Wallace India Trust Visiting
-            Fellowship (2024-25) at the School of History, University of Leeds. She was also awarded the IPD Visiting
-            Research Fellowship (2022-23) at IASH, University of Edinburgh. She has published extensively and works in
-            the
-            areas of Gender Studies, South Asian Fiction, GeoHumanities, and Graphic Novels.
-          </div>
-          <div class="flexbutton">
-            <div style="     background-color: #B50000; color: white;width: 130px;
-    height: 42px;
-    padding: 0% 0px 0px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-              <div style="width:170px; padding:5% ; display:flex ;align-items:center;">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container" v-else style="">
-      <img class="imge" src="@/assets/images/speaker/prinyanka.png" style=" height: 250px;width: 260px;">
-      <div class="info">
-        Priyanka Tripathi is an Associate Professor of English and former HOD of Humanities and Social Sciences at IIT
-        Patna.She is also the Co-Executive Editor of the Journal of International Women’s Studies (published by
-        Bridgewater State University). She has been awarded the prestigious Charles Wallace India Trust Visiting
-        Fellowship (2024-25) at the School of History,
-        University of Leeds. She was also awarded the IPD Visiting Research Fellowship (2022-23) at IASH, University
-        of
-        Edinburgh. She has published extensively and works in the areas of Gender Studies, South Asian Fiction,
-        GeoHumanities, and Graphic Novels. </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center;">Book Tickets </a>
-
-        </div>
-      </div>
-
-    </div>
-
-
-
-
-
-
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/swat.png">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue;">
-            Swastika Rajput is a storyteller who turned her passion for writing and the arts into a powerful journey
-            of
-            self-discovery. Trained as a nurse, she found a new path through photography, capturing authentic emotions
-            and
-            building an inclusive community of nearly 470k Instagram followers and 350k YouTube subscribers where her
-            voice echoes. She has embraced her journey of coming out as a queer despite her average circumstances. She
-            faced setbacks but stayed true to her heart, ultimately earning a standing ovation from 600 people,
-            proving
-            that perseverance and passion lead to success.
-          </div>
-          <div class="flexbutton">
-            <div style="     background-color: #B50000; color: white;width: 130px;
-    height: 42px;
-    padding: 0% 0px 0px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-              <div style="width:170px; padding:5% ; display:flex ;align-items:center;">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container" v-else>
-      <img class="imge" src="@/assets/images/speaker/swat.png" style=" width: 280px;">
-      <div class="info">
-        Swastika Rajput is a storyteller who turned her passion for writing and the arts into a powerful journey of
-        self-discovery. Trained as a nurse, she found a new path through photography, capturing authentic emotions and
-        building an inclusive community of nearly 470k Instagram followers and 350k YouTube subscribers where her
-        voice
-        echoes. She has embraced her journey of coming out as a queer despite her average circumstances. She faced
-        setbacks but stayed true to her heart, ultimately earning a standing ovation from 600 people, proving that
-        perseverance and passion lead to success.
-      </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center;">Book Tickets </a>
-
-        </div>
-      </div>
-
-    </div>
-
-
-    <div :class="['content-wrapper', 'full', this.screenWidth > 1000 ? 'web' : 'mobile']"
-      v-if="this.screenWidth > 1000">
-      <div class=" cont">
-        <div class="graphi">
-          <img class="img" src="@/assets/images/speaker/manu.png" style="width: 680px;">
-
-        </div>
-
-        <div class="abou">
-
-          <div class="text" style="color: aliceblue;">
-            Manushi Ashok Jain is an Architect and Urban Designer, known for her out of the box designs promoting
-            sustainability throughout the world. She is the Co-founder and Director of Sponge Collaborative, an
-            interdisciplinary strategic planning and design firm that is looking to find a perfect balance between
-            modernism and regionalism. She has worked on projects throughout the world and has received many
-            international
-            awards, including the Creatives Theme Design Medal Award by A+D magazine. She also made it to the Forbes
-            30
-            under 30 young leaders' list in 2022. She continues to strive harder in her field and is all set to bring
-            her
-            unique perspective on the table.
-          </div>
-          <div class="flexbutton">
-            <div style="     background-color: #B50000; color: white;width: 130px;
-    height: 42px;
-    padding: 0% 0px 0px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-              <div style="width:170px; padding:5% ; display:flex ;align-items:center;">
-                <a class="linkk"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-                  target="_blank">Book Tickets </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container" v-else>
-      <img class="imge" src="@/assets/images/speaker/manu.png" style="width: 250px;">
-      <div class="info">
-        Manushi Ashok Jain is an Architect and Urban Designer, known for her out of the box designs promoting
-        sustainability throughout the world. She is the Co-founder and Director of Sponge Collaborative, an
-        interdisciplinary strategic planning and design firm that is looking to find a perfect balance between
-        modernism
-        and regionalism. She has worked on projects throughout the world and has received many international awards,
-        including the Creatives Theme Design Medal Award by A+D magazine. She also made it to the Forbes 30 under 30
-        young
-        leaders' list in 2022. She continues to strive harder in her field and is all set to bring her unique
-        perspective
-        on the table. </div>
-      <div class="talk_butto">
-        <div class="but">
-          <a class="linkk"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf8tmLufQOrw5wfktCwsWA9A-jz-Kw4SwP4lGgv44-g2QClvw/viewform"
-            target="_blank" style="display: flex ; justify-content: center;">Book Tickets </a>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <Footer />
 </template>
 
-<script scoped>
-// @ is an alias to /src
-import Nav from '@/components/Nav.vue'
-import HomeNav from '@/components/Home.Nav.vue'
+<script>
 import Footer from '@/components/Footer.vue'
-import BackButton from '@/components/BackButton.vue'
-import Speakersectio from '@/components/Speakersectio.vue'
+import SpeakerModal from '@/components/SpeakerModal.vue'
 
 export default {
-  name: 'HomeView',
   components: {
-    Nav,
     Footer,
-    HomeNav,
-    BackButton,
-    Speakersectio,
+    SpeakerModal,
   },
   data() {
     return {
-      screenWidth: window.innerWidth,
-      screenHeight: window.innerHeight,
-      showWebView: window.innerWidth >= (1.51 * window.innerHeight),
-
-      countdownTarget: new Date("2022-09-03T00:00:00.000+05:30"), // target date for countdown
-      displayDays: 0,
-      displayHours: 0,
-      _days: 60 * 60 * 24,
-      _hours: 60 * 60,
+      selectedSpeaker: null,
+      expandedYears: [2024], // show only 2024 by default on mobile
+      isMobile: false,
+      isSticky: false,
+      yearBarOriginalTop: 0,
+      allYears: [
+        {
+          year: 2024,
+          speakers: [
+            { name: 'Priyanka Tripathi', image: require('@/assets/images/priyanka.png'), title: 'The Importance of Literature in Life', description: 'Dr. Priyanka Tripathi is an Associate Professor of English at IIT Patna. Her research spans gender, caste, identity, and postcolonial literature, with over 160 publications. A former Visiting Fellow at the University of Edinburgh, she also serves as Co-Executive Editor of the Journal of International Women\'s Studies. Her work bridges storytelling and social justice, revealing literature\'s power to challenge and transform.', youtubeLink: 'https://youtu.be/CrtkHCf6lJ0', showMoreButton: true },
+            { name: 'Swastika Rajput', image: require('@/assets/images/swastika.png'), title: 'Work, Fail, Repeat', description: 'Swastika Rajput is a captivating poet and storyteller who has built a significant online presence. With nearly 470,000 followers on Instagram and over 360,000 subscribers on YouTube, she inspires a large community through her poetry, podcasts, and personal narratives. Originally trained as a nurse, Swastika transitioned to freelance content creation, transforming her passion for writing and arts into a powerful journey of self-discovery and connection.', youtubeLink: 'https://youtu.be/M7UIV1r8nXk', showMoreButton: true },
+            { name: 'Satyanshu Singh', image: require('@/assets/images/satyanshu.png'), title: 'Passion Over Pressure: Finding Purpose in Cinema and Connection', description: 'Satyanshu Singh is a National Award-winning filmmaker and educator. He directed Tamaash and Chintu Ka Birthday, wrote lyrics for Sulemani Keeda and Ferrari Ki Sawaari, teaches screenwriting, and is co-authoring a textbook, making him a leading figure in Indian cinema.', youtubeLink: 'https://youtu.be/5iAPyP2jnCQ', showMoreButton: true },
+            { name: 'Pankaj Jha', image: require('@/assets/images/pankaj.png'), title: 'The Hidden Scripts of Life: Are You Living Your Truth?', description: 'Pankaj Jha is a versatile artist with a career of over two decades, captivating audiences in film, theater, and literature. An alumnus of the National School of Drama, he is known for nuanced performances in acclaimed films like "Monsoon Wedding," "Black Friday," and "Gulaal." Beyond acting, his talents include painting and poetry, with six solo exhibitions and notable literary works. His recent role as Vidhayak Ji in "Panchayat 2" has further cemented his reputation as a talented and versatile artist.', youtubeLink: 'https://youtu.be/LG36Hpr-F7k', showMoreButton: true },
+            { name: 'Neha Agrawal', image: require('@/assets/images/neha.png'), title: '', description: 'Neha Agrawal is a prominent educator and an expert Math teacher for IIT JEE, with 16+ years of experience. Having taught over 5 million students and formerly a key figure at Ed-Techs like Byju\'s and Vedantu, she\'s also a celebrated TEDx Speaker. Her YouTube channel, \'Mathematically Inclined,\' inspires millions of aspiring engineers, bridging academic excellence with mass education.', youtubeLink: '', showMoreButton: false },
+            { name: 'Manushi Ashok Jain', image: require('@/assets/images/manushi.png'), title: 'Reclaiming Urban Nature: Green Spaces for Climate Resilience', description: 'Manushi Ashok Jain is an accomplished Urban Designer at CP Kukreja Architects, renowned for shaping future-ready urban spaces. An alumna of CEPT University, she specializes in crafting sustainable and inclusive cities. Her expertise spans master planning, public realm design, and urban regeneration, contributing to transformative projects nationwide. Manushi\'s visionary approach blends innovative design with community-centric solutions for vibrant urban living.', youtubeLink: 'https://youtu.be/KVxLIsCjuK4', showMoreButton: true },
+            { name: 'Arsh Goyal', image: require('@/assets/images/arsh.png'), title: 'Connect Tier-3 India to Global Opportunities', description: 'Arsh Goyal is a visionary tech leader and educator who blends technical expertise with teaching skills. A Gold Medallist from NIT Jalandhar, he is a Senior Software Engineer at Samsung India and a Data Scientist at ISRO. He links technology and education. With 200,000 YouTube and 450,000 Instagram followers, Arsh inspires future tech innovators.', youtubeLink: 'https://youtu.be/6hdmsHu8vVk', showMoreButton: true }
+          ]
+        },
+        {
+          year: 2023,
+          speakers: [
+            { name: 'Shikhar Goel', image: require('@/assets/images/shikhar.png'), title: 'Bytes for betterment', description: '',youtubeLink: 'https://youtu.be/3oInMZIFu-s', showMoreButton: false },
+            { name: 'Deepti Asthana', image: require('@/assets/images/deepti.png'), title: 'The Weight of Water', description: '',youtubeLink: 'https://youtu.be/5fv5V28ZIRY', showMoreButton: false },
+            { name: 'Anish Malpani', image: require('@/assets/images/anish.png'), title: 'Don\'t be an entreprenuer, until you\'re ready', description: '',youtubeLink: 'https://youtu.be/pRyNvnZiAcU', showMoreButton: false },
+            { name: 'Shreyasi Singh', image: require('@/assets/images/shreyasi.png'), title: 'Breaking Barriers: From Grief to Glory', description: '',youtubeLink: 'https://youtu.be/PPvYJWcErBw', showMoreButton: false },
+            { name: 'Shradha Khapra', image: require('@/assets/images/shradha.png'), title: 'Dreams to Global Impact: Unleashing Potential through Education', description: '',youtubeLink: 'https://youtu.be/uJDiBurD_YM', showMoreButton: false }
+          ]
+        },
+        {
+          year: 2022,
+          speakers: [
+            { name: 'Javed Khatri', image: require('@/assets/images/javed.png'), title: 'Stepping stones to success', description: '', youtubeLink: 'https://youtu.be/UGj-KMkxzd0', showMoreButton: false },
+            { name: 'Klanz', image: require('@/assets/images/klanz.png'), title: 'How I Became Klanz - the EDM Techno Boy', description: 'Kalyan Jyoti Kashyap, popularly known as KLÄNZ, is a 19-year-old trailblazing electronic musician from Assam. He uniquely blends modern electronic tracks with Indian classical instruments, creating an extraordinary sound. Rising to fame with hits like \'Baahi\' and \'Bohai\', KLÄNZ has established himself as a prominent figure in the new generation of Indian musicians. His innovative approach inspires by integrating diverse cultures into his captivating music.', youtubeLink: 'https://youtu.be/rXAGgVvHWp8', showMoreButton: true },
+            { name: 'Alakh Pandey', image: require('@/assets/images/alakh.png'), title: 'Physics behind every growth', description: 'Alakh Pandey is a revolutionary ed-tech entrepreneur and educator, widely known as \'Physics Wallah\' for transforming competitive exam coaching. Starting from a YouTube channel, he built Physics Wallah into India\'s first ed-tech unicorn, democratizing high-quality education for millions. His mission-driven approach provides affordable, accessible learning in STEM, inspiring countless students nationwide and reshaping the educational landscape with his unique methodology.', youtubeLink: 'https://youtu.be/TzFS00kIQXs', showMoreButton: true },
+            { name: 'Phani Tetali', image: require('@/assets/images/phani.png'), title: 'Diversity in perspectives - India from an artist\'s eye', description: 'Phani Tetali is a highly respected design expert and educator, deeply associated with IIT Bombay\'s Industrial Design Centre (IDC). With a career spanning significant contributions to design research and education, he has mentored countless students in product design and innovation. Phani\'s work at IIT Bombay has been instrumental in advancing design thinking and its practical applications within India\'s technological landscape, shaping future industry leaders.', youtubeLink: 'https://youtu.be/lMZpncCeuoY', showMoreButton: true },
+            { name: 'N. Mahadevan', image: require('@/assets/images/mahadevan.png'), title: 'Dots and Affinities', description: 'Narayan Mahadevan is the dynamic CEO of BridgeLabz Solutions, a leading talent accelerator dedicated to bridging the industry\'s skill gap. With extensive experience in technology and talent development, he spearheads programs that transform engineers into job-ready professionals. Narayan\'s vision empowers fresh talent by providing cutting-edge training and guaranteed placements, significantly impacting India\'s tech workforce and fostering industry readiness.', youtubeLink: 'https://youtu.be/Lb4IUwxjn_8', showMoreButton: true },
+            { name: 'S. Devarajan', image: require('@/assets/images/devarajan.png'), title: 'Through the straits of human attention', description: 'Dr. Sridharan Devarajan is an eminent Professor at the Indian Institute of Science (IISc) Bangalore, leading cutting-edge research in computational neuroscience. His work focuses on understanding brain function through interdisciplinary approaches, combining neuroscience, engineering, and data science. Dr. Devarajan\'s impactful contributions advance our comprehension of neural mechanisms, making him a pivotal figure in brain research and computational biology.', youtubeLink: 'https://youtu.be/j2_rdExSYqg', showMoreButton: true },
+            { name: 'Sriparna Saha', image: require('@/assets/images/sriparna.png'), title: 'AI for the good', description: 'Dr. Sriparna Saha is a distinguished Professor in the Department of Computer Science and Engineering at IIT Patna. Her research focuses on cutting-edge areas including natural language processing, machine learning, and computational intelligence. Dr. Saha\'s extensive publications and significant contributions to AI research make her a leading academic voice, inspiring students and advancing knowledge in these critical technological fields.', youtubeLink: 'https://youtu.be/BfPw-NfddPI', showMoreButton: true }
+          ]
+        },
+        {
+          year: 2021,
+          speakers: [
+            { name: 'Zoya Agarwal', image: require('@/assets/images/zoya.png'), title: '', description: '', youtubeLink: '', showMoreButton: false },
+            { name: 'Vivek Ram', image: require('@/assets/images/vivek.png'), title: 'Question Everything?', description: '', youtubeLink: 'https://youtu.be/bG4VLt6uVUc', showMoreButton: false },
+            { name: 'Rupesh Mahore', image: require('@/assets/images/rupesh.png'), title: '', description: '', youtubeLink: '', showMoreButton: false },
+            { name: 'Rishi Raj', image: require('@/assets/images/rishi.png'), title: 'Finding your thrill', description: '', youtubeLink: 'https://youtu.be/HMvYMLkoShg', showMoreButton: false },
+            { name: 'Darren Hood', image: require('@/assets/images/darren.png'), title: 'GARRISON OF EXCELLENCE - Enabling the lion within', description: '', youtubeLink: 'https://youtu.be/6INnG61FLag', showMoreButton: false },
+            { name: 'Yusra Mardini', image: require('@/assets/images/yusra.png'), title: 'Stronger Together - A home for everyone', description: '', youtubeLink: 'https://youtu.be/xQ3gAIX6a7E', showMoreButton: false },
+            { name: 'Rahul Aggarwal', image: require('@/assets/images/rahul.png'), title: '', description: '', youtubeLink: '', showMoreButton: false }
+          ]
+        },
+        {
+          year: 2019,
+          speakers: [
+            { name: 'Kaushalendra Kumar', image: require('@/assets/images/kaushalendra.png'), title: '', description: 'Kaushlendra Kumar is a visionary social entrepreneur and an IIM-Ahmedabad Gold Medallist who chose to revolutionize rural livelihoods over a corporate career. He founded Kaushalya Foundation and Knids Green Private Limited, empowering over 35,000 farmers in Bihar by creating efficient vegetable supply chains. His innovative models have uplifted countless rural communities, demonstrating a profound commitment to social and economic reform at the grassroots.', youtubeLink: '', showMoreButton: false },
+            { name: 'Shams Aalam', image: require('@/assets/images/shams.png'), title: 'Empowering disabled through technology', description: 'Mohammad Shams Aalam Shaikh is an Indian Para Swimmer, a world record holder, and an inspiring advocate for accessibility. Diagnosed with paraplegia, he transformed adversity into triumph, holding a Limca Book record for the longest open-sea swim by a paraplegic. A recipient of the Best Sportsperson with Disability National Award by the President of India, Shams continues to break records and inspire millions with his resilience and dedication to sports and inclusion.', yotubeLink: 'https://youtu.be/LjuAimWKBjs', showMoreButton: false },
+            { name: 'Anupam Jalote', image: require('@/assets/images/anupam.png'), title: '', description: 'Anupam Jalote is a distinguished entrepreneur and the founding CEO of iCreate, India\'s leading deep tech incubator. An MBA from Purdue, he leverages extensive corporate leadership experience from Bharti Airtel and Tata Communications. Anupam is renowned for fostering innovation in critical sectors like EVs, AI, and IoT, actively shaping India\'s vibrant entrepreneurial future.', yotubeLink: '', showMoreButton: false},
+            { name: 'Tanvi Bhardwaj', image: require('@/assets/images/tanvi.png'), title: '', description: 'Tanvi Bhardwaj is a pioneering tech entrepreneur and the visionary Co-founder and CTO of MishiPay, a leading retail technology solution. With an engineering background, she architected MishiPay\'s innovative \'Scan, Pay & Go\' technology, transforming the retail checkout experience. Tanvi\'s leadership drives cutting-edge development, enabling seamless mobile self-checkout globally and reshaping the future of retail.', yotubeLink: '', showMoreButton: false },
+            { name: 'Dr. Prashant Jha', image: require('@/assets/images/prashant.png'), title: '', description: 'Dr. Prashant Jha is a distinguished orthopedic surgeon at Orthoheal, renowned for his expertise in joint replacement and arthroscopic surgeries. With extensive experience in complex orthopaedic conditions, he is dedicated to restoring mobility and improving patients\' quality of life. Dr. Jha\'s patient-centric approach and advanced surgical skills make him a trusted figure in musculoskeletal care, contributing significantly to modern orthopaedics.', yotubeLink: '', showMoreButton: false }
+          ]
+        }
+      ]
     }
-  },
-  methods: {
-    onResize() {
-      this.screenWidth = window.innerWidth
-      this.screenHeight = window.innerHeight
-      this.showWebView = window.innerWidth >= (1.51 * window.innerHeight)
-    },
-    formatTime(val) {
-      return val >= 10 ? String(val) : "0" + String(val)
-    },
-    countdownLogic(interval) {
-      const now = new Date()
-      const deltaT = Math.trunc((this.countdownTarget.getTime() - now.getTime()) / 1000) // in seconds
-
-      if (deltaT < 0) {
-        // closeInterval(interval)
-        return
-      }
-
-      const days = Math.trunc(deltaT / this._days)
-      const hours = Math.trunc((deltaT - days * this._days) / this._hours)
-
-      this.displayDays = days
-      this.displayHours = hours
-    }
-  },
-  created() {
-    this.countdownLogic()
-    const timer = setInterval(() => this.countdownLogic(timer), 1000)
   },
   mounted() {
+    this.checkMobile()
+    window.addEventListener('resize', this.checkMobile)
+    window.addEventListener('scroll', this.handleScroll)
+    
+    // Set the original top position of year-bar
     this.$nextTick(() => {
-      window.addEventListener('resize', this.onResize)
+      if (this.$refs.yearBar) {
+        this.yearBarOriginalTop = this.$refs.yearBar.offsetTop
+      }
     })
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.onResize)
+    window.removeEventListener('resize', this.checkMobile)
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    checkMobile() {
+      this.isMobile = window.innerWidth <= 768
+    },
+    toggleYear(year) {
+      // If the clicked year is already expanded, collapse it
+      if (this.expandedYears.includes(year)) {
+        this.expandedYears = []
+      } else {
+        // Otherwise, set only this year as expanded
+        this.expandedYears = [year]
+      }
+    },
+    scrollToYear(year) {
+      if (!this.isMobile) {
+        const yearElement = this.$refs[`year-${year}`]
+        if (yearElement && yearElement[0]) {
+          const yearBarHeight = this.$refs.yearBar ? this.$refs.yearBar.offsetHeight : 0
+          
+          // Use different scroll values based on whether year-bar is currently sticky
+          let offsetTop
+          if (this.isSticky) {
+            // Year-bar is already sticky - use normal padding
+            offsetTop = yearElement[0].offsetTop - yearBarHeight - 20
+          } else {
+            // Clicking from top when year-bar is not sticky - use more padding
+            offsetTop = yearElement[0].offsetTop - yearBarHeight - 60
+          }
+          
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          })
+        }
+      }
+    },
+    handleScroll() {
+      if (!this.isMobile && this.$refs.yearBar) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        
+        // Check if we should stick the year-bar
+        if (scrollTop >= this.yearBarOriginalTop + 305) {
+          this.isSticky = true
+        } else {
+          this.isSticky = false
+        }
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
 @import '@/assets/css/speaker.css';
-
-.content-wrapper {
-  background-image: url("../assets/images/spekerbg.jpg");
-  background-size: contain;
-  /* or 'cover' depending on your needs */
-  background-repeat: no-repeat;
-  /* background-position: center center; */
-
-  /* height:100%; */
-
-  /* padding: 0; */
-  /* height: vh; */
-  /* width: 40vw; */
-  height: 100vh;
-  width: 100vw;
-
-
-  background-position: center center;
-
-
-}
+@import '@/assets/css/speaker.mobile.css';
 </style>

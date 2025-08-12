@@ -1,142 +1,442 @@
 <template>
-    <BackButton />
-    <Nav :open_button_color="this.showWebView ? 'white' : 'black'" open_button_style="text" />
+  <div class="about-container">
+    <div class="before">
+    <section class="about-header">
+      <p class="header">About TedxIITPatna</p>
+      <p>
+        Since 2016, TEDx IIT Patna has served as a crucible for ideas, dialogue, and imagination—bridging disciplines and perspectives to spark conversations that endure. With a consistent footfall of 1500+ attendees across past editions, it has become a space where curiosity meets clarity, and complexity gives way to connection. Through changing times and shifting landscapes, the platform has remained committed to elevating diverse voices and celebrating the nuance in thought. It stands not just as an event, but as an evolving archive of insight-where fleeting moments of expression from lasting interludes in the broader narrative of innovation and understanding.
+      </p>
+    </section>
 
-    <!-- <HomeNav/> -->
-
-    <div class="about">
-        <div class="TedX-logo">
-            <img src="@/assets/images/tedxiitpatna_logo-1W.png" alt="" width="100">
-        </div>
-        <div class="aboutIITP">
-            <div class="heading">About IIT Patna </div>
-            <div class="text" id="expandable-text" v-if="this.showWebView">
-                Indian Institute of Technology Patna is one of the new IITs established by an Act of
-                the Indian Parliament on August 06, 2008. Offering various undergraduate, postgraduate, and
-                post-doctoral degrees, it is one of the fastest developing colleges in India.<br /><br />
-                Emerging as a center of thriving excellence, the lush green campus of IIT Patna spans 500 acres.
-                Many
-                inquisitive minds, eager to expand their technical prowess, are ably supported by astute professors
-                and
-                state-of-the-art laboratories.<br /><br />
-                As the site for vibrant fests – Nebula, Reverberance, Celesta, Anwesha, Infinito– IIT Patna sees
-                overwhelming participation from all over the country. TEDxIITPatna
-                is one of the more formal events in
-                this Institute of National Importance. IIT Patna is committed to providing the nation with
-                well-rounded
-                individuals with professional and scientific competence of the highest degree.
-            </div>
-            <!-- Text in mobile view -->
-            <div class="text" id="expandable-text" v-else>
-                Indian Institute of Technology Patna is one of the new IITs established by an Act of
-                the Indian Parliament on August 06, 2008. Offering various undergraduate, postgraduate, and
-                post-doctoral degrees, it is one of the fastest developing colleges in India.<br /><br />
-                Emerging as a center of thriving excellence, the lush green campus of IIT Patna spans 500 acres.
-                Many
-                inquisitive minds, eager
-                to expand their technical prowess, are ably
-                supported by astute professors and
-                state-of-the-art laboratories.<br /><br />
-                As the site for vibrant fests – Nebula, Reverberance, Celesta, Anwesha, Infinito– IIT Patna sees
-                overwhelming participation from all over the country. TEDxIITPatna is one of the more formal events
-                in
-                this Institute of National Importance. IIT Patna is committed to providing the nation with
-                well-rounded
-                individuals with professional and scientific competence of the highest degree.
-            </div>
-        </div>
-        <div class="aboutTed">
-            <div class="heading">About TED</div>
-
-            <div class="text" id="expandable-text" v-if="this.showWebView">
-                TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference
-                in
-                California 30 years ago, TED has grown to support its mission with multiple initiatives. The two
-                annual
-                TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many
-                of
-                these talks are then made available, free, at TED.com. TED
-                speakers have included Bill Gates, Jane
-                Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan
-                Nilekani, Philippe Starck, Ngozi Okonjo-Iweala,
-                Sal Khan and Daniel Kahneman.<br /><br />
-                The annual TED Conference takes place each spring in Vancouver, British Columbia. TED's media
-                initiatives include TED.com, where new TED Talks are posted daily; TED Translators, which provides
-                subtitles and interactive transcripts as well as translations from volunteers worldwide; the
-                educational
-                initiative TED-Ed. TED has established The Audacious Project that
-                takes a collaborative approach to
-                funding ideas with the potential to create change at thrilling scale; TEDx, which supports
-                individuals
-                or groups in hosting local, self- organized TED-style events around the world, and the TED Fellows
-                program, helping world-changing innovators from around the globe to amplify the impact of their
-                remarkable projects and activities.<br /><br />
-                Follow TED on Twitter at <a href="http://twitter.com/TEDTalks">http://twitter.com/TEDTalks</a>, or
-                on
-                Facebook at <a href="http://www.facebook.com/TED">http://www.facebook.com/TED</a>.
-            </div>
-            <!-- Text in mobile view -->
-            <div class="text" id="expandable-text" v-else>
-                TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference
-                in
-                California 30 years ago, TED has grown to support its mission with multiple initiatives. The two
-                annual
-                TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many
-                of
-                these talks are then made available, free, at TED.com. TED
-                speakers have included Bill Gates, Jane
-                Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan
-                Nilekani, Philippe Starck, Ngozi Okonjo-Iweala,
-                Sal Khan and Daniel Kahneman.<br /><br />
-                The annual TED Conference takes place each spring in Vancouver, British Columbia. TED's media
-                initiatives include TED.com, where new TED Talks are posted daily; TED Translators, which provides
-                subtitles and interactive transcripts as well as translations from volunteers worldwide; the
-                educational
-                initiative TED-Ed.
-                <!-- <span id="more">, Sir Richard Branson, Nandan
-           Nilekani, Philippe Starck, Ngozi Okonjo-Iweala,
-           Sal Khan and Daniel Kahneman.<br /><br />
-           The annual TED Conference takes place each spring in Vancouver, British Columbia. TED's media
-           initiatives include TED.com, where new TED Talks are posted daily; TED Translators, which provides
-           subtitles and interactive transcripts as well as translations from volunteers worldwide; the educational
-           initiative TED-Ed. TED has established The Audacious Project that takes a collaborative approach to
-           funding ideas with the potential to create change at thrilling scale; TEDx, which supports individuals
-           or groups in hosting local, self- organized TED-style events around the world, and the TED Fellows
-           program, helping world-changing innovators from around the globe to amplify the impact of their
-           remarkable projects and activities.<br /><br />
-           Follow TED on Twitter at <a href="http://twitter.com/TEDTalks">http://twitter.com/TEDTalks</a>, or on
-           Facebook at <a href="http://www.facebook.com/TED">http://www.facebook.com/TED</a>.</span> -->
-            </div>
-
-        </div>
-
+    <section class="team-banner">
+      <img src="@/assets/images/meet_the_team.png" alt="Team" />
+    </section>
     </div>
+
+    <!-- <div class="team-section-wrapper">
+      <section class="team-section">
+        <img src="@/assets/images/Team_1.jpg" alt="Team" />
+        <img src="@/assets/images/Team_2.jpg" alt="Team" />
+        <img src="@/assets/images/Team_3.jpg" alt="Team" />
+        <img src="@/assets/images/Team_4.jpg" alt="Team" />
+        <img src="@/assets/images/Team_5.jpg" alt="Team" />
+      </section>
+    </div> -->
+
+    <div class="after">
+    <div class="white-border-box">
+      <div class="coordinators-row">
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Viraj.jpeg" alt="Viraj Kulkarni" />
+          </div>
+          <p>Viraj Kulkarni</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Garvit.jpg" alt="Garvit Nahta" />
+          </div>
+          <p>Garvit Nahta</p>
+        </div>
+      </div>
+      <h3>Organisers</h3>
+    </div>
+
+    <div class="white-border-box">
+      <div class="coordinators-row-normal">
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Lohitaksha.jpeg" alt="Lohitaksha Guha" />
+          </div>
+          <p>Lohitaksha Guha</p>
+          <p>Design</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Anuja.jpg" alt="Anuja Solanki" />
+          </div>
+          <p>Anuja Solanki</p>
+          <p>Design</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Ishika.jpg" alt="Ishika Gupta" />
+          </div>
+          <p>Ishika Gupta</p>
+          <p>Planning and Curation</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Yuvan.jpg" alt="Yuvan Vanapalli" />
+          </div>
+          <p>Yuvan Vanapalli</p>
+          <p>Planning and Curation</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Akshat.jpeg" alt="Akshat Jha" />
+          </div>
+          <p>Akshat Jha</p>
+          <p>Planning and Curation</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-border-box">
+      <div class="coordinators-row-normal">
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Aman.jpg" alt="Aman Arora" />
+          </div>
+          <p>Aman Arora</p>
+          <p>Marketing and<br>Sponsorship</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Kshitij.jpg" alt="Kshitij Prakash" />
+          </div>
+          <p>Kshitij Prakash</p>
+          <p>Media, Public<br>and Relations</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Aviral.jpg" alt="Aviral Awasthi" />
+          </div>
+          <p>Aviral Awasthi</p>
+          <p>Media, Public<br>and Relations</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Sparsh.jpeg" alt="Sparsh Chourdhary" />
+          </div>
+          <p>Sparsh Choudhary</p>
+          <p>Production</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Lochan.jpeg" alt="Lochan" />
+          </div>
+          <p>Lochan</p>
+          <p>Production</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-border-box">
+      <div class="coordinators-row-normal">
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Abhay.jpg" alt="Abhay Varshney" />
+          </div>
+          <p>Abhay Varshney</p>
+          <p>Registration, Security<br>and Planning</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Raqeeb.jpg" alt="Raqeeb Ansari" />
+          </div>
+          <p>Raqeeb Ansari</p>
+          <p>Registration, Security<br>and Planning</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Devasish.jpg" alt="Devasish Vaddi" />
+          </div>
+          <p>Devasish Vaddi</p>
+          <p>Hospitality</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Mihika.jpg" alt="Mihika Saxena" />
+          </div>
+          <p>Mihika Saxena</p>
+          <p>Hospitality</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Vansh.jpg" alt="Vansh Shrivastava" />
+          </div>
+          <p>Vansh Shrivastava</p>
+          <p>Marketing and<br>Sponsorship</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-border-box">
+      <div class="coordinators-row-normal">
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Naitik.jpg" alt="Naitik" />
+          </div>
+          <p>Naitik</p>
+          <p>Web Development</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Yashveer.jpg" alt="Yashveer Aryan" />
+          </div>
+          <p>Yashveer Aryan</p>
+          <p>Web Development</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile-oc">
+              <img src="@/assets/images/Viraj.jpeg" alt="Viraj Kulkarni" />
+            </div>
+            <p class="oc">Viraj Kulkarni</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile-oc">
+              <img src="@/assets/images/Garvit.jpg" alt="Garvit Nahta" />
+            </div>
+            <p class="oc">Garvit Nahta</p>
+          </div>
+        </div>
+        <h3>Organisers</h3>
+      </div>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Lohitaksha.jpeg" alt="Lohitaksha Guha" />
+            </div>
+            <p>Lohitaksha Guha</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Anuja.jpg" alt="Anuja Solanki" />
+            </div>
+            <p>Anuja Solanki</p>
+          </div>
+        </div>
+      </div>
+      <p>Design</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Aman.jpg" alt="Aman Arora" />
+            </div>
+            <p>Aman Arora</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Vansh.jpg" alt="Vansh Shrivastava" />
+            </div>
+            <p>Vansh Shrivastava</p>
+          </div>
+        </div>
+      </div>
+      <p>Marketing and Sponsorship</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Kshitij.jpg" alt="Kshitij Prakash" />
+            </div>
+            <p>Kshitij Prakash</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Aviral.jpg" alt="Aviral Awasthi" />
+            </div>
+            <p>Aviral Awasthi</p>
+          </div>
+        </div>
+      </div>
+      <p>Media, Public and Relations</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Sparsh.jpeg" alt="Sparsh Chourdhary" />
+            </div>
+            <p>Sparsh Chourdhary</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Lochan.jpeg" alt="Lochan" />
+            </div>
+            <p>Lochan</p>
+          </div>
+        </div>
+      </div>
+      <p>Production</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Abhay.jpg" alt="Abhay Varshney" />
+            </div>
+            <p>Abhay Varshney</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Raqeeb.jpg" alt="Raqeeb Ansari" />
+            </div>
+            <p>Raqeeb Ansari</p>
+          </div>
+        </div>
+      </div>
+      <p>Registration, Security and Planning</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Devasish.jpg" alt="Devasish Vaddi" />
+            </div>
+            <p>Devasish Vaddi</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Mihika.jpg" alt="Mihika Saxena" />
+            </div>
+            <p>Mihika Saxena</p>
+          </div>
+        </div>
+      </div>
+      <p>Hospitality</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Naitik.jpg" alt="Naitik" />
+            </div>
+            <p>Naitik</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Yashveer.jpg" alt="Yashveer Aryan" />
+            </div>
+            <p>Yashveer Aryan</p>
+          </div>
+        </div>
+      </div>
+      <p>Web Development</p>
+    </div>
+
+    <div class="full-box-mobile">
+      <div class="white-border-box-mobile">
+        <div class="coordinators-row-normal-mobile">
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Ishika.jpg" alt="Ishika Gupta" />
+            </div>
+            <p>Ishika Gupta</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Yuvan.jpg" alt="Yuvan Vanapalli" />
+            </div>
+            <p>Yuvan Vanapalli</p>
+          </div>
+          <div class="coordinator-mobile">
+            <div class="image-wrapper-mobile">
+              <img src="@/assets/images/Akshat.jpeg" alt="Akshat Jha" />
+            </div>
+            <p>Akshat Jha</p>
+          </div>
+        </div>
+      </div>
+      <p>Planning and Curation</p>
+    </div>
+
+    <section class="bottom-note">
+      <p>
+        We are grateful to have the support of many dedicated volunteers who brought the TEDxIITPatna experience to life.<br>Your energy and commitment made it all possible!
+      </p>
+    </section>
+
+    <section class="bottom-note-mobile">
+      <p>
+        We are grateful to have the support of many dedicated volunteers who brought the TEDxIITPatna experience to life. Your energy and commitment made it all possible!
+      </p>
+    </section>
+
+    <section class="ted-section">
+      <div class="ted">
+        <p class="ted-header">TED</p>
+        <p>
+          TED (Technology, Entertainment, Design) began in 1984 as a conference uniting the worlds of technology, entertainment, and design. Over the years, it has evolved into a global platform dedicated to spreading powerful, thought-provoking ideas across disciplines. Through its signature TED Talks, it amplifies the voices of visionaries, changemakers, and experts, making knowledge accessible to all. TED fosters curiosity, sparks dialogue, and drives meaningful impact by inspiring individuals and communities to think deeper and act with purpose.TED (Technology, Entertainment, Design) began in 1984 as a conference uniting the worlds of technology, entertainment, and design. Over the years, it has evolved into a global platform dedicated to spreading powerful, thought-provoking ideas across disciplines. Through its signature TED Talks, it amplifies the voices of visionaries, changemakers, and experts, making knowledge accessible to all. TED fosters curiosity, sparks dialogue, and drives meaningful impact by inspiring individuals and communities to think deeper and act with purpose.
+        </p>
+      </div>
+      <div class="tedx">
+        <p class="tedx-header">TEDx</p>
+        <p>
+          In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDx IITPatna, where x = independently organized TED event. At our TEDx IITPatna event, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events , including ours, are self-organized.
+        </p>
+      </div>
+    </section>
+
+    <section class="ted-section-mobile">
+      <div class="ted-mobile">
+        <p class="ted-header-mobile">WHAT IS TED</p>
+        <p>
+          TED (Technology, Entertainment, Design) began in 1984 as a conference uniting the worlds of technology, entertainment, and design. Over the years, it has evolved into a global platform dedicated to spreading powerful, thought-provoking ideas across disciplines. Through its signature TED Talks, it amplifies the voices of visionaries, changemakers, and experts, making knowledge accessible to all. TED fosters curiosity, sparks dialogue, and drives meaningful impact by inspiring individuals and communities to think deeper and act with purpose.TED (Technology, Entertainment, Design) began in 1984 as a conference uniting the worlds of technology, entertainment, and design. Over the years, it has evolved into a global platform dedicated to spreading powerful, thought-provoking ideas across disciplines. Through its signature TED Talks, it amplifies the voices of visionaries, changemakers, and experts, making knowledge accessible to all. TED fosters curiosity, sparks dialogue, and drives meaningful impact by inspiring individuals and communities to think deeper and act with purpose.
+        </p>
+        <br><br>
+      </div>
+      <div class="tedx-mobile">
+        <p class="tedx-header-mobile">WHAT IS TEDx</p>
+        <p>
+          In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDx IITPatna, where x = independently organized TED event. At our TEDx IITPatna event, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events , including ours, are self-organized.
+        </p>
+      </div>
+    </section>
+  </div>
+  </div>
+<Footer/>
 </template>
 
-<script scoped>
-import Nav from '@/components/Nav.vue';
-import HomeNav from '@/components/Home.Nav.vue';
-import BackButton from '@/components/BackButton.vue';
-
+<script>
+import Nav from '@/components/Nav.vue'
+import HomeNav from '@/components/Home.Nav.vue'
+import Footer from '@/components/Footer.vue'
 export default {
-    components: {
-        Nav, HomeNav, BackButton
-    },
-    data() {
-        return {
-            screenWidth: window.innerWidth,
-            showWebView: window.innerWidth >= 830,
-        }
-    },
-
+  components: {
+    Nav,
+    Footer,
+    HomeNav,
+  },
+    TeamCard: {
+        props: ["name", "title", "img"],
+        template: `
+        <div class="team-card">
+            <img :src="'@/assets/images/team/' + img" :alt="name" />
+            <h4>{{ name }}</h4>
+            <p>{{ title }}</p>
+        </div>
+        `
+    }
 }
 </script>
-
-<style scoped>
-/* @import '@/assets/css/about_content1.css'; */
+<style>
 @import '@/assets/css/about.css';
-
-.nav {
-    color: white;
-}
+@import '@/assets/css/about.mobile.css';
 </style>

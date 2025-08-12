@@ -1,61 +1,329 @@
-@import url('https://fonts.cdnfonts.com/css/poppins');
+.about-container {
+  font-family: serif;
+  color: #ccc;
+  /* background: linear-gradient(to bottom, black 0%, #380404 50%, black 100%); */
+  /* padding: 2rem; */
+  background: black;
+}
 
-.about {
-  color: white;
+.before {
+  background: black;
+}
+
+.after {
+  background: linear-gradient(to bottom, black 0%, #380404 50%, black 100%);
+}
+
+.white-border-box {
+  /* background-color: black; */
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  /* color: white; */
+  font-family: serif;
+  max-width: fit-content; /* or a fixed value like 300px */
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.coordinators-row {
+  display: flex;
+  justify-content: center;
+  gap: 4rem; /* Reduce this to decrease spacing */
+  flex-wrap: wrap; /* Optional for responsiveness */
+  padding-bottom: 2rem;
+}
+
+.coordinators-row-normal {
+  display: flex;
+  justify-content: center;
+  gap: 4rem; /* Reduce this to decrease spacing */
+  flex-wrap: wrap; /* Optional for responsiveness */
+  /* padding-bottom: 2rem; */
+}
+
+.coordinator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-wrapper {
+  padding: 5px;
+  border: 3px solid red;
+  border-radius: 50%;
+}
+
+.image-wrapper img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.coordinator p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.full-box-mobile {
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.white-border-box h3 {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.full-box-mobile p {
+    text-align: center;
+    /* margin-bottom: 2rem; */
+}
+
+.white-border-box-mobile {
+  /* background-color: black; */
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  /* color: white; */
+  font-family: serif;
+  max-width: fit-content; /* or a fixed value like 300px */
+  margin: auto;
+  margin-bottom: 0.5rem;
+}
+
+.coordinators-row-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Reduce this to decrease spacing */
+  flex-wrap: wrap; /* Optional for responsiveness */
+  /* padding-bottom: 2rem; */
+}
+
+.coordinators-row-normal-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Reduce this to decrease spacing */
+  flex-wrap: wrap; /* Optional for responsiveness */
+  /* padding-bottom: 2rem; */
+}
+
+.coordinator-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-wrapper-mobile {
+  padding: 5px;
+  border: 3px solid red;
+  border-radius: 50%;
+}
+
+.image-wrapper-mobile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-wrapper-mobile-oc {
+  padding: 5px;
+  border: 3px solid red;
+  border-radius: 50%;
+}
+
+.image-wrapper-mobile-oc img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.coordinator-mobile .oc {
+    font-size: 1rem;
+}
+
+.coordinator-mobile p {
+  margin-top: 0.5rem;
+  font-size: 0.5rem;
+}
+
+.white-border-box-mobile h3 {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin-top: 2rem;
+}
+
+.about-header .header {
+  color: #e50914;
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 2rem;
+}
+
+.about-header p {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+
+.team-banner {
+  padding-top: 1rem;
+  width: 100%;
+  margin: 2rem 0;
+  /* position: relative; */
+}
+
+.team-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* .team-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  background: url("../images/combined1.png") no-repeat center center;
-  background-size: cover;
-  -webkit-backdrop-filter: brightness(0.5);
-  backdrop-filter: brightness(0.5);
-  padding: 20px;
-  box-sizing: border-box; /* Ensure padding is included in width and height */
+  background: linear-gradient(to bottom, black 0%, rgba(56, 4, 4, 0.8) 50%, black 100%);
+  z-index: 1;
+  pointer-events: none;
+} */
+
+.team-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.TedX-logo {
-  width: 300px;
-  margin: 100px auto 30px; /* Center horizontally and add margin at top and bottom */
+.team-card {
+  text-align: center;
+  max-width: 150px;
 }
 
-.TedX-logo img {
-  width: 100%; /* Adjust image width to fill the container */
-}
-
-.aboutIITP, .aboutTed {
-  width: 75vw;
-  margin: 0 auto 100px;
+.team-card img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
   border: 2px solid white;
-  border-radius: 31px;
-  background: black;
-  padding: 20px;
-  opacity: 0.77;
-  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
-.heading {
-  color: #FF2B1D;
-  font-size: 35px;
-  padding-bottom: 20px;
-  font-weight: bold;
+.team-card h4 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
 }
 
-.text {
-  width: 100%;
-  font-size: 16px;
-  line-height: 1.5; /* Improve readability */
-  box-sizing: border-box; /* Ensure padding is included in width */
+.team-card p {
+  font-size: 0.85rem;
+  color: #ccc;
 }
 
-@media screen and (max-width: 450px) {
-  .aboutIITP, .aboutTed {
-    width: 80vw;
-    font-size: 14px;
-  }
+.bottom-note {
+  text-align: center;
+  margin-top: 2rem;
+}
 
-  .heading {
-    font-size: 32px;
-  }
+.bottom-note-mobile {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 3rem;
+}
+
+.ted-section {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: justify;
+  padding: 2rem;
+}
+
+.ted-section .ted .ted-header {
+  color: #e50914;
+  font-size: 3rem;
+}
+
+.ted-section .tedx .tedx-header {
+  color: #e50914;
+  font-size: 3rem;
+}
+
+.ted-section div {
+  width: 45%;
+}
+
+.ted-section h3 {
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+.ted-section p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.ted-section-mobile {
+  /* display: flex; */
+  /* justify-content: space-around; */
+  /* gap: 2rem; */
+  margin-top: 2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.ted-section-mobile .ted-mobile .ted-header-mobile {
+  color: #e50914;
+  font-size: 2rem;
+}
+
+.ted-section-mobile .tedx-mobile .tedx-header-mobile {
+  color: #e50914;
+  font-size: 2rem;
+}
+
+.ted-section-mobile h3 {
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+.ted-section-mobile p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.ted-section-mobile .tedx-mobile {
+    padding-bottom: 2rem;
+}
+
+/* ================= LAPTOP RESPONSIVENESS ================= */
+@media (min-width: 768px) {
+
+    .full-box-mobile {
+      display: none;
+    }
+
+    .bottom-note-mobile {
+      display: none;
+    }
+
+    .ted-section-mobile {
+      display: none;
+    }
+
 }

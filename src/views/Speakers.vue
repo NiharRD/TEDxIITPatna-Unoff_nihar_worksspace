@@ -1,5 +1,5 @@
 <template>
-  <!-- <Nav /> -->
+  <Nav></Nav>
   <div class="theme-bg">
     <!-- Desktop image -->
     <div class="photo">
@@ -74,10 +74,11 @@
 // import Nav from '@/components/Nav.vue'
 import Footer from '@/components/Footer.vue'
 import SpeakerModal from '@/components/SpeakerModal.vue'
+import Nav from '@/components/Nav.vue'
 
 export default {
   components: {
-    // Nav,
+    Nav,
     Footer,
     SpeakerModal,
   },

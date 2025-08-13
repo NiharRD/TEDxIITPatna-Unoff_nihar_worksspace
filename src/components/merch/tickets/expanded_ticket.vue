@@ -226,46 +226,11 @@ const handleFormSubmit = (ticketOrderData) => {
             You save: ₹{{ (props.originalPrice - props.offerPrice).toFixed(2) }}
           </p>
           <p class="price-validity">
-            Early bird pricing valid until: {{ priceValidUntil }}
+            The Price is valid till : {{ priceValidUntil }}
           </p>
         </div>
 
         <!-- Event Details Section -->
-        <div class="event-details-section">
-          <h3 class="section-title">Event Details</h3>
-          <div class="event-details-grid">
-            <div class="detail-item">
-              <span class="detail-icon">📅</span>
-              <div class="detail-content">
-                <span class="detail-label">Date & Time</span>
-                <span class="detail-value"
-                  >{{ props.event_date }} • {{ sessionDetails.time }}</span
-                >
-              </div>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <div class="detail-content">
-                <span class="detail-label">Venue</span>
-                <span class="detail-value">{{ props.venue }}</span>
-              </div>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🎯</span>
-              <div class="detail-content">
-                <span class="detail-label">Focus Area</span>
-                <span class="detail-value">{{ sessionDetails.focus }}</span>
-              </div>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🎤</span>
-              <div class="detail-content">
-                <span class="detail-label">Speakers</span>
-                <span class="detail-value">{{ sessionDetails.speakers }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- Seat Availability Section -->
         <div v-if="isLimitedSeats" class="availability-section">
@@ -411,9 +376,9 @@ const handleFormSubmit = (ticketOrderData) => {
 .full-event {
   background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
 }
-.general {
+/* .general {
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
-}
+} */
 
 /* Details Section */
 .details-section {

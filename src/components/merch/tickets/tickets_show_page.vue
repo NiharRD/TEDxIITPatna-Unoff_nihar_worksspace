@@ -75,7 +75,7 @@ const handleFinalBuyTicket = (ticketData) => {
     <div v-else>
       <!-- Page Header -->
       <div class="page-header">
-        <h1 class="page-title">TEDx IIT Patna 2024 Tickets</h1>
+        <h1 class="page-title">TEDx IIT Patna 2025 Tickets</h1>
         <p class="page-description">
           Join us for an inspiring day of ideas worth spreading. Choose your
           ticket type below.
@@ -108,40 +108,6 @@ const handleFinalBuyTicket = (ticketData) => {
             <p>
               Tickets are not available at the moment. Please check back later!
             </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Event Information -->
-      <div class="event-info">
-        <div class="info-card">
-          <h3>📅 Event Details</h3>
-          <div class="info-content">
-            <div class="info-item">
-              <span class="info-label">Date:</span>
-              <span class="info-value">March 15, 2024</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Venue:</span>
-              <span class="info-value">IIT Patna Campus</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Time:</span>
-              <span class="info-value">9:00 AM - 6:00 PM</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <h3>ℹ️ Important Information</h3>
-          <div class="info-content">
-            <ul class="info-list">
-              <li>Tickets are non-refundable and non-transferable</li>
-              <li>Valid ID required for entry</li>
-              <li>Session 1: 9:00 AM - 12:30 PM</li>
-              <li>Session 2: 2:00 PM - 6:00 PM</li>
-              <li>Full Event includes lunch and networking</li>
-            </ul>
           </div>
         </div>
       </div>

@@ -163,14 +163,14 @@ const handleBuyTicket = () => {
 
       <!-- Event Details -->
       <div class="event-details">
-        <div class="detail-item">
+        <!-- <div class="detail-item">
           <span class="detail-icon">📅</span>
           <span class="detail-text">{{ props.event_date }}</span>
-        </div>
-        <div class="detail-item">
+        </div> -->
+        <!-- <div class="detail-item">
           <span class="detail-icon">📍</span>
           <span class="detail-text">{{ props.venue }}</span>
-        </div>
+        </div> -->
       </div>
 
       <!-- Description -->
@@ -224,9 +224,6 @@ const handleBuyTicket = () => {
           <span v-if="hasDiscount" class="discount-badge"
             >{{ discountPercentage }}% OFF</span
           >
-        </div>
-        <div class="price-validity">
-          <span class="validity-text">Valid until: {{ priceValidUntil }}</span>
         </div>
       </div>
 
@@ -307,9 +304,9 @@ const handleBuyTicket = () => {
   background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
 }
 
-.general {
+/* .general {
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
-}
+} */
 
 /* Ticket Content */
 .ticket-content {

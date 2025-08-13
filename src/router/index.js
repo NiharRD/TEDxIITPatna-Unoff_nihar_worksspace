@@ -148,17 +148,17 @@ const routes = [
       title: "Coming Soon",
     },
   },
-  {
-    path: "/merch",
-    name: "merch",
-    component: () =>
-      import(
-        /* webpackChunkName: "tshirtbanner" */ "../views/TshirtBanner.vue"
-      ),
-    meta: {
-      title: "Merchandise",
-    },
-  },
+  // {  // UPDATED WITH   /buyMerchTickets  ROUTE
+  //   path: "/merch",
+  //   name: "merch",
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "tshirtbanner" */ "../views/TshirtBanner.vue"
+  //     ),
+  //   meta: {
+  //     title: "Merchandise",
+  //   },
+  // },
   {
     path: "/our-journey",
     name: "our-journey",

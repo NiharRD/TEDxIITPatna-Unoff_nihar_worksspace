@@ -9,8 +9,8 @@
     </div>
 
     <div class="navbar-items-container">
-      <div class="navbar-item">Home</div>
-      <div class="navbar-item">About Us</div>
+      <a class="navbar-item" href="http://localhost:8080/">Home</a>
+      <a class="navbar-item" href="http://localhost:8080/about">About Us</a>
       <div class="navbar-item event" @click="handleEvent">
         Events
         <img
@@ -27,19 +27,25 @@
       <!-- Events Dropdown Menu -->
       <div class="events-dropdown" :class="{ show: clickEvent }">
         <div class="dropdown-section">
-          <div class="dropdown-title">Pre-Events</div>
+          <a class="dropdown-title" href="http://localhost:8080/funfair"
+            >Pre-Events</a
+          >
           <div class="petal-shape petal-1"></div>
           <div class="petal-shape petal-2"></div>
           <div class="petal-shape petal-3"></div>
         </div>
         <div class="dropdown-divider"></div>
         <div class="dropdown-section">
-          <div class="dropdown-title">Past Editions</div>
+          <a class="dropdown-title" href="http://localhost:8080/our-journey"
+            >Past Editions</a
+          >
           <div class="petal-shape petal-4"></div>
         </div>
       </div>
-      <div class="navbar-item">Speakers</div>
-      <div class="navbar-item navbar-buy-tickets">Buy Tickets</div>
+      <a class="navbar-item" href="http://localhost:8080/speakers">Speakers</a>
+      <a class="navbar-item navbar-buy-tickets" href="/buyMerchTickets"
+        >Buy Now</a
+      >
     </div>
   </div>
 

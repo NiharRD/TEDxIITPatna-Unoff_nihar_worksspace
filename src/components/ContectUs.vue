@@ -252,6 +252,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import axios from "axios";
 
 const isPartnerFormVisible = ref(false);
 const partnerForm = ref({
@@ -311,24 +312,115 @@ const validatePartnerForm = () => {
   return Object.keys(errors).length === 0;
 };
 
-const handlePartnerSubmit = () => {
+// const handlePartnerSubmit = () => {
+//   if (validatePartnerForm()) {
+//     console.log("Partner Form Submitted:", partnerForm.value);
+//     alert("Thank you for your partnership proposal!");
+//     closePartnerForm();
+//     partnerForm.value = {
+//       name: "",
+//       portfolio: "",
+//       industry: "",
+//       email: "",
+//       phone: "",
+//       partnershipType: "",
+//       proposal: "",
+//     };
+//   }
+// };
+const handlePartnerSubmit = async () => {
   if (validatePartnerForm()) {
-    console.log("Partner Form Submitted:", partnerForm.value);
-    alert("Thank you for your partnership proposal!");
-    closePartnerForm();
-    partnerForm.value = {
-      name: "",
-      portfolio: "",
-      industry: "",
-      email: "",
-      phone: "",
-      partnershipType: "",
-      proposal: "",
-    };
+    try {
+      // Map frontend fields to backend expected fields
+      const payload = {
+        nameOfOrganization_or_Individual: partnerForm.value.name,
+        websiteOrPortfolioOrSocialMediaLink: partnerForm.value.portfolio,
+        industryOrAreaOfWork: partnerForm.value.industry,
+        email: partnerForm.value.email,
+        phoneNumber: partnerForm.value.phone,
+        industryOrAreaOfWork_natureOfPathnerShip:
+          partnerForm.value.partnershipType,
+        briefDescriptionOfPathnerShip: partnerForm.value.proposal,
+      };
+
+      const response = await axios.post(
+        "http://localhost:8000/api/partnerWithUs",
+        payload
+      );
+
+      if (response.status === 201) {
+        alert("Thank you for your partnership proposal!");
+        closePartnerForm();
+        partnerForm.value = {
+          name: "",
+          portfolio: "",
+          industry: "",
+          email: "",
+          phone: "",
+          partnershipType: "",
+          proposal: "",
+        };
+      } else {
+        alert("There was an issue submitting your proposal. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting partnership proposal:", error);
+      alert(
+        "There was an error submitting your proposal. Please try again later."
+      );
+    }
   }
 };
 
-const handleContactSubmit = () => {
+// const handleContactSubmit = async () => {
+//   try {
+//     const response = await axios.post(
+//       "http://localhost:3000/api/contactUs",
+//       contactForm.value
+//     );
+//     console.log(response);
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   if (contactForm.value.name.trim() === "") {
+//     submission.value = {
+//       error: true,
+//       description: "Please write your name!",
+//       keyword: "Error",
+//     };
+//     opendialog.value = true;
+//     return;
+//   }
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   if (contactForm.value.email.trim() === "") {
+//     submission.value = {
+//       error: true,
+//       description: "Please write your email!",
+//       keyword: "Error",
+//     };
+//     opendialog.value = true;
+//     return;
+//   } else if (!emailRegex.test(contactForm.value.email)) {
+//     submission.value = {
+//       error: true,
+//       description: "Please enter a valid email address.",
+//       keyword: "Error",
+//     };
+//     opendialog.value = true;
+//     return;
+//   }
+//   console.log("Contact Form Submitted:", contactForm.value);
+//   submission.value = {
+//     error: false,
+//     keyword: "Successful",
+//     description:
+//       "We’ve received your query. Our team will be in touch shortly.",
+//   };
+//   opendialog.value = true;
+//   contactForm.value = { name: "", email: "", suggestion: "" };
+// };
+const handleContactSubmit = async () => {
+  // Validate before submitting
   if (contactForm.value.name.trim() === "") {
     submission.value = {
       error: true,
@@ -356,15 +448,35 @@ const handleContactSubmit = () => {
     opendialog.value = true;
     return;
   }
-  console.log("Contact Form Submitted:", contactForm.value);
-  submission.value = {
-    error: false,
-    keyword: "Successful",
-    description:
-      "We’ve received your query. Our team will be in touch shortly.",
-  };
-  opendialog.value = true;
-  contactForm.value = { name: "", email: "", suggestion: "" };
+
+  // Submit to backend
+  try {
+    const response = await axios.post("http://localhost:8000/api/contactUs", {
+      name: contactForm.value.name,
+      email: contactForm.value.email,
+      message: contactForm.value.suggestion,
+    });
+    // On success, show modal and clear form
+    submission.value = {
+      error: false,
+      keyword: "Successful",
+      description:
+        "We’ve received your query. Our team will be in touch shortly.",
+    };
+    opendialog.value = true;
+    contactForm.value = { name: "", email: "", suggestion: "" };
+    console.log("Contact Form Submitted:", response.data);
+  } catch (error) {
+    // On error, show error modal
+    submission.value = {
+      error: true,
+      keyword: "Error",
+      description:
+        "There was a problem submitting your query. Please try again later.",
+    };
+    opendialog.value = true;
+    console.log(error);
+  }
 };
 </script>
 

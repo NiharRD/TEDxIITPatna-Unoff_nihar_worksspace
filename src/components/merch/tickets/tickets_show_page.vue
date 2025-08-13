@@ -118,7 +118,7 @@ const handleFinalBuyTicket = (ticketData) => {
 <style scoped>
 .tickets-page {
   min-height: 100vh;
-  background: #f9fafb;
+  background: #000000;
   padding: 2rem;
 }
 
@@ -134,13 +134,13 @@ const handleFinalBuyTicket = (ticketData) => {
 .page-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #1f2937;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .page-description {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: #f3f3f3;
   line-height: 1.6;
 }
 

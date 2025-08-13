@@ -4,7 +4,8 @@ import LandingPage from "../components/merch/landing_page.vue";
 import MerhItemCards from "../components/merch/merh_item_cards.vue";
 import ExpandedMerchView from "../components/merch/expanded_merch_view.vue";
 import TicketsShowPage from "../components/merch/tickets/tickets_show_page.vue";
-
+import Nav from "../components/Nav.vue";
+import Footer from "../components/Footer.vue";
 // App navigation state
 const currentView = ref("landing"); // "landing", "merchandise", "tickets"
 const items = ref([]);
@@ -83,6 +84,7 @@ const handleBuyTicket = (ticketData) => {
   <div class="app-wrapper">
     <!-- Landing Page View -->
     <div v-if="currentView === 'landing'">
+      <Nav />
       <LandingPage
         @navigate-to-merch="handleNavigateToMerch"
         @navigate-to-tickets="handleNavigateToTickets"
@@ -143,13 +145,14 @@ const handleBuyTicket = (ticketData) => {
       <!-- Tickets Show Page -->
       <TicketsShowPage @buy-ticket="handleBuyTicket" />
     </div>
+    <Footer />
   </div>
 </template>
 
 <style scoped>
 .app-wrapper {
   min-height: 100vh;
-  background: #f9fafb;
+  background: #000000;
 }
 
 /* Navigation Header for Merchandise Section */

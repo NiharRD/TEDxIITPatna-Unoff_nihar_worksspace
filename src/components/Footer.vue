@@ -14,14 +14,14 @@
         </div>
         <ul class="footer-links">
           <li><a href="https://www.ted.com/" target="_blank">TED Website</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">About TEDx</a></li>
+          <li><a href="https://www.ted.com/participate/organize-a-local-tedx-event/before-you-start/tedx-rules">Terms & Conditions</a></li>
+          <li><a href="https://www.ted.com/about/programs-initiatives/tedx-program">About TEDx</a></li>
         </ul>
         <div class="footer-links-mobile">
           <div class="footer-links-container">
             <span><a href="https://www.ted.com/" target="_blank">TED Website</a></span>
-            <span><a href="#">Terms & Conditions</a></span>
-            <span><a href="#">About TEDx</a></span>
+            <span><a href="https://www.ted.com/participate/organize-a-local-tedx-event/before-you-start/tedx-rules">Terms & Conditions</a></span>
+            <span><a href="https://www.ted.com/about/programs-initiatives/tedx-program">About TEDx</a></span>
           </div>
         </div>
       </div>
@@ -44,10 +44,10 @@
       <div class="footer-section footer-section-no footer-right">
         <h2>Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Speakers</a></li>
-          <li><a href="#">Pre-event</a></li>
-          <li><a href="#">Past events</a></li>
+          <li><a href="http://localhost:8080/about">About us</a></li>
+          <li><a href="http://localhost:8080/speakers">Speakers</a></li>
+          <li><a href="http://localhost:8080/funfair">Pre-event</a></li>
+          <li><a href="http://localhost:8080/our-journey">Past events</a></li>
           <li><a href="#">Buy Tickets</a></li>
         </ul>
       </div>
@@ -57,10 +57,10 @@
       <div class="footer-section-mobile footer-right-mobile">
         <h2 style="font-weight: normal;">Quick Links</h2>
         <ul class="footer-links-mobile">
-          <li><a href="#"><p style="color: white; font-weight: bold">About us</p></a></li>
-          <li><a href="#"><p style="color: white; font-weight: bold">Speakers</p></a></li>
-          <li><a href="#"><p style="color: white; font-weight: bold">Pre-event</p></a></li>
-          <li><a href="#"><p style="color: white; font-weight: bold">Past events</p></a></li>
+          <li><a href="http://localhost:8080/about"><p style="color: white; font-weight: bold">About us</p></a></li>
+          <li><a href="http://localhost:8080/speakers"><p style="color: white; font-weight: bold">Speakers</p></a></li>
+          <li><a href="http://localhost:8080/funfair"><p style="color: white; font-weight: bold">Pre-event</p></a></li>
+          <li><a href="http://localhost:8080/our-journey"><p style="color: white; font-weight: bold">Past events</p></a></li>
           <li><a href="#"><p style="color: white; font-weight: bold">Buy Tickets</p></a></li>
         </ul>
       </div>

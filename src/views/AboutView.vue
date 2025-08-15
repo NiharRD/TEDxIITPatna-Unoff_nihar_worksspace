@@ -50,35 +50,35 @@
             <img src="@/assets/images/Lohitaksha.jpeg" alt="Lohitaksha Guha" />
           </div>
           <p>Lohitaksha Guha</p>
-          <p>Design</p>
+          <p style="font-weight: normal; font-size: 1rem;">Design</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Anuja.jpg" alt="Anuja Solanki" />
           </div>
           <p>Anuja Solanki</p>
-          <p>Design</p>
+          <p style="font-weight: normal; font-size: 1rem;">Design</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Ishika.jpg" alt="Ishika Gupta" />
           </div>
           <p>Ishika Gupta</p>
-          <p>Planning and Curation</p>
+          <p style="font-weight: normal; font-size: 1rem;">Planning and Curation</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Yuvan.jpg" alt="Yuvan Vanapalli" />
           </div>
           <p>Yuvan Vanapalli</p>
-          <p>Planning and Curation</p>
+          <p style="font-weight: normal; font-size: 1rem;">Planning and Curation</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Akshat.jpeg" alt="Akshat Jha" />
           </div>
           <p>Akshat Jha</p>
-          <p>Planning and Curation</p>
+          <p style="font-weight: normal; font-size: 1rem;">Planning and Curation</p>
         </div>
       </div>
     </div>
@@ -90,35 +90,35 @@
             <img src="@/assets/images/Aman.jpg" alt="Aman Arora" />
           </div>
           <p>Aman Arora</p>
-          <p>Marketing and<br>Sponsorship</p>
+          <p style="font-weight: normal; font-size: 1rem;">Marketing and<br>Sponsorship</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
+            <img src="@/assets/images/Vansh.jpg" alt="Vansh Shrivastava" />
+          </div>
+          <p>Vansh Shrivastava</p>
+          <p style="font-weight: normal; font-size: 1rem;">Marketing and<br>Sponsorship</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Kshitij.jpg" alt="Kshitij Prakash" />
           </div>
           <p>Kshitij Prakash</p>
-          <p>Media, Public<br>and Relations</p>
+          <p style="font-weight: normal; font-size: 1rem;">Media, Public<br>and Relations</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Aviral.jpg" alt="Aviral Awasthi" />
           </div>
           <p>Aviral Awasthi</p>
-          <p>Media, Public<br>and Relations</p>
+          <p style="font-weight: normal; font-size: 1rem;">Media, Public<br>and Relations</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Sparsh.jpeg" alt="Sparsh Chourdhary" />
           </div>
           <p>Sparsh Choudhary</p>
-          <p>Production</p>
-        </div>
-        <div class="coordinator">
-          <div class="image-wrapper">
-            <img src="@/assets/images/Lochan.jpeg" alt="Lochan" />
-          </div>
-          <p>Lochan</p>
-          <p>Production</p>
+          <p style="font-weight: normal; font-size: 1rem;">Production</p>
         </div>
       </div>
     </div>
@@ -127,39 +127,40 @@
       <div class="coordinators-row-normal">
         <div class="coordinator">
           <div class="image-wrapper">
+            <img src="@/assets/images/Lochan.jpeg" alt="Lochan" />
+          </div>
+          <p>Lochan</p>
+          <p style="font-weight: normal; font-size: 1rem;">Production</p>
+        </div>
+        <div class="coordinator">
+          <div class="image-wrapper">
             <img src="@/assets/images/Abhay.jpg" alt="Abhay Varshney" />
           </div>
           <p>Abhay Varshney</p>
-          <p>Registration, Security<br>and Planning</p>
+          <p style="font-weight: normal; font-size: 1rem;">Registration, Security<br>and Planning</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Raqeeb.jpg" alt="Raqeeb Ansari" />
           </div>
           <p>Raqeeb Ansari</p>
-          <p>Registration, Security<br>and Planning</p>
+          <p style="font-weight: normal; font-size: 1rem;">Registration, Security<br>and Planning</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Devasish.jpg" alt="Devasish Vaddi" />
           </div>
           <p>Devasish Vaddi</p>
-          <p>Hospitality</p>
+          <p style="font-weight: normal; font-size: 1rem;">Hospitality</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Mihika.jpg" alt="Mihika Saxena" />
           </div>
           <p>Mihika Saxena</p>
-          <p>Hospitality</p>
+          <p style="font-weight: normal; font-size: 1rem;">Hospitality</p>
         </div>
-        <div class="coordinator">
-          <div class="image-wrapper">
-            <img src="@/assets/images/Vansh.jpg" alt="Vansh Shrivastava" />
-          </div>
-          <p>Vansh Shrivastava</p>
-          <p>Marketing and<br>Sponsorship</p>
-        </div>
+        
       </div>
     </div>
 
@@ -170,14 +171,14 @@
             <img src="@/assets/images/Naitik.jpg" alt="Naitik" />
           </div>
           <p>Naitik</p>
-          <p>Web Development</p>
+          <p style="font-weight: normal; font-size: 1rem;">Web Development</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Yashveer.jpg" alt="Yashveer Aryan" />
           </div>
           <p>Yashveer Aryan</p>
-          <p>Web Development</p>
+          <p style="font-weight: normal; font-size: 1rem;">Web Development</p>
         </div>
       </div>
     </div>

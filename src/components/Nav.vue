@@ -16,14 +16,10 @@
             <div class="events-dropdown" :class="{ 'show': clickEvent }">
                 <div class="dropdown-section">
                     <a class="dropdown-title" href="http://localhost:8080/funfair">Pre-Events</a>
-                    <div class="petal-shape petal-1"></div>
-                    <div class="petal-shape petal-2"></div>
-                    <div class="petal-shape petal-3"></div>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-section">
                     <a class="dropdown-title" href="http://localhost:8080/our-journey">Past Editions</a>
-                    <div class="petal-shape petal-4"></div>
                 </div>
             </div>
             <a class="navbar-item" href="http://localhost:8080/speakers">Speakers</a>

@@ -157,7 +157,7 @@ export default {
     // Set the original top position of year-bar
     this.$nextTick(() => {
       if (this.$refs.yearBar) {
-        this.yearBarOriginalTop = this.$refs.yearBar.offsetTop
+        this.yearBarOriginalTop = this.$refs.yearBar.offsetTop - 73;
       }
     })
   },
@@ -188,10 +188,10 @@ export default {
           let offsetTop
           if (this.isSticky) {
             // Year-bar is already sticky - use normal padding
-            offsetTop = yearElement[0].offsetTop - yearBarHeight - 20
+            offsetTop = yearElement[0].offsetTop - yearBarHeight - 20 - 73
           } else {
             // Clicking from top when year-bar is not sticky - use more padding
-            offsetTop = yearElement[0].offsetTop - yearBarHeight - 60
+            offsetTop = yearElement[0].offsetTop - yearBarHeight - 60 - 73
           }
           
           window.scrollTo({

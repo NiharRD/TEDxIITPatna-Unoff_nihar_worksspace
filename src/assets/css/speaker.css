@@ -209,9 +209,9 @@
   z-index: 100;
 }
 
-.year-bar.sticky {
+div.year-bar.sticky {
   position: fixed;
-  top: 0;
+  top: 73px;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.95); /* Add semi-transparent background when sticky */

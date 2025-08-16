@@ -150,3 +150,16 @@ section.full {
   bottom: 10px;
   background: currentColor
 }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #413030;
+}
+::-webkit-scrollbar-thumb {
+  background: #4f1010;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}

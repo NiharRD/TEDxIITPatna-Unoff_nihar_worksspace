@@ -154,26 +154,26 @@ const handleBuyTicket = (ticketData) => {
 <style scoped>
 .app-wrapper {
   min-height: 100vh;
-  background: #000000;
+  background: linear-gradient(to bottom, black 0%, #380404 50%, black 100%);
 }
 
 /* Navigation Header for Merchandise Section */
 .nav-header {
-  background: white;
+  background: black;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #333;
   display: flex;
   align-items: center;
   gap: 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .back-to-landing-btn {
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
   color: white;
   border: none;
   border-radius: 6px;
@@ -186,7 +186,7 @@ const handleBuyTicket = (ticketData) => {
 }
 
 .back-to-landing-btn:hover {
-  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
@@ -194,7 +194,7 @@ const handleBuyTicket = (ticketData) => {
 .section-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #dc2626;
   margin: 0;
 }
 

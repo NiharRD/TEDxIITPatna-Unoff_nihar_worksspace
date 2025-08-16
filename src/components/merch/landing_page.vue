@@ -39,7 +39,7 @@ const features = [
     title: "Official Merchandise",
     description:
       "Exclusive TEDx IIT Patna branded items. Hoodies, T-shirts, and more.",
-    action: "Shop Now",
+    action: "Get Merchandises",
     actionType: "merch",
   },
 ];
@@ -104,7 +104,9 @@ const stats = [
 .landing-page {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
-  color: #1f2937;
+  min-height: 100vh;
+
+  background: linear-gradient(to bottom, black 0%, #380404 50%, black 100%);
 }
 
 /* Header Styles */
@@ -181,7 +183,7 @@ const stats = [
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+  background: linear-gradient(to bottom, black 0%, #380404 50%, black 100%);
   padding: 2rem;
 }
 
@@ -333,7 +335,7 @@ const stats = [
 /* Features Section */
 .features-section {
   padding: 5rem 2rem;
-  background: white;
+  background: transparent;
 }
 
 .section-header {
@@ -347,13 +349,13 @@ const stats = [
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .section-description {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: #e5e7eb;
   line-height: 1.7;
 }
 
@@ -409,12 +411,12 @@ const stats = [
 }
 
 .btn-tickets {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
   color: white;
 }
 
 .btn-tickets:hover {
-  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
   transform: translateY(-2px);
 }
 

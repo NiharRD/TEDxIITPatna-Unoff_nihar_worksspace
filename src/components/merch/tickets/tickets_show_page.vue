@@ -8,6 +8,50 @@ const selectedTicket = ref(null);
 const showExpandedView = ref(false);
 const emit = defineEmits(["buy-ticket"]);
 
+// Helper function to generate default payment links based on ticket name
+const getDefaultPaymentLink = (ticketName) => {
+  if (
+    ticketName.toLowerCase().includes("first") ||
+    ticketName.toLowerCase().includes("session 1")
+  ) {
+    return "https://rzp.io/rzp/3bC9TTh"; // First session link
+  } else if (
+    ticketName.toLowerCase().includes("second") ||
+    ticketName.toLowerCase().includes("session 2")
+  ) {
+    return "https://rzp.io/rzp/YD5oo9uU"; // Second session link
+  } else if (
+    ticketName.toLowerCase().includes("full") ||
+    ticketName.toLowerCase().includes("complete")
+  ) {
+    return "https://rzp.io/rzp/fullEvent"; // Full event link
+  } else {
+    return "https://rzp.io/rzp/defaultTicket"; // Default fallback
+  }
+};
+
+// Helper function to determine session type from ticket name
+const getSessionTypeFromName = (ticketName) => {
+  if (
+    ticketName.toLowerCase().includes("first") ||
+    ticketName.toLowerCase().includes("session 1")
+  ) {
+    return "1";
+  } else if (
+    ticketName.toLowerCase().includes("second") ||
+    ticketName.toLowerCase().includes("session 2")
+  ) {
+    return "2";
+  } else if (
+    ticketName.toLowerCase().includes("full") ||
+    ticketName.toLowerCase().includes("complete")
+  ) {
+    return "full";
+  } else {
+    return "1"; // Default to session 1
+  }
+};
+
 onMounted(async () => {
   try {
     console.log("🔄 Fetching tickets from API...");
@@ -21,8 +65,28 @@ onMounted(async () => {
     console.log("📦 Tickets data received:", data);
 
     if (data && data.length > 0) {
-      tickets.value = data;
-      console.log(`✅ Loaded ${data.length} tickets from API`);
+      // Normalize and fix ticket data with proper fallbacks
+      const normalizedTickets = data.map((ticket, index) => {
+        return {
+          ...ticket,
+          // Fix missing paymentLink with proper URLs
+          paymentLink: ticket.paymentLink || getDefaultPaymentLink(ticket.name),
+          // Fix missing price_till with default date
+          price_till: ticket.price_till || "31st December 2024",
+          // Fix missing session_type based on ticket name
+          session_type:
+            ticket.session_type || getSessionTypeFromName(ticket.name),
+          // Ensure other optional fields have defaults
+          event_date: ticket.event_date || "Coming Soon",
+          venue: ticket.venue || "IIT Patna Campus",
+          available_seats: ticket.available_seats || null,
+          max_seats: ticket.max_seats || null,
+        };
+      });
+
+      tickets.value = normalizedTickets;
+      console.log(`✅ Loaded ${normalizedTickets.length} tickets from API`);
+      console.log("📋 Normalized tickets:", normalizedTickets);
     } else {
     }
   } catch (error) {
@@ -62,6 +126,7 @@ const handleFinalBuyTicket = (ticketData) => {
         :description="selectedTicket.description"
         :price-till="selectedTicket.price_till"
         :session-type="selectedTicket.session_type"
+        :payment-link="selectedTicket.paymentLink"
         :event-date="selectedTicket.event_date"
         :venue="selectedTicket.venue"
         :available-seats="selectedTicket.available_seats"
@@ -95,6 +160,7 @@ const handleFinalBuyTicket = (ticketData) => {
             :description="ticket.description"
             :price-till="ticket.price_till"
             :session-type="ticket.session_type"
+            :payment-link="ticket.paymentLink"
             :event-date="ticket.event_date"
             :venue="ticket.venue"
             :available-seats="ticket.available_seats"

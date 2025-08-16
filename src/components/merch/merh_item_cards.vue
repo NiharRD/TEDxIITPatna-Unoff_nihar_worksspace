@@ -33,6 +33,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  paymentLink: {
+    type: String,
+    required: true,
+  },
 });
 
 // Emit event when view more button is clicked

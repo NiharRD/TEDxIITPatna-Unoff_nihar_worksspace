@@ -113,6 +113,7 @@ const handleBuyTicket = (ticketData) => {
           :type="item.type"
           :size="item.size"
           :description="item.description"
+          :paymentLink="item.paymentLink"
           @view-more="handleViewMore"
         />
       </div>
@@ -127,6 +128,7 @@ const handleBuyTicket = (ticketData) => {
           :type="selectedItem.type"
           :size="selectedItem.size"
           :description="selectedItem.description"
+          :paymentLink="selectedItem.paymentLink"
           @view-more="handleBackToList"
         />
       </div>

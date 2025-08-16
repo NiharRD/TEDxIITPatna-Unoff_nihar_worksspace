@@ -32,6 +32,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  paymentLink: {
+    type: String,
+    required: true,
+  },
   event_date: {
     type: String,
     required: false,
@@ -128,19 +132,24 @@ const availabilityStatus = computed(() => {
 
 // Event handlers
 const handleBuyTicket = () => {
-  emit("buy-ticket", {
+  const ticketData = {
     name: props.name,
     offerPrice: props.offerPrice,
     originalPrice: props.originalPrice,
     image: props.image,
     description: props.description,
     session_type: props.session_type,
+    paymentLink: props.paymentLink,
+    price_till: props.price_till,
     event_date: props.event_date,
     venue: props.venue,
-    price_till: props.price_till,
     available_seats: props.available_seats,
     max_seats: props.max_seats,
-  });
+  };
+
+  console.log("🎫 Ticket card emitting data:", ticketData);
+  console.log("🔗 PaymentLink in card:", props.paymentLink);
+  emit("buy-ticket", ticketData);
 };
 </script>
 

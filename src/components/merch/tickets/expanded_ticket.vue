@@ -1,6 +1,5 @@
 <script setup>
-import { defineProps, defineEmits, ref, computed } from "vue";
-import TicketBuyForm from "./ticket_buy_form.vue";
+import { defineProps, defineEmits, computed } from "vue";
 
 const props = defineProps({
   name: { type: String, required: true },
@@ -10,6 +9,7 @@ const props = defineProps({
   description: { type: String, required: true },
   price_till: { type: String, required: true },
   session_type: { type: String, required: true },
+  paymentLink: { type: String, required: true },
   event_date: { type: String, required: false, default: "Coming Soon" },
   venue: { type: String, required: false, default: "IIT Patna Campus" },
   available_seats: { type: Number, required: false, default: null },
@@ -17,9 +17,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["view-more", "buy-ticket"]);
-
-// State for form visibility
-const showBuyForm = ref(false);
 
 // Computed properties
 const hasDiscount = computed(
@@ -136,62 +133,20 @@ const priceValidUntil = computed(() => {
 const handleBack = () => emit("view-more", props);
 
 const handleBuyTicket = () => {
-  console.log("Opening ticket buy form for:", props.name);
-  showBuyForm.value = true;
-};
-
-const handleBackFromForm = () => {
-  console.log("Returning from buy form to ticket details");
-  showBuyForm.value = false;
-};
-
-const handleFormSubmit = (ticketOrderData) => {
-  console.log("Ticket order completed:", ticketOrderData);
-
-  // Check if this is a payment completion (has payment data)
-  if (ticketOrderData.payment) {
-    // Payment was successful, show success message and emit to parent
-    alert(
-      `🎉 Ticket purchased successfully!\n\nPayment ID: ${ticketOrderData.payment.paymentId}\nTicket: ${ticketOrderData.ticket.name}\nCustomer: ${ticketOrderData.customer.name}`
-    );
-
-    // Emit the final buy-ticket event to parent component with complete data
-    emit("buy-ticket", ticketOrderData);
-
-    // Reset form state
-    showBuyForm.value = false;
+  console.log("Buy ticket clicked for:", props.name);
+  if (props.paymentLink && props.paymentLink !== "undefined") {
+    window.open(props.paymentLink, "_blank");
   } else {
-    // This shouldn't happen with the new flow, but handle gracefully
-    console.warn("Order data received without payment information");
-    emit("buy-ticket", ticketOrderData);
-    showBuyForm.value = false;
+    console.error("PaymentLink is still undefined for:", props.name);
+    alert("Payment link not available. Please try again later.");
   }
 };
 </script>
 
 <template>
   <div class="expanded-view">
-    <!-- Ticket Buy Form View -->
-    <div v-if="showBuyForm">
-      <TicketBuyForm
-        :name="props.name"
-        :offer-price="props.offerPrice"
-        :original-price="props.originalPrice"
-        :image="props.image"
-        :description="props.description"
-        :price-till="props.price_till"
-        :session-type="props.session_type"
-        :event-date="props.event_date"
-        :venue="props.venue"
-        :available-seats="props.available_seats"
-        :max-seats="props.max_seats"
-        @view-more="handleBackFromForm"
-        @form-submit="handleFormSubmit"
-      />
-    </div>
-
     <!-- Expanded Ticket Details View -->
-    <div v-else class="ticket-container">
+    <div class="ticket-container">
       <!-- Ticket Image Section -->
       <div class="image-section">
         <div class="ticket-image">

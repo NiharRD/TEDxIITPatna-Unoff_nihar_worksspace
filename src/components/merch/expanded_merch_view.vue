@@ -1,7 +1,5 @@
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
-import BuyNowCampus from "./buyNowCampus.vue";
-import BuyNowOutsideCampus from "./buy_now_outside_campus..vue";
+import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   name: {
@@ -34,10 +32,11 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  paymentLink: {
+    type: String,
+    required: true,
+  },
 });
-
-const showCampusForm = ref(false);
-const showOutsideForm = ref(false);
 
 // Emit event when view more button is clicked
 const emit = defineEmits(["view-more"]);
@@ -45,72 +44,14 @@ const handleViewMore = () => {
   emit("view-more", props);
 };
 
-const handleCampusStudentPurchase = () => {
-  console.log("Campus student purchase for:", props.name);
-  showCampusForm.value = true;
-};
-
-const handleBackFromCampusForm = () => {
-  showCampusForm.value = false;
-};
-
-const handleBackFromOutsideForm = () => {
-  showOutsideForm.value = false;
-};
-
-const handleFormSubmit = (orderData) => {
-  console.log("Order submitted:", orderData);
-  // Here you can handle the order submission (API call, etc.)
-
-  // For now, just show success message and go back to expanded view
-  if (orderData.orderType === "campus_student") {
-    alert(`Order submitted successfully for ${orderData.student.studentName}!`);
-    showCampusForm.value = false;
-  } else if (orderData.orderType === "outside_campus") {
-    alert(`Order submitted successfully for ${orderData.customer.name}!`);
-    showOutsideForm.value = false;
-  }
-};
-
-const handleOutsideStudentPurchase = () => {
-  console.log("Outside campus student purchase for:", props.name);
-  showOutsideForm.value = true;
+const handleBuyNow = () => {
+  window.open(props.paymentLink, "_blank");
 };
 </script>
 
 <template>
-  <!-- Campus Form View -->
-  <div v-if="showCampusForm">
-    <BuyNowCampus
-      :name="props.name"
-      :offerPrice="props.offerPrice"
-      :originalPrice="props.originalPrice"
-      :image="props.image"
-      :type="props.type"
-      :size="props.size"
-      :description="props.description"
-      @view-more="handleBackFromCampusForm"
-      @form-submit="handleFormSubmit"
-    />
-  </div>
-
-  <!-- Outside Campus Form View -->
-  <div v-else-if="showOutsideForm">
-    <BuyNowOutsideCampus
-      :name="props.name"
-      :offerPrice="props.offerPrice"
-      :originalPrice="props.originalPrice"
-      :image="props.image"
-      :type="props.type"
-      :size="props.size"
-      :description="props.description"
-      @view-more="handleBackFromOutsideForm"
-      @form-submit="handleFormSubmit"
-    />
-  </div>
-
   <!-- Expanded Product View -->
-  <div v-else class="expanded-view">
+  <div class="expanded-view">
     <div class="product-container">
       <!-- Product Image Section -->
       <div class="image-section">
@@ -182,18 +123,7 @@ const handleOutsideStudentPurchase = () => {
 
         <!-- Action Buttons -->
         <div class="action-section">
-          <button
-            class="campus-student-btn"
-            @click="handleCampusStudentPurchase"
-          >
-            Buy Now - IIT P Campus Student
-          </button>
-          <button
-            class="outside-student-btn"
-            @click="handleOutsideStudentPurchase"
-          >
-            Buy Now - Outside Campus Student
-          </button>
+          <button class="buy-now-btn" @click="handleBuyNow">Buy Now</button>
           <button class="back-btn" @click="handleViewMore">
             Back to Products
           </button>
@@ -388,8 +318,7 @@ const handleOutsideStudentPurchase = () => {
   padding-top: 20px;
 }
 
-.campus-student-btn,
-.outside-student-btn,
+.buy-now-btn,
 .back-btn {
   flex: 1;
   padding: 15px 20px;
@@ -403,26 +332,17 @@ const handleOutsideStudentPurchase = () => {
   text-align: center;
 }
 
-.campus-student-btn {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+.buy-now-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
-.campus-student-btn:hover {
-  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+.buy-now-btn:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-}
-
-.outside-student-btn {
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-  color: white;
-}
-
-.outside-student-btn:hover {
-  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .back-btn {

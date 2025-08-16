@@ -23,11 +23,7 @@ const formData = ref({
   name: "",
   email: "",
   phone: "",
-  age: "",
-  gender: "",
-  iitp_roll_no: "", // Optional field
-  iitp_program_type: "", // Optional - BTech, MTech, PhD, etc.
-  iitp_hostel: "", // Optional - Hostel name/address
+  iitp_roll_no: "",
 });
 
 // Validation

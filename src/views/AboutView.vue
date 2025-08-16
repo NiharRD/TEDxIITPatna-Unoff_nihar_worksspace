@@ -37,7 +37,7 @@
           <div class="image-wrapper">
             <img src="@/assets/images/Garvit.jpg" alt="Garvit Nahta" />
           </div>
-          <p>Garvit Nahta</p>
+          <p>Garvit Nahta<br><p style="font-weight: normal">(Licensee)</p></p>
         </div>
       </div>
       <h3>Organisers</h3>
@@ -196,7 +196,7 @@
             <div class="image-wrapper-mobile-oc">
               <img src="@/assets/images/Garvit.jpg" alt="Garvit Nahta" />
             </div>
-            <p class="oc">Garvit Nahta</p>
+            <p class="oc">Garvit Nahta<br><p style="font-weight: normal;">(Licensee)</p></p>
           </div>
         </div>
         <h3>Organisers</h3>

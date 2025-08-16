@@ -8,8 +8,10 @@
           <h2 class="laptop">ABOUT</h2>
           <h2 class="mobile">{{ speaker.name }}</h2>
           <p>{{ speaker.description }}</p>
-          <p class="title-line">Spoke on : <span class="title-placeholder">{{ speaker.title }}</span></p>
-          <a :href="speaker.youtubeLink" target="_blank">
+          <p v-if="speaker.youtubeButton && speaker.title" class="title-line">
+            Spoke on : <span class="title-placeholder">{{ speaker.title }}</span>
+          </p>
+          <a v-if="speaker.youtubeButton && speaker.youtubeLink" :href="speaker.youtubeLink" target="_blank">
             <button class="yt-btn">Watch Talk on YouTube</button>
           </a>
         </div>
@@ -197,70 +199,6 @@ export default {
     top: 8px;
     right: 12px;
     width: 32px;
-    height: 32px;
-    font-size: 18px;
-  }
-
-  .laptop {
-    display: none;
-  }
-
-  .mobile {
-    display: inline-block;
-    font-family: "Times New Roman", Times, serif;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-overlay {
-    padding: 8px;
-  }
-  
-  .modal-content {
-    padding: 16px 12px;
-    border-radius: 6px;
-  }
-  
-  .modal-body {
-    gap: 12px;
-  }
-  
-  .modal-image {
-    width: 140px;
-  }
-  
-  .modal-text h2 {
-    font-size: 1.2rem;
-  }
-  
-  .modal-text p {
-    font-size: 13px;
-  }
-  
-  .yt-btn {
-    padding: 8px 16px;
-    font-size: 13px;
-  }
-  
-  .title-line {
-    font-size: 13px;
-  }
-  
-  .close-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-  }
-}
-
-/* Laptop Styles */
-@media (min-width: 768px) {
-  .mobile {
-    display: none;
-  }
-
-  .laptop {
-    display: inline-block;
   }
 }
 </style>

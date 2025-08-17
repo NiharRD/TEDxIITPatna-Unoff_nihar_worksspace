@@ -4,9 +4,9 @@
       <div class="image-container">
         <img :src="imageUrl" />
       </div>
-      <div class="event-footer-container">
+      <!-- <div class="event-footer-container">
         <h1>{{ imageFooter }}</h1>
-      </div>
+      </div> -->
     </div>
     <div class="description-container">
       <h2>{{ eventHeading }}</h2>

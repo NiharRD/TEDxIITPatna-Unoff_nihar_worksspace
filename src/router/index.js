@@ -191,6 +191,66 @@ const routes = [
       title: "Buy Now",
     },
   },
+  {
+    path: '/vera',
+    name: 'vera',
+    component: () => import(/* webpackChunkName: "vera" */ '../views/vera.vue'),
+    meta: {
+      title: 'Veiled Veracity',
+      requiresReload: true,
+      backRoute: '/our-journey'
+    }
+  },
+  {
+    path: '/prism',
+    name: 'prism',
+    component: () => import(/* webpackChunkName: "prism" */ '../views/prism.vue'),
+    meta: {
+      title: 'Prisms of Perception',
+      requiresReload: true,
+      backRoute: '/our-journey'
+    }
+  },
+  {
+    path: '/infinite',
+    name: 'infinite',
+    component: () => import(/* webpackChunkName: "infinite" */ '../views/infinite.vue'),
+    meta: {
+      title: 'Infinite Affinities',
+      requiresReload: true,
+      backRoute: '/our-journey'
+    }
+  },
+  {
+    path: '/roar',
+    name: 'roar',
+    component: () => import(/* webpackChunkName: "roar" */ '../views/roar.vue'),
+    meta: {
+      title: 'Roar',
+      requiresReload: true,
+      backRoute: '/our-journey'
+    }
+  },
+  {
+    path: '/meta',
+    name: 'meta',
+    component: () => import(/* webpackChunkName: "meta" */ '../views/meta.vue'),
+    meta: {
+      title: 'Metamorphosis',
+      requiresReload: true,
+      backRoute: '/our-journey'
+    }
+  },
+  {
+    path: '/shed',
+    name: 'shed',
+    component: () => import(/* webpackChunkName: "shed" */ '../views/shed.vue'),
+    meta: {
+      title: 'Shedding Off Feathers',
+      requiresReload: true,
+      backRoute: '/our-journey'
+    }
+  }
   // *** Error404 path. This needs to be created.
   // {
   //   path: '*',
@@ -203,5 +263,20 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+router.beforeEach((to, from, next) => {
+  // Check if the target route requires a reload and we're coming from a different route that also requires reload
+  if (to.meta.requiresReload && from.meta.requiresReload && to.path !== from.path) {
+    // Force a page reload by navigating to the URL directly
+    window.location.href = to.path
+    return
+  }
+  
+  // Set page title
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  
+  next()
+})
 
 export default router;

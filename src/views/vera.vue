@@ -45,56 +45,7 @@
       </button>
     </div>
         <h2 class="section-title gallery-title">EVENT GALLERY</h2>
-        
-        <!-- Event Gallery Grid
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="@/assets/images/1000173358.jpg" alt="Event Image 1">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000173497.jpg" alt="Event Image 2">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000173499.jpg" alt="Event Image 3">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000173507.jpg" alt="Event Image 4">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000173502.jpg" alt="Event Image 5">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000173501.jpg" alt="Event Image 6">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000174005.jpeg" alt="Event Image 7">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000174015.jpeg" alt="Event Image 8">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000175124.jpg" alt="Event Image 9">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000175125.jpg" alt="Event Image 10">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000175126.jpg" alt="Event Image 11">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000175127.jpg" alt="Event Image 12">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/1000175129.jpg" alt="Event Image 13">
-          </div>
-          <div class="gallery-item">
-            <img src="@/assets/images/Picture5.jpg" alt="Event Image 14">
-          </div>
-            <div class="gallery-item">
-            <img src="@/assets/images/1000173501.jpg" alt="Event Image 6">
-          </div>
-          
-        </div>-->
+
       </div>
     </div>
 

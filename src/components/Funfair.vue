@@ -1,10 +1,3 @@
-Of course. Here is the revised code, adjusted to create a balanced and dynamic collage with the six images you've provided.
-
-This new layout uses a 3x2 grid and assigns each image a specific area to ensure they are displayed beautifully. Please make sure the image filenames in the `src` attributes match the files in your project directory.
-
-### **Complete Vue Component Code (6 Images)**
-
-```vue
 <template>
   <div class="main-image-header-container">
     <img src="@/assets/Funfair_images/fun_fair.svg" alt="Funfair Header" />

@@ -23,6 +23,8 @@
           :imageFooter="item.imageFooter" 
           :eventHeading="item.title" 
           :eventDescription="item.description"
+          @click="navigateToEvent(item.title)"
+          class="clickable-event"
         ></EventComponent>
       </div>
     </div>
@@ -33,6 +35,8 @@
         :key="index"
         :year="item.imageFooter"
         :image="item.imageURL"
+        @click="navigateToEventMobile(item.title)"
+        class="clickable-event"
       />
     </div>
   </div>
@@ -41,6 +45,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
 import Nav from '@/components/Nav.vue';
 import Footer from '@/components/Footer.vue';
 import EventComponent from '@/components/EventComponent.vue';
@@ -61,7 +66,9 @@ import year2021 from '@/assets/our_journey_images/year-2021.png';
 import year2019 from '@/assets/our_journey_images/year-2019.png';
 import year2016 from '@/assets/our_journey_images/year-2016.png';
 
+const router = useRouter();
 const isScrolled = ref(false);
+
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 10;
 };
@@ -73,6 +80,40 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
+
+// Navigation function for desktop events
+const navigateToEvent = (eventTitle) => {
+  const routeMap = {
+    "VEILED VERACITY": "vera",
+    "PRISMS OF PERCEPTION": "prism",
+    "INFINITE AFFINITIES": "infinite",
+    "ROAR": "roar",
+    "METAMORPHOSIS": "meta",
+    "SHEDDING OFF FEATHERS": "shed"
+  };
+  
+  const routeName = routeMap[eventTitle];
+  if (routeName) {
+    router.push({ name: routeName });
+  }
+};
+
+// Navigation function for mobile events
+const navigateToEventMobile = (eventTitle) => {
+  // Handle image titles (SVG imports) and regular titles
+  let mappedTitle = eventTitle;
+  
+  // If it's an image/SVG import, map it to the correct title
+  if (eventTitle === image1title) {
+    mappedTitle = "VEILED VERACITY";
+  } else if (eventTitle === image2title) {
+    mappedTitle = "INFINITE AFFINITIES";
+  } else if (eventTitle === image3title) {
+    mappedTitle = "METAMORPHOSIS";
+  }
+  
+  navigateToEvent(mappedTitle);
+};
 
 const journeyYears = [
   { year: 2024, image: year2024 },
@@ -130,6 +171,17 @@ body {
   flex-direction: row;
   justify-content: center;
   gap: 8rem;
+}
+
+/* Add clickable styles */
+.clickable-event {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickable-event:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(230, 3, 3, 0.3);
 }
 
 @media (min-width: 640px) {
@@ -215,8 +267,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 10px;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;   /* FIX */
+  align-items: flex-start;       /* FIX */
   margin-left: 3rem;
   border-radius: 10px;
 }
@@ -458,5 +510,22 @@ body {
     width: 50px;
     height: auto;
   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #413030;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ef4444;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
 }
 </style>

@@ -48,7 +48,7 @@
           <li><a href="http://localhost:8080/speakers">Speakers</a></li>
           <li><a href="http://localhost:8080/funfair">Pre-event</a></li>
           <li><a href="http://localhost:8080/our-journey">Past events</a></li>
-          <li><a href="#">Buy Tickets</a></li>
+          <li><a href="/buyMerchTickets">Buy Tickets</a></li>
         </ul>
       </div>
     </div>

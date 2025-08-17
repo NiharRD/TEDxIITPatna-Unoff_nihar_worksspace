@@ -1,10 +1,11 @@
 <template>
+    <Nav />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=EB+Garamond:wght@400;500;600&display=swap">
   <div class="theme-bg">
     <!-- Back arrow -->
-    <div class="back-arrow">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="back-arrow" @click="goBack">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
@@ -34,7 +35,7 @@
         </p>
       </div>
     <div class="top-arrow">
-      <button>
+      <button @click="scrollToTop">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
 </svg>
@@ -42,8 +43,8 @@
     </div> </div>
 
 
-    <Footer/>
   </div>
+   <Footer/>
 </template>
 
 <script>
@@ -53,7 +54,7 @@ import HomeNav from '@/components/Home.Nav.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
-  name: 'MetamorphosisView',
+  name: 'ShedView',
   components: {
     Nav,
     Footer,
@@ -73,6 +74,17 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      // Navigate back to our-journey page
+      this.$router.push('/our-journey')
+    },
+    scrollToTop() {
+      // Scroll to top of the page
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    },
     onResize() {
       this.screenWidth = window.innerWidth
       this.screenHeight = window.innerHeight
@@ -114,4 +126,19 @@ export default {
 
 <style scoped>
 @import '@/assets/css/shed.css';
+
+/* Add cursor pointer to back arrow */
+.back-arrow {
+  cursor: pointer;
+}
+
+.back-arrow:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* Add cursor pointer to top arrow button */
+.top-arrow button {
+  cursor: pointer;
+}
 </style>

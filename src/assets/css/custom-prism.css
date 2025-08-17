@@ -5,11 +5,12 @@
   overflow: hidden;
   position: relative;
   color: white;
+  top: 6vh;
 }
 
 .back-arrow {
   position: absolute;
-  top: 30px;
+  top: 10vh;
   left: 30px;
   z-index: 10;
   cursor: pointer;
@@ -22,7 +23,7 @@
 
 .content-section {
   max-width: 930px;
-  margin: 0 0 5% 3%;
+  margin: 0 0 10% 3%;
   padding: 0px 40px;
   position: relative;
   z-index: 4;
@@ -157,6 +158,7 @@
     background: linear-gradient(180deg, #000000 0%, #100101 65.07%, #200303 86.54%);
     overflow-x: hidden;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    top:-2vh;
   }
 
   .back-arrow {
@@ -382,7 +384,7 @@
     padding: 60px 20px 0;
     position: relative;
     width: 100%;
-    gap: 20px;
+    gap: 60px;
   }
 
   .hero-title {
@@ -447,7 +449,7 @@
   .content-text {
     font-size: clamp(0.8rem, 4.5vw, 1.2rem);
     line-height: 1.5;
-    padding: 0 5% 10% 5%;
+    padding: 0 10% 10% 10%;
   }
   
   .first-paragraph {
@@ -467,7 +469,7 @@
 @media (max-width: 440px) {
   .top-arrow{
     display: block;
-    padding-bottom: 15px;
+    padding-bottom: 55px;
   }
 }
 
@@ -485,6 +487,7 @@
   .upper {
     padding: 70px 15px 0;
     min-width: 100vw;
+
   }
   
   .hero-title {
@@ -530,7 +533,7 @@
   
   .top-arrow{
     display: block;
-    padding-bottom: 15px;
+    padding-bottom: 55px;
   }
   
 }

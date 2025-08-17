@@ -314,7 +314,7 @@
 }
 
 /* ================= LAPTOP RESPONSIVENESS ================= */
-@media (min-width: 768px) {
+@media (min-width: 767px) {
 
     .full-box-mobile {
       display: none;

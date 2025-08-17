@@ -314,7 +314,7 @@
 }
 
 /* ================= MOBILE RESPONSIVENESS ================= */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
     .about-header .header {
         font-size: 2rem;

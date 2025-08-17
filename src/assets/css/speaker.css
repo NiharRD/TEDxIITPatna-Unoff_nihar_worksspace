@@ -230,7 +230,7 @@ div.year-bar.sticky {
 }
 
 /* Desktop styles */
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .photo-mobile {
     display: none;
   }

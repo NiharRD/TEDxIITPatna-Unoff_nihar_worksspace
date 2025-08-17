@@ -166,7 +166,7 @@ export default {
   },
   methods: {
     checkMobile() {
-      this.isMobile = window.innerWidth <= 768
+      this.isMobile = window.innerWidth <= 767
     },
     toggleYear(year) {
       // If the clicked year is already expanded, collapse it

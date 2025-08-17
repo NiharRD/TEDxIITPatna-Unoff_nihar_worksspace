@@ -1,9 +1,10 @@
 <template>
+    <Nav />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700">
   <div class="theme-bg">
     <!-- Back arrow -->
-    <div class="back-arrow">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="back-arrow" @click="goBack">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
@@ -29,7 +30,7 @@
 
       <!-- Content section -->
       <div class="content-section">
-        <h2 class="section-title">ROAR</h2>
+        <h2 class="section-title">ROAR -2021</h2>
         <div class="content-text">
           <p class="first-paragraph">
             The 3rd edition of <span class="tedx-highlight">TEDxIIT Patna</span>, <strong>Roar – The Acoustics of Strength</strong>, celebrated the enduring spirit of resilience and the inner voice that refuses to be silenced. It echoed the truth that the stronger one's conviction, the greater their untapped potential.
@@ -40,7 +41,7 @@
         </div>
       </div>
       <div class="top-arrow">
-      <button>
+      <button @click="scrollToTop">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
 </svg>
@@ -78,6 +79,17 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      // Navigate back to our-journey page
+      this.$router.push('/our-journey')
+    },
+    scrollToTop() {
+      // Scroll to top of the page
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    },
     onResize() {
       this.screenWidth = window.innerWidth
       this.screenHeight = window.innerHeight
@@ -119,7 +131,5 @@ export default {
 
 <style scoped>
 @import '@/assets/css/roar.css';
-
-
 
 </style>

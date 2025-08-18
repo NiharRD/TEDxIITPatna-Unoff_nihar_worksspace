@@ -137,10 +137,11 @@
   width: 20px;
   height: 18px;
 }
+
 /* Tablet styles */
 @media (max-width: 1024px) {
   .back-arrow {
-    top: 20px;
+    top: 40px;
     left: 20px;
   }
   
@@ -162,7 +163,7 @@
   .upper h1 {
     position: absolute;
     left: 5%;
-    top: 30%; /* Consistent with smaller breakpoints */
+    top: 40%; /* Consistent with smaller breakpoints */
     transform: translateY(-50%);
     max-width: 60%;
     text-align: left;
@@ -200,15 +201,15 @@
   .content-text {
     font-family: 'EB Garamond', serif;
     font-weight: 400;
-    font-size: clamp(1rem, 2.2vw, 2.5rem);
+    font-size: clamp(1.7rem, 2.2vw, 2.5rem);
     line-height: 1.3;
     text-align: justify;
     letter-spacing: 0.02em;
     color: #000000;
-    padding: 0 15% 10% 15%;
+    padding: 0 10% 10% 10%;
 
     /* Added */
-    padding-bottom: 10px !important; /* Less space at bottom */
+  
   }
 
   .section-title {
@@ -228,7 +229,7 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .back-arrow {
-    top: 15px;
+    top: 40px;
     left: 15px;
   }
   
@@ -251,7 +252,7 @@
   .upper h1 {
     position: absolute;
     left: 7%;
-    top: 30%; /* Match the 480px style */
+    top: 35%; /* Match the 480px style */
     transform: translateY(-50%);
     max-width: 55%;
     text-align: left;
@@ -289,7 +290,7 @@
     text-align: justify;
     letter-spacing: 0.02em;
     color: #000000;
-    padding: 0 15% 10% 15%;
+    padding: 0 10% 10% 10%;
   }
 
   .section-title {

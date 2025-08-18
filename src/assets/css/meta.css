@@ -211,7 +211,7 @@
   }
 
   .content-text {
-    font-size: clamp(1rem, 2.2vw, 2.5rem);
+    font-size: clamp(2rem, 2.2vw, 2.5rem);
     padding: 0 10% 10% 10%;
   }
 

@@ -1,10 +1,10 @@
 <template>
-    <Nav />
+    <Nav/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700">
   <div class="theme-bg">
     <!-- Back arrow -->
     <div class="back-arrow" @click="goBack">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
@@ -45,7 +45,60 @@
       </button>
     </div>
         <h2 class="section-title gallery-title">EVENT GALLERY</h2>
+        
+        <!-- Event Gallery Grid -->
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173358.jpg" alt="Event Image 1">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173497.jpg" alt="Event Image 2">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173499.jpg" alt="Event Image 3">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173507.jpg" alt="Event Image 4">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173502.jpg" alt="Event Image 5">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173501.jpg" alt="Event Image 6">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000174005.jpeg" alt="Event Image 7">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000174015.jpeg" alt="Event Image 8">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175124.jpg" alt="Event Image 9">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175125.jpg" alt="Event Image 10">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175126.jpg" alt="Event Image 11">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175127.jpg" alt="Event Image 12">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175129.jpg" alt="Event Image 13">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175127.jpg" alt="Event Image 14">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175129.jpg" alt="Event Image 15">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175129.jpg" alt="Event Image 16">
+          </div>
 
+          
+        </div>
       </div>
     </div>
 
@@ -133,4 +186,3 @@ export default {
 <style scoped>
 @import '@/assets/css/vera.css';
 </style>
-

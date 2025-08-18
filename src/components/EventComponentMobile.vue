@@ -6,9 +6,9 @@
     <div class="image-container">
       <img :src="image" alt="Event Image" />
     </div>
-    <a class="explore-container" :href="`http://localhost:8080/pastevents/${year}`">
+    <div class="explore-container">
       Explore &gt;&gt;
-    </a>
+    </div>
   </div>
 </template>
 

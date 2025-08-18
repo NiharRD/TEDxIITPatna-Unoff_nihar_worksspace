@@ -51,14 +51,10 @@
         <div class="sidebar-events-dropdown" :class="{ 'show': clickSidebarEvent }">
             <div class="dropdown-section">
                 <div class="dropdown-title">Pre-Events</div>
-                <div class="petal-shape petal-1"></div>
-                <div class="petal-shape petal-2"></div>
-                <div class="petal-shape petal-3"></div>
             </div>
             <div class="dropdown-divider"></div>
             <div class="dropdown-section">
                 <div class="dropdown-title">Past Editions</div>
-                <div class="petal-shape petal-4"></div>
             </div>
         </div>
         <div class="sidebar-item">Speakers</div>

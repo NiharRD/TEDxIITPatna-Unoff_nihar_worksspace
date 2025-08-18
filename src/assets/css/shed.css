@@ -161,12 +161,12 @@
 /* Tablet styles */
 @media (max-width: 1024px) {
   .back-arrow {
-    top: 35px;
+    top: 40px;
     left: 20px;
   }
   
   .upper {
-    height: 80vh; /* Increased height */
+    height: 65vh; /* Increased height */
     width: 100vw;
     overflow: visible;
     padding-top: 0; /* Remove top padding */
@@ -178,7 +178,7 @@
   .upper h1 {
     position: absolute;
     left: 5%;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     max-width: 60%;
     text-align: left;
@@ -189,7 +189,7 @@
   .butterfly {
     position: absolute;
     right: -5%; /* Move to complete right */
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     width: 55%; /* Increased size */
     max-width: 350px; /* Increased max-width */
@@ -209,8 +209,8 @@
   }
 
   .content-text {
-    font-size: clamp(1rem, 2.2vw, 2.5rem);
-    padding: 0 15% 10% 15%;
+    font-size: clamp(2rem, 2.2vw, 2.5rem);
+    padding: 0 10% 10% 10%;
   }
 
   .section-title {
@@ -223,7 +223,7 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .back-arrow {
-    top: 25px;
+    top: 40px;
     left: 15px;
   }
   
@@ -273,7 +273,7 @@
   .content-text {
     font-size: clamp(0.9rem, 4vw, 1.4rem);
     line-height: 1.4;
-    padding: 0 15% 10% 15%;
+    padding: 0 10% 10% 10%;
   }
 
   .section-title {
@@ -365,9 +365,9 @@
   }
 }
 /* Very small screens */
-@media (max-width: 360px) {
+@media (max-width: 376px) {
   .back-arrow{
-    top: 4vh;
+    top: 5vh;
   }
   
   .upper {

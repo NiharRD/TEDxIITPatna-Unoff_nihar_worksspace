@@ -1,5 +1,5 @@
-.theme-bg {
-  background: linear-gradient(180deg, #080808 27.4%, #170202 47.57%, #3E0808 53.37%, #000000 73.08%, #000000 96.15%);
+.roar-theme {
+  background: linear-gradient(180deg, #080808 30.4%, #170202 50.57%, #3E0808 56.37%, #000000 76.08%, #000000 99.15%);
   min-height: 100vh;
   overflow-x: hidden;
   color: white;
@@ -8,7 +8,7 @@
   top: 4vh;
 }
 
-.back-arrow {
+.roar-back-arrow {
   position: absolute;
   top: 10vh;
   left: 30px;
@@ -17,11 +17,11 @@
   transition: opacity 0.3s ease;
 }
 
-.back-arrow:hover {
+.roar-back-arrow:hover {
   opacity: 0.7;
 }
 
-.main-container {
+.roar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,8 +30,8 @@
   margin: 0 auto;
 }
 
-/* Desktop styles (keep original design) */
-.hero-section {
+/* Desktop styles */
+.roar-hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +40,7 @@
   gap: 40px;
 }
 
-.header-section {
+.roar-header {
   flex: 1;
   text-align: left;
   position: relative;
@@ -48,30 +48,30 @@
   padding-left: 16vw;
 }
 
-.photo {
+.roar-photo {
   position: absolute;
   top: 0vh;
   left: 60vw;
   z-index: 1;
 }
 
-.photo img {
+.roar-photo img {
   width: 500px;
   height: auto;
   object-fit: contain;
 }
 
 /* Hide mobile image on desktop */
-.photo .mobile-img {
+.roar-photo .roar-mobile-img {
   display: none;
 }
 
 /* Show desktop image on desktop */
-.photo .desktop-img {
+.roar-photo .roar-desktop-img {
   display: block;
 }
 
-.roar1 {
+.roar-logo {
   position: absolute;
   top: 0;
   right: 50vw;
@@ -81,7 +81,7 @@
   object-fit: cover;
 }
 
-.content-section {
+.roar-content {
   max-width: 800px;
   text-align: left;
   line-height: 1.8;
@@ -89,7 +89,7 @@
   margin-right: 22vw;
 }
 
-.section-title {
+.roar-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(3rem, 4vw, 5.3rem);
@@ -101,7 +101,7 @@
   letter-spacing: 0.1em;
 }
 
-.content-text {
+.roar-text {
   font-family: 'EB Garamond', serif;
   font-weight: 400;
   font-size: clamp(1.1rem, 2.5vw, 3.1rem);
@@ -112,24 +112,24 @@
   margin-bottom: 30px;
 }
 
-.first-paragraph {
+.roar-para1 {
   margin-bottom: 20px;
 }
 
-.tedx-highlight {
+.roar-highlight {
   color: #ff2b06;
   font-weight: 500;
 }
 
-/* Top arrow - hidden by default, only show on max-width 360px */
-.top-arrow {
+/* Top arrow */
+.roar-top-arrow {
   display: none;
   position: relative;
   left: 85vw;
   z-index: 1;
 }
 
-.top-arrow button {
+.roar-top-arrow button {
   background: #DC2626;
   border: none;
   border-radius: 3px;
@@ -143,45 +143,65 @@
   transition: all 0.3s ease;
 }
 
-.top-arrow button:hover {
+.roar-top-arrow button:hover {
   background: #B91C1C;
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.top-arrow button svg {
+.roar-top-arrow button svg {
   color: white;
   width: 20px;
   height: 18px;
 }
+.roar-header {
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
-/* Tablet and Mobile styles (1024px and below) - Stacked layout like the image */
+.roar-header:hover {
+  color: #ff2b06;
+  text-shadow: 0 0 10px rgba(255, 43, 6, 0.7), 
+               0 0 20px rgba(255, 43, 6, 0.5);
+  animation: roarHover 0.6s ease forwards;
+}
+
+@keyframes roarHover {
+  0%   { transform: scale(1) rotate(0deg); }
+  40%  { transform: scale(1.08) rotate(-2deg); }
+  70%  { transform: scale(0.97) rotate(1deg); }
+  100% { transform: scale(1.02) rotate(0deg); }
+}
+
+
+/* Tablet and Mobile (≤1024px) */
 @media (max-width: 1024px) {
-  .back-arrow {
+  .roar-back-arrow {
     top: 50px;
     left: 20px;
     z-index: 15;
   }
   
-  .main-container {
+  .roar-container {
     padding: 0;
     align-items: stretch;
   }
   
-  .hero-section {
+  .roar-hero {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0;
-    margin-bottom: 0; /* Removed gap completely */
+    margin-bottom: 0;
     position: relative;
     height: 85vh;
     width: 100%;
   }
   
-  .header-section {
+  .roar-header {
     position: absolute;
-    top: 40%;
+    top: 27%;
     left: 10%;
     transform: translateY(-50%);
     padding-left: 0;
@@ -190,7 +210,7 @@
     z-index: 5;
   }
   
-  .roar1 {
+  .roar-logo {
     position: relative;
     top: auto;
     right: auto;
@@ -200,7 +220,7 @@
     z-index: 1;
   }
   
-  .photo {
+  .roar-photo {
     position: absolute;
     top: 0;
     left: 20%;
@@ -209,74 +229,62 @@
     z-index: 1;
   }
   
-  .photo img {
+  .roar-photo img {
     width: 100%;
-    height: 100%;
+    height: 80%;
     object-fit: cover;
     object-position: left center;
   }
   
-  /* Hide desktop image on mobile/tablet */
-  .photo .desktop-img {
-    display: none;
-  }
+  .roar-photo .roar-desktop-img { display: none; }
+  .roar-photo .roar-mobile-img { display: block; }
   
-  /* Show mobile image on mobile/tablet */
-  .photo .mobile-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left center;
-  }
-  
-  .content-section {
-    margin-right: 0;
-    margin-top: -50px; /* Pull content section up */
+  .roar-content {
+    margin-top: -14vh;
     padding: 10%;
     text-align: left;
   }
   
-  .section-title {
+  .roar-title {
     font-size: 3rem;
     margin-top: 0;
     margin-bottom: 20px;
     text-align: left;
   }
   
-  .content-text {
+  .roar-text {
     font-size: clamp(2rem, 2.2vw, 2.5rem);
     text-align: justify;
   }
 }
 
-/* Tablet and Mobile styles (768px and below) - Stacked layout like the image */
+/* Mobile (≤768px) */
 @media (max-width: 768px) {
-  .back-arrow {
+  .roar-back-arrow {
     top: 44px;
     left: 20px;
     z-index: 15;
   }
   
-  .main-container {
+  .roar-container {
     padding: 0;
     align-items: stretch;
   }
   
-  .hero-section {
+  .roar-hero {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0;
-    margin-bottom: 0; /* Removed gap completely */
+    margin-bottom: 0;
     position: relative;
     height: 85vh;
     width: 100%;
   }
   
-  .header-section {
+  .roar-header {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 10%;
     transform: translateY(-50%);
     padding-left: 0;
@@ -285,7 +293,7 @@
     z-index: 5;
   }
   
-  .roar1 {
+  .roar-logo {
     position: relative;
     top: auto;
     right: auto;
@@ -295,97 +303,86 @@
     z-index: 1;
   }
   
-  .photo {
+  .roar-photo {
     position: absolute;
     top: 0;
     left: 20%;
     width: 80%;
-    height: 100%;
+    height: 80%;
     z-index: 1;
   }
   
-  .photo img {
+  .roar-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left center;
   }
   
-  /* Hide desktop image on mobile/tablet */
-  .photo .desktop-img {
-    display: none;
-  }
+  .roar-photo .roar-desktop-img { display: none; }
+  .roar-photo .roar-mobile-img { display: block; }
   
-  /* Show mobile image on mobile/tablet */
-  .photo .mobile-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left center;
-  }
-  
-  .content-section {
-    margin-right: 0;
-    margin-top: -50px; /* Pull content section up */
+  .roar-content {
+    margin-top: -18vh;
     padding: 10%;
     text-align: left;
   }
   
-  .section-title {
+  .roar-title {
     font-size: 2rem;
     margin-top: 0;
     margin-bottom: 20px;
     text-align: left;
   }
   
-  .content-text {
+  .roar-text {
     font-size: clamp(0.9rem, 4vw, 1.4rem);
     line-height: 1.4;
     text-align: justify;
   }
 }
 
-/* Small mobile styles (480px and below) */
+/* Small Mobile (≤480px) */
 @media (max-width: 480px) {
-  .back-arrow {
+  .roar-back-arrow {
     top: 35px;
     left: 15px;
     z-index: 15;
   }
   
-  .hero-section {
+  .roar-hero {
     height: 50vh;
-    margin-bottom: 0; /* No gap */
+    margin-bottom: 0;
   }
   
-  .header-section {
+  .roar-header {
     width: 40%;
     left: 7%;
     top: 35%;
   }
   
-  .photo {
+  .roar-photo {
     left: 25%;
     width: 75%;
+    height: 90%;
   }
   
-  .roar1 {
+  .roar-logo {
     max-width: 350px;
   }
   
-  .content-section {
-    padding: 0 12vw;
-    margin-top: 30px; /* Pull content section up */
+  .roar-content {
+    padding: 0 10%;
+    margin-top: 0px;
   }
   
-  .section-title {
+  .roar-title {
     font-size: clamp(1.5rem, 7vw, 2.5rem);
     margin-bottom: 18px;
     margin-top: 0;
   }
   
-  .content-text {
+  .roar-text {
     font-size: clamp(0.8rem, 4.5vw, 1.2rem);
     line-height: 1.5;
     padding-bottom: 10%;
@@ -393,63 +390,62 @@
 }
 
 @media (max-width: 440px) {
-  .theme-bg{
-   background: linear-gradient(180deg, #000000 0%, #100101 35.07%, #200303 86.54%);
-   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  .roar-theme {
+    background: linear-gradient(180deg, #000000 0%, #100101 35.07%, #200303 86.54%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   
-/* Show top arrow only on screens 360px and below */
-  .top-arrow {
+  .roar-top-arrow {
     display: block;
     padding-bottom: 40px;
   }
 }
 
-/* Extra small screens */
+/* Extra Small (≤360px) */
 @media (max-width: 360px) {
-  .back-arrow{
+  .roar-back-arrow {
     top: 5vh;
   }
-  .hero-section {
+  
+  .roar-hero {
     height: 50vh;
-    margin-bottom: 0; /* No gap */
+    margin-bottom: 0;
   }
   
-  .header-section {
+  .roar-header {
     width: 40%;
     left: 7%;
     top: 33%;
   }
   
-  .photo {
+  .roar-photo {
     left: 15%;
     width: 100%;
     height: 100%;
   }
   
-  .roar1 {
+  .roar-logo {
     max-width: 350px;
   }
   
-  .content-section {
-    margin-top: -30px; /* Pull content section up */
+  .roar-content {
+    margin-top: 0px;
   }
   
-  .section-title {
+  .roar-title {
     font-size: clamp(1.3rem, 8vw, 2rem);
-    padding: 0% 0%;
+    padding: 0;
     margin-top: 0;
   }
   
-  .content-text {
+  .roar-text {
     font-size: clamp(0.75rem, 5vw, 1.1rem);
-    padding: 0% 0%;
+    padding: 0;
     padding-bottom: 10%;
   }
 
-  .top-arrow{
+  .roar-top-arrow {
     display: block;
     margin-bottom: 30px;
   }
-  
 }

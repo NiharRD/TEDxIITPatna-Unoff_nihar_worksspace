@@ -4,7 +4,9 @@
         'nav-azure': isInfinitePage 
     }">
         <div class="nav-logo-container">
-            <img src="../assets/navbar/tedx-logo.svg" class="nav-logo" alt="TEDx Logo"/>
+            <a href="http://localhost:8080/">
+                <img src="../assets/navbar/tedx-logo.svg" class="nav-logo" alt="TEDx Logo"/>
+            </a>
         </div>
 
         <div class="navbar-items-container">

@@ -61,7 +61,7 @@
           <li><a href="http://localhost:8080/speakers"><p style="color: white; font-weight: bold">Speakers</p></a></li>
           <li><a href="http://localhost:8080/funfair"><p style="color: white; font-weight: bold">Pre-event</p></a></li>
           <li><a href="http://localhost:8080/our-journey"><p style="color: white; font-weight: bold">Past events</p></a></li>
-          <li><a href="#"><p style="color: white; font-weight: bold">Buy Tickets</p></a></li>
+          <li><a href="/buyMerchTickets"><p style="color: white; font-weight: bold">Buy Tickets</p></a></li>
         </ul>
       </div>
 

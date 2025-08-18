@@ -28,7 +28,7 @@
                 </div>
             </div>
             <a class="navbar-item" href="http://localhost:8080/speakers">Speakers</a>
-            <div class="navbar-item navbar-buy-tickets">Buy Tickets</div>
+            <div class="navbar-item navbar-buy-tickets"><a href="http://localhost:8080/buyMerchTickets">Buy Tickets</a></div>
         </div>
     </div>
 
@@ -42,8 +42,8 @@
         'is-open': clickMenu,
         'sidebar-azure': isInfinitePage 
     }">
-        <div class="sidebar-item">Home</div>
-        <div class="sidebar-item">About Us</div>
+        <div class="sidebar-item"><a href="http://localhost:8080/">Home</a></div>
+        <div class="sidebar-item"><a href="http://localhost:8080/about">About Us</a></div>
         <div class="sidebar-item event" @click="handleSidebarEvent">
             Events
             <img src="../assets/navbar/down-svg.svg" class="dropdown-icon" :class="{ 'event-click': clickSidebarEvent, 'event-reverse-click': !clickSidebarEvent && countSidebar > 0 }" alt="Dropdown Arrow"/>
@@ -52,15 +52,15 @@
         <!-- Sidebar Events Dropdown Menu -->
         <div class="sidebar-events-dropdown" :class="{ 'show': clickSidebarEvent }">
             <div class="dropdown-section">
-                <div class="dropdown-title">Pre-Events</div>
+                <div class="dropdown-title"><a href="http://localhost:8080/funfair">Pre-Events</a></div>
             </div>
             <div class="dropdown-divider"></div>
             <div class="dropdown-section">
-                <div class="dropdown-title">Past Editions</div>
+                <div class="dropdown-title"><a href="http://localhost:8080/our-journey">Past Editions</a></div>
             </div>
         </div>
-        <div class="sidebar-item">Speakers</div>
-        <div class="sidebar-item sidebar-buy-tickets">Buy Tickets</div>
+        <div class="sidebar-item"><a href="http://localhost:8080/speakers">Speakers</a></div>
+        <div class="sidebar-item"><a href="http://localhost:8080/buyMerchTickets">Buy Tickets</a></div>
     </div>
 </template>
 
@@ -235,6 +235,13 @@ body {
 
 .navbar-buy-tickets {
     background-color: red;
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+}
+
+.navbar-buy-tickets:hover {
+    background-color: white;
+    color: red;
     border-radius: 50px;
     padding: 0.6rem 1.5rem;
 }

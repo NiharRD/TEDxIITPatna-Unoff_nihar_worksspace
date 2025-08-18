@@ -344,7 +344,7 @@
   .content-text {
     font-size: clamp(0.85rem, 4vw, 1.3rem);
     line-height: 1.5;
-    padding: 0 5% 10% 5%;
+    padding: 0 10% 10% 10%;
   }
 
   .socrates-quote {
@@ -517,7 +517,7 @@
   
   .content-text {
     font-size: clamp(0.75rem, 5vw, 1.1rem);
-    padding: 0 5% 10% 5%;
+    padding: 0 10% 10% 10%;
   }
 
   .first-paragraph {
@@ -540,5 +540,3 @@
   }
   
 }
-
-

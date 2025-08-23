@@ -10,12 +10,34 @@
   />
   <div class="theme-bg">
     <div class="photo">
-      <img src="@/assets/images/home_theme_reveal.jpg" />
+      <img src="@/assets/images/kaleidoscopic_interludes.png" />
     </div>
 
-    <div class="photo-mobile">
-      <img src="@/assets/images/home_theme_reveal_mobile.png" />
+    <div class="theme">
+      <p class="theme-text"><p>We are thrilled to unveil the theme for the 7th edition of TEDxIITPatna: <p style="font-weight: bold;">"Kaleidoscopic Interludes"</p></p><p>"Kaleidoscopic" evokes vibrant, ever-shifting patterns—glimpses of identity refracted through time and experience. "Interludes" suggests pauses in life's rhythm—transitional moments that carry quiet transformation.</p><p>Kaleidoscopic Interludes invites us to explore the subtle shifts that shape who we are—not through grand events, but through passing decisions, contradictions, and silences. It speaks to the fragments in between: the times when we are not fixed, but continually becoming.</p><p>In these fluid intervals, where identity moves between clarity and ambiguity, we uncover the quiet beauty of being unfinished. This theme calls us to embrace complexity and reflect on the spaces where meaning flickers into view.</p></p>
     </div>
+
+    <section class="theme-video-section">
+      <div class="theme-video-text">
+        <h1>Theme Video</h1>
+        <p>Our theme shapes the way we look at ideas, people, and the future. Watch the video to experience the thought that fuels TEDxIITPatna 2025.</p>
+        <a href="https://www.instagram.com/reel/DNsmdUtWKzG/" class="watch-btn">Watch Now</a>
+      </div>
+      <div class="theme-video-placeholder">
+        <img src="@/assets/images/thumbnail.png" />
+      </div>
+    </section>
+
+    <section class="theme-video-section-mobile">
+      <div class="theme-video-text-mobile">
+        <h1>Theme Video</h1>
+        <p>Our theme shapes the way we look at ideas, people, and the future. Watch the video to experience the thought that fuels TEDxIITPatna 2025.</p>
+        <a href="https://www.instagram.com/reel/DNsmdUtWKzG/" class="watch-btn-mobile">Watch Now</a>
+      </div>
+      <div class="theme-video-placeholder-mobile">
+        <img src="@/assets/images/thumbnail.png" />
+      </div>
+    </section>
 
     <section class="speaker-application">
       <div class="title">Interested In Becoming a Speaker?</div>

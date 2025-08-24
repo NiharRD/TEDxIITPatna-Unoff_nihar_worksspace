@@ -21,7 +21,7 @@
       <div class="theme-video-text">
         <h1>Theme Video</h1>
         <p>Our theme shapes the way we look at ideas, people, and the future. Watch the video to experience the thought that fuels TEDxIITPatna 2025.</p>
-        <a href="https://www.instagram.com/reel/DNsmdUtWKzG/" class="watch-btn">Watch Now</a>
+        <a href="https://youtu.be/T6eNDEogrZI" class="watch-btn">Watch Now</a>
       </div>
       <div class="theme-video-placeholder">
         <img src="@/assets/images/thumbnail.png" />
@@ -32,7 +32,7 @@
       <div class="theme-video-text-mobile">
         <h1>Theme Video</h1>
         <p>Our theme shapes the way we look at ideas, people, and the future. Watch the video to experience the thought that fuels TEDxIITPatna 2025.</p>
-        <a href="https://www.instagram.com/reel/DNsmdUtWKzG/" class="watch-btn-mobile">Watch Now</a>
+        <a href="https://youtu.be/T6eNDEogrZI" class="watch-btn-mobile">Watch Now</a>
       </div>
       <div class="theme-video-placeholder-mobile">
         <img src="@/assets/images/thumbnail.png" />

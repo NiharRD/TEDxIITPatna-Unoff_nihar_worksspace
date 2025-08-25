@@ -1,10 +1,26 @@
+/* Main background - now black */
+.theme-bg {
+  background-color: #000000;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Ensure body and html are also black */
+body, html {
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
 .speaker-application {
   text-align: center;
   padding: 4rem 2rem;
+  background-color: transparent; /* Inherit black background */
 }
 
 .speaker-application .title {
     font-size: 2rem;
+    color: #ffffff; /* Make text visible on black background */
 }
 
 .speaker-application .link {
@@ -12,7 +28,7 @@
   align-items: center;
   justify-content: center;
   background-color: #ff2b1d;
-  /* font-weight: bold; */
+  color: #ffffff; /* Ensure text is white */
   text-decoration: none;
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -45,20 +61,24 @@
 }
 
 .speaker-application .link:hover {
-  background-color: white;
+  background-color: #ffffff;
+  color: #ff2b1d; /* Red text on white hover */
 }
 
 .sponsor {
   width: 100%;
   margin: 2rem 0;
+  background-color: transparent; /* Inherit black background */
 }
 
 .sponsor h1 {
   padding-left: 1rem;
+  color: #ffffff; /* White text on black background */
 }
 
 .partner h1 {
   padding-left: 1rem;
+  color: #ffffff; /* White text on black background */
 }
 
 .sponsor img {
@@ -90,6 +110,7 @@
 .partner {
   width: 100%;
   margin: 2rem 0;
+  background-color: transparent; /* Inherit black background */
 }
 
 .scroll-row {
@@ -124,6 +145,7 @@
 .theme {
   padding-left: 8rem;
   padding-right: 8rem;
+  background-color: transparent; /* Inherit black background */
 }
 
 .theme p {
@@ -134,12 +156,16 @@
   font-size: 1.5rem;
 }
 
+/* Update theme video section to work better on black background */
 .theme-video-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 60px 10%;
-  gap: 100px;
+  gap: 40px;
+  background: linear-gradient(to right, #ff5f6d, #ffc371); /* Keep gradient for contrast */
+  text-align: center;
 }
 
 .theme-video-text {
@@ -149,48 +175,128 @@
 .theme-video-text h1 {
   font-size: 48px;
   font-weight: 800;
-  background: linear-gradient(to right, #FFFFFF, #FFA6A6);
+  margin-bottom: 16px;
+  background: linear-gradient(to right, #fff, #eee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0 0 20px;
 }
 
 .theme-video-text p {
   font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  background: linear-gradient(to right, #FFFFFF, #999999);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.theme-video-text .watch-btn {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #FF0000;
   color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
+}
+
+/* Video embed box */
+.youtube-embed {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Responsive 16:9 box */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Thumbnail */
+.youtube-thumbnail {
+  position: relative;
   cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s ease;
+}
+.youtube-thumbnail img {
+  width: 100%;
+  display: block;
+}
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.theme-video-text .watch-btn:hover {
-  background-color: #cc0000;
+/* Additional desktop styles with black background support */
+@media (min-width: 1024px) {
+  .theme-video-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 10%;
+    gap: 100px;
+    flex-direction: row; /* Side by side on desktop */
+  }
+
+  .theme-video-text {
+    max-width: 600px;
+  }
+
+  .theme-video-text h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(to right, #FFFFFF, #FFA6A6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 20px;
+  }
+
+  .theme-video-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #FFFFFF, #999999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .theme-video-text .watch-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #FF0000;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .theme-video-text .watch-btn:hover {
+    background-color: #cc0000;
+  }
+
+  .theme-video-placeholder img {
+    width: 600px;
+    height: 147px;
+    background-color: #1a0a0a;
+    border: 1px solid #FFC0CB;
+    border-radius: 8px;
+  }
 }
 
-.theme-video-placeholder img {
-  width: 600px;
-  height: 147px;
-  background-color: #1a0a0a;
-  border: 1px solid #FFC0CB;
-  border-radius: 8px;
-}
-
-/* ================= LAPTOP RESPONSIVENESS ================= */
+/* Hide mobile theme video section on desktop */
 @media (min-width: 1023px) {
   .theme-video-section-mobile {
     display: none;

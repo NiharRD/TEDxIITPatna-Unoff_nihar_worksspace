@@ -170,10 +170,8 @@ const handleFinalBuyTicket = (ticketData) => {
         </div>
         <div v-else class="no-tickets">
           <div class="no-tickets-content">
-            <h2>🎫 No Tickets Available</h2>
-            <p>
-              Tickets are not available at the moment. Please check back later!
-            </p>
+            <h2>🎫 Tickets Releasing Soon!!</h2>
+            <p>Keep your eyes on the website for further updates.</p>
           </div>
         </div>
       </div>

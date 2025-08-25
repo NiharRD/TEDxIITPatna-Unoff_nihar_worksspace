@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import LandingPage from "../components/merch/landing_page.vue";
 import MerhItemCards from "../components/merch/merh_item_cards.vue";
 import ExpandedMerchView from "../components/merch/expanded_merch_view.vue";
+import NoMerchAvailable from "../components/merch/NoMerchAvailable.vue";
 import TicketsShowPage from "../components/merch/tickets/tickets_show_page.vue";
 import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
@@ -102,20 +103,26 @@ const handleBuyTicket = (ticketData) => {
       </div>
 
       <!-- Merchandise List View -->
-      <div v-if="!showExpandedView" class="app-container">
-        <MerhItemCards
-          v-for="item in items"
-          :key="item.id"
-          :name="item.name"
-          :offerPrice="item.offerPrice"
-          :originalPrice="item.originalPrice"
-          :image="item.image"
-          :type="item.type"
-          :size="item.size"
-          :description="item.description"
-          :paymentLink="item.paymentLink"
-          @view-more="handleViewMore"
-        />
+      <div v-if="!showExpandedView">
+        <!-- Show merchandise items if available -->
+        <div v-if="items.length > 0" class="app-container">
+          <MerhItemCards
+            v-for="item in items"
+            :key="item.id"
+            :name="item.name"
+            :offerPrice="item.offerPrice"
+            :originalPrice="item.originalPrice"
+            :image="item.image"
+            :type="item.type"
+            :size="item.size"
+            :description="item.description"
+            :paymentLink="item.paymentLink"
+            @view-more="handleViewMore"
+          />
+        </div>
+
+        <!-- Show no merch available component when no items -->
+        <NoMerchAvailable v-else />
       </div>
 
       <!-- Expanded Merchandise View -->

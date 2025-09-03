@@ -5,11 +5,12 @@ import { ref } from "vue";
 const activeSection = ref("home");
 
 // Emit events for navigation
-const emit = defineEmits(["navigate-to-merch", "navigate-to-tickets"]);
+// const emit = defineEmits(["navigate-to-merch", "navigate-to-tickets"]);
+const emit = defineEmits(["navigate-to-tickets"]);
 
-const navigateToMerch = () => {
-  emit("navigate-to-merch");
-};
+// const navigateToMerch = () => {
+//   emit("navigate-to-merch");
+// };
 
 const navigateToTickets = () => {
   emit("navigate-to-tickets");
@@ -17,7 +18,7 @@ const navigateToTickets = () => {
 
 // Hero section data
 const heroData = {
-  title: "TEDx IIT Patna",
+  title: "TEDxIITPatna",
   subtitle: "Ideas Worth Spreading",
   description:
     "Join us for an extraordinary experience of innovative ideas, inspiring talks, and meaningful connections.",
@@ -30,7 +31,7 @@ const features = [
   {
     icon: "🎫",
     title: "Event Tickets",
-    description: "Secure your spot at TEDx IIT Patna. Limited seats available.",
+    description: "Secure your spot at TEDxIITPatna. Limited seats available.",
     action: "Get Tickets",
     actionType: "tickets",
   },
@@ -38,7 +39,7 @@ const features = [
     icon: "👕",
     title: "Official Merchandise",
     description:
-      "Exclusive TEDx IIT Patna branded items. Hoodies, T-shirts, and more.",
+      "Exclusive TEDxIITPatna branded items. Hoodies, T-shirts, and more.",
     action: "Get Merchandises",
     actionType: "merch",
   },
@@ -60,7 +61,7 @@ const stats = [
       <div class="section-header">
         <h2 class="section-title">What We Offer</h2>
         <p class="section-description">
-          Experience TEDx IIT Patna through our exclusive offerings
+          Experience TEDxIITPatna through our exclusive offerings
         </p>
       </div>
 
@@ -73,20 +74,26 @@ const stats = [
           <div class="feature-icon">{{ feature.icon }}</div>
           <h3 class="feature-title">{{ feature.title }}</h3>
           <p class="feature-description">{{ feature.description }}</p>
+
+          <!-- Ticket Button (Unchanged) -->
           <button
-            @click="
-              feature.actionType === 'tickets'
-                ? navigateToTickets()
-                : navigateToMerch()
-            "
-            class="feature-btn"
-            :class="{
-              'btn-tickets': feature.actionType === 'tickets',
-              'btn-merch': feature.actionType === 'merch',
-            }"
+            v-if="feature.actionType === 'tickets'"
+            @click="navigateToTickets"
+            class="feature-btn btn-tickets"
           >
             {{ feature.action }}
           </button>
+
+          <!-- Merch Hyperlink Button -->
+          <a
+            v-else-if="feature.actionType === 'merch'"
+            href="https://shorturl.at/8nkiA"
+            class="feature-btn btn-merch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ feature.action }}
+          </a>
         </div>
       </div>
     </section>
@@ -405,9 +412,16 @@ const stats = [
   border: none;
   border-radius: 8px;
   font-weight: 600;
+  font-size: 1rem;       /* ✅ uniform font size */
+  line-height: 1.5;      /* ✅ consistent line height */
+  font-family: inherit;  /* ✅ same font family as rest of site */
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  display: inline-block; 
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .btn-tickets {

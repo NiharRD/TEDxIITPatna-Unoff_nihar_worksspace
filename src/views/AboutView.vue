@@ -40,7 +40,7 @@
           <p>Garvit Nahta<br><p style="font-weight: normal">(Licensee)</p></p>
         </div>
       </div>
-      <h3>Organisers</h3>
+      <h3>Organizers</h3>
     </div>
 
     <div class="white-border-box">
@@ -199,7 +199,7 @@
             <p class="oc">Garvit Nahta<br><p style="font-weight: normal;">(Licensee)</p></p>
           </div>
         </div>
-        <h3>Organisers</h3>
+        <h3>Organizers</h3>
       </div>
     </div>
 

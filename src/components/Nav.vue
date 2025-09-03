@@ -7,7 +7,7 @@
     }"
   >
     <div class="nav-logo-container">
-      <a href="http://localhost:8080/">
+      <a href="/">
         <img
           src="../assets/navbar/tedx-logo.svg"
           class="nav-logo"
@@ -17,8 +17,8 @@
     </div>
 
     <div class="navbar-items-container">
-      <a class="navbar-item" href="http://localhost:8080/">Home</a>
-      <a class="navbar-item" href="http://localhost:8080/about">About Us</a>
+      <a class="navbar-item" href="/">Home</a>
+      <a class="navbar-item" href="/about">About Us</a>
       <div class="navbar-item event" @click="handleEvent">
         Events
         <img
@@ -35,20 +35,20 @@
       <!-- Events Dropdown Menu -->
       <div class="events-dropdown" :class="{ show: clickEvent }">
         <div class="dropdown-section">
-          <a class="dropdown-title" href="http://localhost:8080/funfair"
+          <a class="dropdown-title" href="/funfair"
             >Pre-Events</a
           >
         </div>
         <div class="dropdown-divider"></div>
         <div class="dropdown-section">
-          <a class="dropdown-title" href="http://localhost:8080/our-journey"
+          <a class="dropdown-title" href="/our-journey"
             >Past Editions</a
           >
         </div>
       </div>
-      <a class="navbar-item" href="http://localhost:8080/speakers">Speakers</a>
+      <a class="navbar-item" href="/speakers">Speakers</a>
       <div class="navbar-item navbar-buy-tickets">
-        <a href="http://localhost:8080/buyMerchTickets">Buy Now</a>
+        <a href="/buyMerchTickets">Buy Now</a>
       </div>
     </div>
   </div>
@@ -72,9 +72,9 @@
       'sidebar-azure': isInfinitePage,
     }"
   >
-    <div class="sidebar-item"><a href="http://localhost:8080/">Home</a></div>
+    <div class="sidebar-item"><a href="/">Home</a></div>
     <div class="sidebar-item">
-      <a href="http://localhost:8080/about">About Us</a>
+      <a href="/about">About Us</a>
     </div>
     <div class="sidebar-item event" @click="handleSidebarEvent">
       Events
@@ -93,21 +93,21 @@
     <div class="sidebar-events-dropdown" :class="{ show: clickSidebarEvent }">
       <div class="dropdown-section">
         <div class="dropdown-title">
-          <a href="http://localhost:8080/funfair">Pre-Events</a>
+          <a href="/funfair">Pre-Events</a>
         </div>
       </div>
       <div class="dropdown-divider"></div>
       <div class="dropdown-section">
         <div class="dropdown-title">
-          <a href="http://localhost:8080/our-journey">Past Editions</a>
+          <a href="/our-journey">Past Editions</a>
         </div>
       </div>
     </div>
     <div class="sidebar-item">
-      <a href="http://localhost:8080/speakers">Speakers</a>
+      <a href="/speakers">Speakers</a>
     </div>
     <div class="sidebar-item">
-      <a href="http://localhost:8080/buyMerchTickets">Buy Now</a>
+      <a href="/buyMerchTickets">Buy Now</a>
     </div>
   </div>
 </template>

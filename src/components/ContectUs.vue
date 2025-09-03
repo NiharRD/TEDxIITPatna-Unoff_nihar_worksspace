@@ -344,7 +344,7 @@ const handlePartnerSubmit = async () => {
       };
 
       const response = await axios.post(
-        "http://localhost:8000/api/partnerWithUs",
+        "/api/partnerWithUs",
         payload
       );
 
@@ -451,7 +451,7 @@ const handleContactSubmit = async () => {
 
   // Submit to backend
   try {
-    const response = await axios.post("http://localhost:8000/api/contactUs", {
+    const response = await axios.post("/api/contactUs", {
       name: contactForm.value.name,
       email: contactForm.value.email,
       message: contactForm.value.suggestion,

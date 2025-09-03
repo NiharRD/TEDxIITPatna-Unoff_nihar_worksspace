@@ -55,7 +55,7 @@ const getSessionTypeFromName = (ticketName) => {
 onMounted(async () => {
   try {
     console.log("🔄 Fetching tickets from API...");
-    const response = await fetch("http://localhost:8000/api/tickets");
+    const response = await fetch("/api/tickets");
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

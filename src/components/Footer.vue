@@ -44,10 +44,10 @@
       <div class="footer-section footer-section-no footer-right">
         <h2>Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="http://localhost:8080/about">About us</a></li>
-          <li><a href="http://localhost:8080/speakers">Speakers</a></li>
-          <li><a href="http://localhost:8080/funfair">Pre-event</a></li>
-          <li><a href="http://localhost:8080/our-journey">Past events</a></li>
+          <li><a href="/about">About us</a></li>
+          <li><a href="/speakers">Speakers</a></li>
+          <li><a href="/funfair">Pre-event</a></li>
+          <li><a href="/our-journey">Past events</a></li>
           <li><a href="/buyMerchTickets">Buy Tickets</a></li>
         </ul>
       </div>
@@ -57,10 +57,10 @@
       <div class="footer-section-mobile footer-right-mobile">
         <h2 style="font-weight: normal;">Quick Links</h2>
         <ul class="footer-links-mobile">
-          <li><a href="http://localhost:8080/about"><p style="color: white; font-weight: bold">About us</p></a></li>
-          <li><a href="http://localhost:8080/speakers"><p style="color: white; font-weight: bold">Speakers</p></a></li>
-          <li><a href="http://localhost:8080/funfair"><p style="color: white; font-weight: bold">Pre-event</p></a></li>
-          <li><a href="http://localhost:8080/our-journey"><p style="color: white; font-weight: bold">Past events</p></a></li>
+          <li><a href="/about"><p style="color: white; font-weight: bold">About us</p></a></li>
+          <li><a href="/speakers"><p style="color: white; font-weight: bold">Speakers</p></a></li>
+          <li><a href="/funfair"><p style="color: white; font-weight: bold">Pre-event</p></a></li>
+          <li><a href="/our-journey"><p style="color: white; font-weight: bold">Past events</p></a></li>
           <li><a href="/buyMerchTickets"><p style="color: white; font-weight: bold">Buy Tickets</p></a></li>
         </ul>
       </div>

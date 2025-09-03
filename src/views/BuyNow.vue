@@ -17,7 +17,7 @@ const showExpandedView = ref(false);
 onMounted(async () => {
   try {
     console.log("🔄 Fetching from API...");
-    const response = await fetch("http://localhost:8000/api/merch");
+    const response = await fetch("/api/merch");
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

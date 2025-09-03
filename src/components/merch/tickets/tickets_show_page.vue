@@ -140,7 +140,7 @@ const handleFinalBuyTicket = (ticketData) => {
     <div v-else>
       <!-- Page Header -->
       <div class="page-header">
-        <h1 class="page-title">TEDx IIT Patna 2025 Tickets</h1>
+        <h1 class="page-title">TEDxIITPatna 2025 Tickets</h1>
         <p class="page-description">
           Join us for an inspiring day of ideas worth spreading. Choose your
           ticket type below.

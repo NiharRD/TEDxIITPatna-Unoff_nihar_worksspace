@@ -99,7 +99,7 @@ const handleBuyTicket = (ticketData) => {
         <button @click="handleBackToLanding" class="back-to-landing-btn">
           ← Back to Home
         </button>
-        <h1 class="section-title">TEDx IIT Patna Merchandise</h1>
+        <h1 class="section-title">TEDxIITPatna Merchandise</h1>
       </div>
 
       <!-- Merchandise List View -->
@@ -148,7 +148,7 @@ const handleBuyTicket = (ticketData) => {
         <button @click="handleBackToLanding" class="back-to-landing-btn">
           ← Back to Home
         </button>
-        <h1 class="section-title">TEDx IIT Patna Tickets</h1>
+        <h1 class="section-title">TEDxIITPatna Tickets</h1>
       </div>
 
       <!-- Tickets Show Page -->

@@ -10,7 +10,11 @@
         <div class="footer-logo">
           <!-- <span class="red"><strong>TED</strong><sup>x</sup></span><span class="small">IITPatna</span> -->
           <!-- <p class="subtext"><span class="red">X</span> = independently organized TED event</p> -->
-          <img src="@/assets/images/tedx_iitplogo2023.png" alt="TEDxIITPatna" class="logo" />
+          <img
+          src="../assets/navbar/tedx-logo.svg"
+          class="nav-logo"
+          alt="TEDx Logo"
+        />
         </div>
         <ul class="footer-links">
           <li><a href="https://www.ted.com/" target="_blank">TED Website</a></li>

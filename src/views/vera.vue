@@ -48,23 +48,57 @@
         <h2 class="vera-title vera-gallery-title">EVENT GALLERY</h2>
 
         <!-- Event Gallery Grid -->
-        <div class="vera-gallery">
-          <div class="vera-gallery-item"><img src="@/assets/images/1000173358.jpg" alt="Gallery Image 1"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000173497.jpg" alt="Gallery Image 2"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000173499.jpg" alt="Gallery Image 3"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000173507.jpg" alt="Gallery Image 4"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000173502.jpg" alt="Gallery Image 5"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000173501.jpg" alt="Gallery Image 6"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000174005.jpeg" alt="Gallery Image 7"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000174015.jpeg" alt="Gallery Image 8"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175124.jpg" alt="Gallery Image 9"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175125.jpg" alt="Gallery Image 10"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175126.jpg" alt="Gallery Image 11"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175127.jpg" alt="Gallery Image 12"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175129.jpg" alt="Gallery Image 13"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175127.jpg" alt="Gallery Image 14"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175129.jpg" alt="Gallery Image 15"></div>
-          <div class="vera-gallery-item"><img src="@/assets/images/1000175129.jpg" alt="Gallery Image 16"></div>
+           <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173358.jpg" alt="Event Image 1">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/130141.png" alt="Event Image 2">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/meet_the_team.png" alt="Event Image 3">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/131319.png" alt="Event Image 4">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173502.jpg" alt="Event Image 5">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000173501.jpg" alt="Event Image 6">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000174005.jpeg" alt="Event Image 7">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000174015.jpeg" alt="Event Image 8">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175124.jpg" alt="Event Image 9">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175125.jpg" alt="Event Image 10">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/1000175126.jpg" alt="Event Image 11">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/130245.png" alt="Event Image 12">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/131121.png" alt="Event Image 13">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/130038.png" alt="Event Image 14">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/130257.png" alt="Event Image 15">
+          </div>
+          <div class="gallery-item">
+            <img src="@/assets/images/130218.png" alt="Event Image 16">
+          </div>
+
+          
         </div>
       </div>
     </div>
@@ -153,3 +187,4 @@ export default {
 <style scoped>
 @import '@/assets/css/vera.css';
 </style>
+

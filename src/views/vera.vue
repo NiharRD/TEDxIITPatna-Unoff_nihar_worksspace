@@ -1,54 +1,53 @@
 <template>
     <Nav/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700">
-  <div class="vera-theme">
+  <div class="theme-bg">
     <!-- Back arrow -->
-    <div class="vera-back" @click="goBack">
+    <div class="back-arrow" @click="goBack">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
 
     <!-- Main content container -->
-    <div class="vera-wrapper">
+    <div class="main-container">
       <!-- Hero section with header and image side by side -->
-      <div class="vera-hero">
+      <div class="hero-section">
         <!-- Header section with ROAR title - Left side -->
-        <div class="vera-header">
-          <img src="@/assets/images/TEXT.png" class="vera-logo" alt="Veiled Veracity Title" />
+        <div class="header-section">
+        <img src="@/assets/images/TEXT.png" class="roar1" />
         </div>
 
-        <!-- Visual section with image - Right side -->
-        <div class="vera-hero-img">
-          <!-- Desktop image -->
-          <img src="@/assets/images/tree.png" alt="Event Tree Illustration" class="vera-desktop-img" />
-          <!-- Mobile/Tablet image -->
-          <img src="@/assets/images/treemobile.png" alt="Event Tree Mobile Illustration" class="vera-mobile-img" />
-        </div>
+<!-- Visual section with image - Right side -->
+  <div class="photo">
+    <!-- Desktop image (visible on screens > 768px) -->
+    <img src="@/assets/images/tree.png" alt="ROAR Event Image" class="desktop-img" />
+    <!-- Mobile/Tablet image (visible on screens ≤ 768px) -->
+    <img src="@/assets/images/treemobile.png" alt="ROAR Event Image" class="mobile-img" />
+  </div>
+
       </div>
 
       <!-- Content section -->
-      <div class="vera-content">
-        <h2 class="vera-title">VEILED VERACITY</h2>
-        <div class="vera-text">
-          <p class="vera-paragraph">
-            "Veiled Veracity" reminds us that amidst confusion and uncertainty, there's always the beacon of hope guiding us towards clarity and strength. It challenges us to confront the illusions that shape our lives and embrace the courage to seek out authentic understanding. <br> "Veiled" suggests that beneath the surface lies something waiting to be revealed, similar to a treasure hidden behind a curtain. "Veracity" underscores the importance of truthfulness and honesty in our exploration.
-         </p>
+      <div class="content-section">
+        <h2 class="section-title">VEILED VERACITY</h2>
+        <div class="content-text">
+          <p class="first-paragraph">
+            "Veiled Veracity" reminds us that amidst confusion and uncertainty, there's always the beacon of hope guiding us towards clarity and strength. It challenges us to confront the illusions that shape our lives and embrace the courage to seek out authentic understanding.
+           <br> "Veiled" suggests that beneath the surface lies something waiting to be revealed, similar to a treasure hidden behind a curtain. "Veracity" underscores the importance of truthfulness and honesty in our exploration.
+          </p>
         </div>
-
-        <!-- Scroll to Top -->
-        <div class="vera-top-btn">
-          <button @click="scrollToTop">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
-            </svg>
-          </button>
-        </div>
-
-        <h2 class="vera-title vera-gallery-title">EVENT GALLERY</h2>
-
+         <div class="top-arrow">
+      <button @click="scrollToTop">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+</svg>
+      </button>
+    </div>
+        <h2 class="section-title gallery-title">EVENT GALLERY</h2>
+        
         <!-- Event Gallery Grid -->
-           <div class="gallery-grid">
+        <div class="gallery-grid">
           <div class="gallery-item">
             <img src="@/assets/images/1000173358.jpg" alt="Event Image 1">
           </div>
@@ -102,10 +101,10 @@
         </div>
       </div>
     </div>
+
   </div>
   <Footer/>
 </template>
-
 
 <script>
 // @ is an alias to /src
@@ -187,4 +186,3 @@ export default {
 <style scoped>
 @import '@/assets/css/vera.css';
 </style>
-

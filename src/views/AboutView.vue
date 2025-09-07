@@ -3,9 +3,9 @@
   <div class="about-container">
     <div class="before">
     <section class="about-header">
-      <p class="header">About TedxIITPatna</p>
+      <p class="header">About TEDxIITPatna</p>
       <p>
-        Since 2016, TEDx IIT Patna has served as a crucible for ideas, dialogue, and imagination—bridging disciplines and perspectives to spark conversations that endure. With a consistent footfall of 1500+ attendees across past editions, it has become a space where curiosity meets clarity, and complexity gives way to connection. Through changing times and shifting landscapes, the platform has remained committed to elevating diverse voices and celebrating the nuance in thought. It stands not just as an event, but as an evolving archive of insight-where fleeting moments of expression from lasting interludes in the broader narrative of innovation and understanding.
+        Since 2016, TEDxIITPatna has served as a crucible for ideas, dialogue, and imagination—bridging disciplines and perspectives to spark conversations that endure. With a consistent footfall of 1500+ attendees across past editions, it has become a space where curiosity meets clarity, and complexity gives way to connection. Through changing times and shifting landscapes, the platform has remained committed to elevating diverse voices and celebrating the nuance in thought. It stands not just as an event, but as an evolving archive of insight-where fleeting moments of expression from lasting interludes in the broader narrative of innovation and understanding.
       </p>
     </section>
 
@@ -104,14 +104,14 @@
             <img src="@/assets/images/Kshitij.jpg" alt="Kshitij Prakash" />
           </div>
           <p>Kshitij Prakash</p>
-          <p style="font-weight: normal; font-size: 0.9rem;">Media, Public<br>and Relations</p>
+          <p style="font-weight: normal; font-size: 0.9rem;">Media and Public<br>Relations</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
             <img src="@/assets/images/Aviral.jpg" alt="Aviral Awasthi" />
           </div>
           <p>Aviral Awasthi</p>
-          <p style="font-weight: normal; font-size: 0.9rem;">Media, Public<br>and Relations</p>
+          <p style="font-weight: normal; font-size: 0.9rem;">Media and Public<br>Relations</p>
         </div>
         <div class="coordinator">
           <div class="image-wrapper">
@@ -260,7 +260,7 @@
           </div>
         </div>
       </div>
-      <p>Media, Public and Relations</p>
+      <p>Media and Public Relations</p>
     </div>
 
     <div class="full-box-mobile">
@@ -391,7 +391,7 @@
       <div class="tedx">
         <p class="tedx-header">TEDx</p>
         <p>
-          In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDx IITPatna, where x = independently organized TED event. At our TEDx IITPatna event, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events , including ours, are self-organized.
+          In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxIITPatna, where x = independently organized TED event. At our TEDxIITPatna event, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events , including ours, are self-organized.
         </p>
       </div>
     </section>
@@ -407,7 +407,7 @@
       <div class="tedx-mobile">
         <p class="tedx-header-mobile">WHAT IS TEDx</p>
         <p>
-          In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDx IITPatna, where x = independently organized TED event. At our TEDx IITPatna event, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events , including ours, are self-organized.
+          In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxIITPatna, where x = independently organized TED event. At our TEDxIITPatna event, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events , including ours, are self-organized.
         </p>
       </div>
     </section>

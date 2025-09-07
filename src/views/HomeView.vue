@@ -19,11 +19,11 @@
         <p style="font-weight: bold;">"Kaleidoscopic Interludes"</p>
       </p>
       <p>
-        "Kaleidoscopic" evokes vibrant, ever-shifting patterns—glimpses of identity refracted through time and experience. 
-        "Interludes" suggests pauses in life's rhythm—transitional moments that carry quiet transformation.
+        "Kaleidoscopic" evokes vibrant, ever-shifting patterns-glimpses of identity refracted through time and experience. 
+        "Interludes" suggests pauses in life's rhythm-transitional moments that carry quiet transformation.
       </p>
       <p>
-        Kaleidoscopic Interludes invites us to explore the subtle shifts that shape who we are—not through grand events, but through passing decisions, contradictions, and silences. 
+        Kaleidoscopic Interludes invites us to explore the subtle shifts that shape who we are-not through grand events, but through passing decisions, contradictions, and silences. 
         It speaks to the fragments in between: the times when we are not fixed, but continually becoming.
       </p>
       <p>

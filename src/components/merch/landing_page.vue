@@ -40,7 +40,7 @@ const features = [
     title: "Official Merchandise",
     description:
       "Exclusive TEDxIITPatna branded items. Hoodies, T-shirts, and more.",
-    action: "Get Merchandises",
+    action: "Get Merchandise",
     actionType: "merch",
   },
 ];

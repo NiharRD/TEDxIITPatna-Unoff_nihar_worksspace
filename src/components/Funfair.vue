@@ -21,22 +21,22 @@
     <div class="collage-container">
       <div class="collage-grid-six">
         <div class="collage-block-six img-1">
-          <img src="@/assets/Funfair_images/1000173358.jpg" alt="Memory 1" />
+          <img src="@/assets/Funfair_images/1000173358.webp" alt="Memory 2" loading="lazy" />
         </div>
         <div class="collage-block-six img-2">
-          <img src="@/assets/Funfair_images/1000173497.jpg" alt="Memory 2" />
+          <img src="@/assets/Funfair_images/1000173501.webp" alt="Memory 1" loading="lazy"/>
         </div>
         <div class="collage-block-six img-3">
-          <img src="@/assets/Funfair_images/1000173499.jpg" alt="Memory 3" />
+          <img src="@/assets/Funfair_images/1000173499.webp" alt="Memory 3" loading="lazy"/>
         </div>
         <div class="collage-block-six img-4">
-          <img src="@/assets/Funfair_images/1000173501.jpg" alt="Memory 4" />
+          <img src="@/assets/Funfair_images/1000174015.webp" alt="Memory 4" loading="lazy"/>
         </div>
         <div class="collage-block-six img-5">
-          <img src="@/assets/Funfair_images/1000173502.jpg" alt="Memory 5" />
+          <img src="@/assets/Funfair_images/1000173502.webp" alt="Memory 5" loading="lazy"/>
         </div>
         <div class="collage-block-six img-6">
-          <img src="@/assets/Funfair_images/1000175125.jpg" alt="Memory 6" />
+          <img src="@/assets/Funfair_images/1000175124.webp" alt="Memory 6" loading="lazy"/>
         </div>
       </div>
     </div>

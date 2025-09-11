@@ -76,13 +76,14 @@ const stats = [
           <p class="feature-description">{{ feature.description }}</p>
 
           <!-- Ticket Button (Unchanged) -->
-          <button
+          <a
             v-if="feature.actionType === 'tickets'"
-            @click="navigateToTickets"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd8OCiLn9dhoDbIG7TYGjqSihgTt2k7pkjOf7Yvi80edWuWOA/viewform?usp=header"
+            target="_blank"
             class="feature-btn btn-tickets"
           >
             {{ feature.action }}
-          </button>
+          </a>
 
           <!-- Merch Hyperlink Button -->
           <a

@@ -74,9 +74,29 @@
 
     <div class="sponsor">
       <h1 class="section-heading">OUR SPONSORS</h1>
-      <div class="images">
-        <img src="@/assets/images/sponsor_1.png" />
-        <img src="@/assets/images/sponsor_2.png" />
+      <div class="scroll-row">
+        <div class="scroll-track">
+          <img src="@/assets/images/sponsor_1.png" />
+          <img src="@/assets/images/sponsor_2.png" />
+          <img src="@/assets/images/sponsor_3.png" />
+          <img src="@/assets/images/sponsor_4.png" />
+          <img src="@/assets/images/sponsor_5.png" />
+          <img src="@/assets/images/sponsor_6.png" />
+          <img src="@/assets/images/sponsor_7.png" />
+          <img src="@/assets/images/sponsor_8.png" />
+          <img src="@/assets/images/sponsor_9.png" />
+
+          <!-- Duplicate for infinite scroll -->
+          <img src="@/assets/images/sponsor_1.png" />
+          <img src="@/assets/images/sponsor_2.png" />
+          <img src="@/assets/images/sponsor_3.png" />
+          <img src="@/assets/images/sponsor_4.png" />
+          <img src="@/assets/images/sponsor_5.png" />
+          <img src="@/assets/images/sponsor_6.png" />
+          <img src="@/assets/images/sponsor_7.png" />
+          <img src="@/assets/images/sponsor_8.png" />
+          <img src="@/assets/images/sponsor_9.png" />
+        </div>
       </div>
     </div>
 
